@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Juan & Alejandra · Nuestra Boda · 20 de Marzo 2027</title>
-  <meta name="description" content="Estás invitado a celebrar la boda de Juan y Alejandra. Descubre los detalles, confirma tu asistencia y comparte tus fotos en vivo." />
+  <meta name="description" content="Celebra con nosotros la boda de Juan & Alejandra. Álbum colaborativo en vivo, confirma tu asistencia y descubre todos los detalles." />
 
-  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <!-- Google Fonts: Cormorant Garamond (Editorial) & Plus Jakarta Sans (UI & Textos) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CSS vía CDN -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -32,8 +32,8 @@
             sans: ['"Plus Jakarta Sans"', 'sans-serif']
           },
           boxShadow: {
-            'polaroid': '0 10px 25px -5px rgba(44, 44, 44, 0.12), 0 8px 10px -6px rgba(44, 44, 44, 0.08)',
-            'glass': '0 20px 40px -15px rgba(44, 44, 44, 0.12)'
+            'polaroid': '0 12px 28px -6px rgba(44, 44, 44, 0.12), 0 6px 12px -4px rgba(44, 44, 44, 0.08)',
+            'glass': '0 20px 45px -15px rgba(44, 44, 44, 0.12)'
           }
         }
       }
@@ -54,25 +54,18 @@
     }
     body.locked { overflow: hidden; }
 
-    /* Tipografías especiales */
     .font-serif-title { font-family: 'Cormorant Garamond', serif; }
-    
-    /* Efecto Glassmorphism refinado */
+
+    /* Glassmorphism de alta gama */
     .glass-card {
-      background: rgba(255, 255, 255, 0.65);
+      background: rgba(255, 255, 255, 0.72);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(212, 175, 55, 0.28);
+      border: 1px solid rgba(212, 175, 55, 0.32);
       box-shadow: 0 16px 36px -12px rgba(44, 44, 44, 0.08);
     }
-    .glass-dark {
-      background: rgba(44, 44, 44, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(212, 175, 55, 0.35);
-    }
 
-    /* Botón Luxury con animación suave */
+    /* Botón Luxury Interactivo */
     .btn-luxury {
       display: inline-flex;
       align-items: center;
@@ -154,19 +147,10 @@
       animation: sealPulse 2.8s infinite ease-in-out;
       transition: transform 0.3s;
     }
-    .wax-seal:hover {
-      transform: scale(1.08);
-    }
+    .wax-seal:hover { transform: scale(1.08); }
     @keyframes sealPulse {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.06); box-shadow: 0 18px 45px rgba(107, 112, 92, 0.45); }
-    }
-
-    /* Microanimación flotante */
-    .float-slow { animation: floatAnim 4s ease-in-out infinite; }
-    @keyframes floatAnim {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-7px); }
     }
 
     /* Ecualizador de música flotante */
@@ -200,8 +184,8 @@
       position: relative;
     }
     .polaroid-card:hover {
-      transform: translateY(-5px) scale(1.01);
-      box-shadow: 0 20px 40px -10px rgba(44, 44, 44, 0.18);
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 22px 42px -10px rgba(44, 44, 44, 0.18);
     }
     .polaroid-tape {
       position: absolute;
@@ -215,15 +199,16 @@
       z-index: 5;
     }
 
-    /* Pestañas animadas */
+    /* Filtros por pastilla */
     .filter-pill {
       transition: all 0.3s ease;
       font-size: 0.75rem;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       padding: 0.5rem 1.1rem;
       border-radius: 9999px;
       cursor: pointer;
+      white-space: nowrap;
     }
     .filter-pill.active {
       background-color: #6B705C;
@@ -231,7 +216,7 @@
       box-shadow: 0 4px 12px rgba(107, 112, 92, 0.3);
     }
     .filter-pill:not(.active) {
-      background-color: rgba(255, 255, 255, 0.7);
+      background-color: rgba(255, 255, 255, 0.8);
       color: #6B705C;
       border: 1px solid rgba(107, 112, 92, 0.25);
     }
@@ -241,17 +226,17 @@
       color: #2C2C2C;
     }
 
-    /* Corazón con pulso al dar like */
+    /* Corazón animado */
     .heart-btn.liked svg {
       fill: #e11d48;
       stroke: #e11d48;
-      transform: scale(1.15);
+      transform: scale(1.18);
     }
     .heart-btn svg {
-      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    /* Marcos clásicos con bisel dorado */
+    /* Marco de lujo para las fotos */
     .luxury-frame {
       position: relative;
       padding: 10px;
@@ -267,7 +252,7 @@
       pointer-events: none;
     }
 
-    /* Inputs elegantes */
+    /* Input refinado */
     .custom-input {
       width: 100%;
       background: transparent;
@@ -283,6 +268,13 @@
       border-bottom-color: #D4AF37;
       box-shadow: 0 2px 0 0 #D4AF37;
     }
+
+    /* Microanimación suave */
+    .float-slow { animation: floatAnim 4s ease-in-out infinite; }
+    @keyframes floatAnim {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
   </style>
 </head>
 
@@ -292,11 +284,9 @@
        1. SPLASH SCREEN (Sobre Interactivo / Wax Seal)
   ============================================================ -->
   <div id="splash" class="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden">
-    <!-- Telones cinemáticos izquierdo y derecho -->
     <div id="curtainL" class="absolute left-0 top-0 h-full w-1/2 bg-[#EFE9DF] shadow-2xl border-r border-[#DED7CA]"></div>
     <div id="curtainR" class="absolute right-0 top-0 h-full w-1/2 bg-[#EFE9DF] shadow-2xl border-l border-[#DED7CA]"></div>
 
-    <!-- Contenido central de apertura -->
     <div id="splashContent" class="relative z-10 text-center px-6 max-w-lg">
       <p class="text-[0.7rem] uppercase tracking-[0.45em] text-champagne mb-4">Nuestra Boda</p>
       <h1 class="font-serif-title text-7xl md:text-9xl text-carbon tracking-wide font-light">
@@ -322,7 +312,7 @@
     </div>
   </div>
 
-  <!-- Reproductor de audio flotante -->
+  <!-- Reproductor de música ambiental flotante -->
   <button id="musicBtn" aria-label="Reproducir o pausar música"
     class="fixed bottom-6 right-6 z-[85] w-12 h-12 rounded-full glass-card flex items-center justify-center opacity-0 pointer-events-none hover:scale-110 active:scale-95 transition-all duration-300">
     <span id="eq" class="eq-bars paused">
@@ -334,13 +324,11 @@
   <!-- Notificación Toast universal -->
   <div id="toast" class="fixed left-1/2 bottom-20 -translate-x-1/2 z-[120] px-6 py-3 bg-carbon/95 text-crema text-xs tracking-widest uppercase rounded-full shadow-2xl opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2 border border-champagne/40">
     <svg class="w-4 h-4 text-champagne" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-    <span id="toastMsg">¡Acción exitosa!</span>
+    <span id="toastMsg">¡Listo!</span>
   </div>
 
-  <!-- ============================================================
-       BARRA DE NAVEGACIÓN RÁPIDA / HEADER ELEGANTE
-  ============================================================ -->
-  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-4 px-6 md:px-12 flex justify-between items-center bg-white/70 backdrop-blur-md border-b border-champagne/20">
+  <!-- Barra de navegación fija -->
+  <header class="fixed top-0 left-0 right-0 z-50 py-4 px-6 md:px-12 flex justify-between items-center bg-white/75 backdrop-blur-md border-b border-champagne/20">
     <a href="#hero" class="font-serif-title text-2xl md:text-3xl font-normal text-carbon tracking-wider">
       Juan <span class="text-champagne italic">&</span> Alejandra
     </a>
@@ -348,25 +336,23 @@
       <a href="#historia" class="hover:text-champagne transition-colors">Historia</a>
       <a href="#detalles" class="hover:text-champagne transition-colors">Detalles</a>
       <a href="#itinerario" class="hover:text-champagne transition-colors">Itinerario</a>
-      <a href="#galeria" class="hover:text-champagne transition-colors">Galería</a>
       <a href="#momentos" class="hover:text-champagne text-champagneDark font-semibold transition-colors flex items-center gap-1.5">
         <svg class="w-3.5 h-3.5 text-champagne" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
         Muro en Vivo
       </a>
       <a href="#rsvp" class="btn-luxury !py-2 !px-4 !text-[0.68rem] btn-gold">RSVP</a>
     </nav>
-    <a href="#momentos" class="lg:hidden text-[0.7rem] uppercase tracking-wider text-olivo border border-olivo/30 px-3 py-1.5 rounded-full flex items-center gap-1">
-      <svg class="w-3.5 h-3.5 text-champagne" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+    <button onclick="window.openUploadModal()" class="lg:hidden text-[0.7rem] uppercase tracking-wider text-olivo border border-olivo/30 px-3 py-1.5 rounded-full flex items-center gap-1.5 bg-white/80">
+      <svg class="w-3.5 h-3.5 text-champagne" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
       Subir Foto
-    </a>
+    </button>
   </header>
 
   <main>
     <!-- ============================================================
-         2. HERO SECTION CON PARALLAX Y DOBLE VISTA
+         2. HERO SECTION CON PARALLAX Y FOTO DE LA PAREJA
     ============================================================ -->
     <section id="hero" class="relative min-h-screen flex items-center justify-center text-center text-white overflow-hidden pt-20">
-      <!-- Fondo con parallax y blur suave para escritorio -->
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <img id="heroBg" src="fotos/escalera.jpg" alt="Fondo Juan y Alejandra"
              class="absolute inset-0 w-full h-[125%] object-cover -top-[10%] filter brightness-75 md:blur-md scale-105" />
@@ -374,8 +360,7 @@
       </div>
 
       <div class="relative z-10 max-w-6xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-16">
-        
-        <!-- Marco nítido de la pareja en escritorio -->
+        <!-- Retrato enmarcado para pantallas de escritorio -->
         <div class="hero-fade hidden md:block w-72 lg:w-80 shrink-0">
           <div class="luxury-frame bg-white shadow-2xl rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
             <img src="fotos/escalera.jpg" alt="Juan y Alejandra" class="w-full h-auto aspect-[3/4] object-cover" />
@@ -385,7 +370,6 @@
           </div>
         </div>
 
-        <!-- Contenido textual del Hero -->
         <div class="text-center md:text-left max-w-xl">
           <p class="hero-fade text-[0.75rem] uppercase tracking-[0.45em] text-champagne mb-4 font-semibold">
             ¡Nos casamos!
@@ -403,7 +387,7 @@
           </p>
           <div class="hero-fade mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
             <a href="#rsvp" class="btn-luxury btn-gold">Confirmar Asistencia</a>
-            <a href="#momentos" class="btn-luxury !border-white/60 !text-white hover:!border-champagne">Álbum de Fotos</a>
+            <a href="#momentos" class="btn-luxury !border-white/60 !text-white hover:!border-champagne">Álbum en Vivo</a>
           </div>
         </div>
       </div>
@@ -425,7 +409,6 @@
           <div class="ornament-divider"></div>
         </div>
 
-        <!-- Reloj Dinámico -->
         <div id="countdown" class="reveal mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6 max-w-2xl mx-auto">
           <div class="glass-card p-6 rounded-lg border-champagne/40">
             <div id="cd-d" class="font-serif-title text-5xl md:text-6xl text-carbon font-light">00</div>
@@ -458,11 +441,10 @@
       </div>
 
       <div id="timeline" class="relative max-w-4xl mx-auto">
-        <!-- Barra de progreso central -->
         <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-champagne/25 -translate-x-1/2"></div>
         <div id="tlProgress" class="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-champagne -translate-x-1/2 origin-top"></div>
 
-        <!-- Momento 1: Cómo nos conocimos -->
+        <!-- Momento 1 -->
         <article class="tl-item relative grid md:grid-cols-2 gap-8 md:gap-16 mb-20 pl-12 md:pl-0 items-center">
           <span class="absolute left-4 md:left-1/2 -translate-x-1/2 top-6 w-5 h-5 rounded-full bg-crema border-2 border-champagne shadow-md z-10"></span>
           <div class="luxury-frame md:order-1">
@@ -477,7 +459,7 @@
           </div>
         </article>
 
-        <!-- Momento 2: La propuesta -->
+        <!-- Momento 2 -->
         <article class="tl-item relative grid md:grid-cols-2 gap-8 md:gap-16 mb-20 pl-12 md:pl-0 items-center">
           <span class="absolute left-4 md:left-1/2 -translate-x-1/2 top-6 w-5 h-5 rounded-full bg-crema border-2 border-champagne shadow-md z-10"></span>
           <div class="md:order-2 luxury-frame">
@@ -492,7 +474,7 @@
           </div>
         </article>
 
-        <!-- Momento 3: Hacia el altar -->
+        <!-- Momento 3 -->
         <article class="tl-item relative grid md:grid-cols-2 gap-8 md:gap-16 pl-12 md:pl-0 items-center">
           <span class="absolute left-4 md:left-1/2 -translate-x-1/2 top-6 w-5 h-5 rounded-full bg-crema border-2 border-champagne shadow-md z-10"></span>
           <div class="luxury-frame md:order-1">
@@ -520,7 +502,7 @@
       </div>
 
       <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 lg:gap-12">
-        <!-- Ceremonia Religiosa -->
+        <!-- Ceremonia -->
         <div class="glass-card reveal p-8 md:p-10 text-center rounded-xl hover:-translate-y-2 transition-all duration-500 border-champagne/40">
           <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-champagneSoft/60 flex items-center justify-center text-champagneDark">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
@@ -541,7 +523,7 @@
           </a>
         </div>
 
-        <!-- Recepción y Fiesta -->
+        <!-- Recepción -->
         <div class="glass-card reveal p-8 md:p-10 text-center rounded-xl hover:-translate-y-2 transition-all duration-500 border-champagne/40">
           <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-champagneSoft/60 flex items-center justify-center text-champagneDark">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
@@ -618,12 +600,11 @@
     ============================================================ -->
     <section class="py-24 px-6 bg-crema">
       <div class="max-w-4xl mx-auto">
-        <!-- Código de Vestimenta -->
         <div class="text-center reveal mb-16">
           <p class="text-[0.7rem] uppercase tracking-[0.4em] text-champagne font-semibold mb-2">Código de Vestimenta</p>
           <h3 class="font-serif-title text-4xl md:text-5xl font-light text-carbon">Riguroso Formal</h3>
           <p class="text-sm text-carbon/75 mt-3 max-w-md mx-auto leading-relaxed">
-            Ellos: Traje oscuro o smoking formal.<br />Ellas: Vestido largo de noche. (El color blanco y marfil está reservado con cariño para la novia).
+            Ellos: Traje oscuro o smoking formal.<br />Ellas: Vestido largo de noche. (El color blanco y marfil está reservado para la novia).
           </p>
 
           <div class="mt-8 flex flex-wrap justify-center gap-6 sm:gap-10">
@@ -650,16 +631,14 @@
           </div>
         </div>
 
-        <!-- Mesa de Regalos y CLABE -->
         <div class="reveal mt-16 text-center">
           <p class="text-[0.7rem] uppercase tracking-[0.4em] text-champagne font-semibold mb-2">Mesa de Regalos</p>
           <h3 class="font-serif-title text-4xl text-carbon font-light mb-4">Tu presencia es nuestro mejor obsequio</h3>
           <p class="text-sm text-carbon/75 max-w-lg mx-auto mb-8">
-            Si deseas tener un detalle con nosotros para iniciar nuestro nuevo hogar, ponemos a tu disposición las siguientes opciones:
+            Si deseas hacernos un obsequio para comenzar nuestro hogar juntos, aquí tienes nuestras opciones:
           </p>
 
           <div class="grid md:grid-cols-2 gap-6 text-left max-w-3xl mx-auto">
-            <!-- Transferencia bancaria -->
             <div class="glass-card p-6 rounded-xl border-champagne/40">
               <h5 class="font-serif-title text-2xl text-carbon mb-3">Transferencia Bancaria</h5>
               <div class="space-y-2 text-xs text-carbon/80">
@@ -675,7 +654,6 @@
               </div>
             </div>
 
-            <!-- Tiendas departamentales -->
             <div class="glass-card p-6 rounded-xl border-champagne/40 flex flex-col justify-between">
               <div>
                 <h5 class="font-serif-title text-2xl text-carbon mb-3">Mesa en Tiendas</h5>
@@ -694,87 +672,37 @@
     </section>
 
     <!-- ============================================================
-         8. GALERÍA PRE-BODA (Masonry con Lightbox)
-    ============================================================ -->
-    <section id="galeria" class="py-24 px-6 bg-cremaDark">
-      <div class="text-center reveal mb-16 max-w-2xl mx-auto">
-        <p class="text-[0.7rem] uppercase tracking-[0.4em] text-champagne font-semibold mb-2">Momentos Especiales</p>
-        <h3 class="font-serif-title text-4xl md:text-5xl font-light text-carbon">Galería Pre-Boda</h3>
-        <div class="ornament-divider"></div>
-      </div>
-
-      <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Foto Real 1 -->
-        <div class="reveal polaroid-card cursor-pointer group" onclick="openLightbox('fotos/escalera.jpg', 'Juan & Alejandra en la escalera de flores')">
-          <div class="polaroid-tape"></div>
-          <div class="overflow-hidden bg-gray-100 aspect-[3/4]">
-            <img src="fotos/escalera.jpg" alt="Juan & Alejandra en la escalera" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-          </div>
-          <div class="pt-3 text-center">
-            <span class="font-serif-title italic text-carbon text-lg">Amor eterno</span>
-          </div>
-        </div>
-
-        <!-- Foto Real 2 -->
-        <div class="reveal polaroid-card cursor-pointer group" onclick="openLightbox('fotos/corazon.jpg', 'La propuesta en el corazón rojo')">
-          <div class="polaroid-tape"></div>
-          <div class="overflow-hidden bg-gray-100 aspect-[3/4]">
-            <img src="fotos/corazon.jpg" alt="La propuesta en el corazón rojo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-          </div>
-          <div class="pt-3 text-center">
-            <span class="font-serif-title italic text-carbon text-lg">El día del compromiso</span>
-          </div>
-        </div>
-
-        <!-- Foto Placeholder Editorial 3 -->
-        <div class="reveal polaroid-card cursor-pointer group" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80', 'Los preparativos')">
-          <div class="polaroid-tape"></div>
-          <div class="overflow-hidden bg-gray-100 aspect-[3/4]">
-            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Detalle de boda" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-          </div>
-          <div class="pt-3 text-center">
-            <span class="font-serif-title italic text-carbon text-lg">La promesa</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         9. SECCIÓN ESTRELLA: "CAPTURANDO MOMENTOS"
-            (Álbum Colaborativo + Retos Fotográficos con QR)
+         8. MÓDULO ESTRELLA: "CAPTURANDO MOMENTOS"
+            (Cloudinary Unsigned + Firebase Firestore Real-Time)
     ============================================================ -->
     <section id="momentos" class="py-24 px-6 bg-gradient-to-b from-crema via-cremaDark to-crema relative overflow-hidden">
-      <!-- Decoración de fondo -->
       <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-champagne/10 blur-3xl pointer-events-none"></div>
       <div class="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-olivo/10 blur-3xl pointer-events-none"></div>
 
       <div class="max-w-6xl mx-auto relative z-10">
-        <!-- Encabezado de la Sección Estrella -->
         <div class="text-center reveal mb-16">
           <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-champagne/15 text-champagneDark text-[0.7rem] uppercase tracking-[0.3em] font-semibold mb-3 border border-champagne/30">
             <svg class="w-4 h-4 text-champagne" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
-            Experiencia Interactiva para Invitados
+            Álbum Colaborativo en Tiempo Real
           </span>
           <h3 class="font-serif-title text-4xl sm:text-5xl md:text-6xl text-carbon font-light">Capturando Momentos</h3>
           <p class="text-sm md:text-base text-carbon/75 max-w-2xl mx-auto mt-3 leading-relaxed">
-            ¡Tú eres parte esencial de nuestra historia! Ayúdanos a capturar los instantes más espontáneos, divertidos y conmovedores de la boda directamente desde tu móvil.
+            ¡Sé nuestro fotógrafo estrella! Escanea el código en tu mesa o sube fotos directo desde tu móvil para verlas aparecer en el muro al instante.
           </p>
           <div class="ornament-divider"></div>
         </div>
 
-        <!-- 9.1 TARJETA DE ACCESO QR & BOTÓN DE ACCIÓN RÁPIDA -->
+        <!-- 8.1 TARJETA DE ACCESO QR & BOTÓN -->
         <div class="reveal mb-16 max-w-4xl mx-auto">
           <div class="glass-card p-8 md:p-12 rounded-2xl border-champagne/50 shadow-glass flex flex-col md:flex-row items-center gap-8 md:gap-12 text-center md:text-left">
-            <!-- QR Elegante generado dinámicamente -->
             <div class="relative shrink-0 p-4 bg-white rounded-xl shadow-lg border border-champagne/30 group">
               <img id="qrImage" 
-                   src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://jua-ale.vercel.app/%23momentos&color=2C2C2C&bgcolor=FFFFFF" 
+                   src="" 
                    alt="Código QR para subir fotos a la boda" 
                    class="w-40 h-40 md:w-44 md:h-44 object-contain transition-transform group-hover:scale-105" />
               <div class="absolute inset-0 rounded-xl border border-champagne/40 pointer-events-none"></div>
             </div>
 
-            <!-- Información y CTA de cámara -->
             <div class="flex-1">
               <div class="inline-block text-[0.68rem] tracking-[0.25em] uppercase text-champagneDark font-semibold mb-2">
                 Fotógrafo Estrella de la Boda
@@ -783,11 +711,11 @@
                 Escanea el código o pulsa para compartir
               </h4>
               <p class="text-xs md:text-sm text-carbon/75 leading-relaxed mb-6">
-                Escanea el código que ves en tu mesa o pulsa el botón directo para tomar una foto y publicarla en nuestro muro en vivo en tiempo real.
+                Escanea el código en tu mesa o pulsa el botón directo para tomar una foto y publicarla en nuestro muro en vivo en tiempo real conectado a la nube.
               </p>
               
               <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-                <button onclick="openUploadModal()" class="btn-luxury btn-gold !py-3.5 !px-6 shadow-lg flex items-center gap-2">
+                <button onclick="window.openUploadModal()" class="btn-luxury btn-gold !py-3.5 !px-6 shadow-lg flex items-center gap-2">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                   <span>Subir Foto Ahora</span>
                 </button>
@@ -799,109 +727,100 @@
           </div>
         </div>
 
-        <!-- 9.2 MISIONES FOTOGRÁFICAS (Retos por Situación) -->
+        <!-- 8.2 MISIONES FOTOGRÁFICAS (Retos con apertura automática) -->
         <div class="reveal mb-20">
           <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
             <div>
-              <p class="text-[0.7rem] uppercase tracking-[0.3em] text-champagne font-semibold">Desafíos para Invitados</p>
-              <h4 class="font-serif-title text-3xl text-carbon font-light">Misiones Fotográficas</h4>
+              <p class="text-[0.7rem] uppercase tracking-[0.3em] text-champagne font-semibold">Misiones Interactivas</p>
+              <h4 class="font-serif-title text-3xl text-carbon font-light">Retos para Invitados</h4>
             </div>
             <p class="text-xs text-carbon/60 text-center sm:text-right">
-              Haz clic en cualquier reto para cumplirlo y subir tu foto
+              Haz clic en cualquier reto para cumplirlo con tu cámara
             </p>
           </div>
 
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-            <!-- Reto 1 -->
-            <div onclick="openUploadModalWithTag('El Primer Baile')"
+            <div onclick="window.openUploadModalWithTag('El primer baile')"
                  class="glass-card p-4 rounded-xl text-center cursor-pointer hover:border-champagne hover:-translate-y-1.5 transition-all duration-300 group">
-              <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-champagneSoft/80 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
-                💃🕺
-              </div>
-              <h5 class="text-xs font-semibold text-carbon leading-snug">1. El Primer Baile</h5>
-              <span class="text-[0.65rem] text-olivo mt-1 block">Toma la foto</span>
+              <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-champagneSoft/80 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">💃🕺</div>
+              <h5 class="text-xs font-semibold text-carbon leading-snug">1. El primer baile</h5>
+              <span class="text-[0.65rem] text-olivo mt-1 block">Cumplir reto</span>
             </div>
 
-            <!-- Reto 2 -->
-            <div onclick="openUploadModalWithTag('Selfie de Mesa')"
+            <div onclick="window.openUploadModalWithTag('Selfie de toda tu mesa')"
                  class="glass-card p-4 rounded-xl text-center cursor-pointer hover:border-champagne hover:-translate-y-1.5 transition-all duration-300 group">
-              <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-champagneSoft/80 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
-                🤳
-              </div>
-              <h5 class="text-xs font-semibold text-carbon leading-snug">2. Selfie de tu Mesa</h5>
-              <span class="text-[0.65rem] text-olivo mt-1 block">Toma la foto</span>
+              <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-champagneSoft/80 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">🤳</div>
+              <h5 class="text-xs font-semibold text-carbon leading-snug">2. Selfie de tu mesa</h5>
+              <span class="text-[0.65rem] text-olivo mt-1 block">Cumplir reto</span>
             </div>
 
-            <!-- Reto 3 -->
-            <div onclick="openUploadModalWithTag('Lágrimas de Alegría')"
+            <div onclick="window.openUploadModalWithTag('Alguien llorando de emoción')"
                  class="glass-card p-4 rounded-xl text-center cursor-pointer hover:border-champagne hover:-translate-y-1.5 transition-all duration-300 group">
-              <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-champagneSoft/80 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
-                🥹
-              </div>
-              <h5 class="text-xs font-semibold text-carbon leading-snug">3. Alguien Llorando</h5>
-              <span class="text-[0.65rem] text-olivo mt-1 block">Toma la foto</span>
+              <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-champagneSoft/80 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">🥹</div>
+              <h5 class="text-xs font-semibold text-carbon leading-snug">3. Alguien llorando</h5>
+              <span class="text-[0.65rem] text-olivo mt-1 block">Cumplir reto</span>
             </div>
 
-            <!-- Reto 4 -->
-            <div onclick="openUploadModalWithTag('Mejor Paso de Baile')"
+            <div onclick="window.openUploadModalWithTag('El mejor paso de baile')"
                  class="glass-card p-4 rounded-xl text-center cursor-pointer hover:border-champagne hover:-translate-y-1.5 transition-all duration-300 group">
-              <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-champagneSoft/80 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
-                🕺✨
-              </div>
-              <h5 class="text-xs font-semibold text-carbon leading-snug">4. Mejor Paso</h5>
-              <span class="text-[0.65rem] text-olivo mt-1 block">Toma la foto</span>
+              <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-champagneSoft/80 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">🕺✨</div>
+              <h5 class="text-xs font-semibold text-carbon leading-snug">4. Mejor paso</h5>
+              <span class="text-[0.65rem] text-olivo mt-1 block">Cumplir reto</span>
             </div>
 
-            <!-- Reto 5 -->
-            <div onclick="openUploadModalWithTag('Brindis de Novios')"
+            <div onclick="window.openUploadModalWithTag('Brindis de los novios')"
                  class="glass-card p-4 rounded-xl text-center cursor-pointer hover:border-champagne hover:-translate-y-1.5 transition-all duration-300 group">
-              <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-champagneSoft/80 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
-                🥂
-              </div>
-              <h5 class="text-xs font-semibold text-carbon leading-snug">5. Brindis Novios</h5>
-              <span class="text-[0.65rem] text-olivo mt-1 block">Toma la foto</span>
+              <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-champagneSoft/80 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">🥂</div>
+              <h5 class="text-xs font-semibold text-carbon leading-snug">5. Brindis novios</h5>
+              <span class="text-[0.65rem] text-olivo mt-1 block">Cumplir reto</span>
             </div>
 
-            <!-- Reto 6 -->
-            <div onclick="openUploadModalWithTag('El Ramo Volando')"
+            <div onclick="window.openUploadModalWithTag('El ramo volando')"
                  class="glass-card p-4 rounded-xl text-center cursor-pointer hover:border-champagne hover:-translate-y-1.5 transition-all duration-300 group">
-              <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-champagneSoft/80 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
-                💐
-              </div>
-              <h5 class="text-xs font-semibold text-carbon leading-snug">6. Ramo Volando</h5>
-              <span class="text-[0.65rem] text-olivo mt-1 block">Toma la foto</span>
+              <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-champagneSoft/80 flex items-center justify-center text-lg group-hover:scale-110 transition-transform">💐</div>
+              <h5 class="text-xs font-semibold text-carbon leading-snug">6. Ramo volando</h5>
+              <span class="text-[0.65rem] text-olivo mt-1 block">Cumplir reto</span>
             </div>
           </div>
         </div>
 
-        <!-- 9.3 MURO EN VIVO (Live Photo Wall con filtros y Polaroids) -->
+        <!-- 8.3 MURO EN VIVO CON FIRESTORE ONSNAPSHOT -->
         <div id="muroLive" class="reveal">
           <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pb-6 border-b border-champagne/30">
             <div>
-              <p class="text-[0.7rem] uppercase tracking-[0.3em] text-champagne font-semibold">En tiempo real</p>
-              <h4 class="font-serif-title text-3xl md:text-4xl text-carbon font-light">Muro de Fotos en Vivo</h4>
+              <p class="text-[0.7rem] uppercase tracking-[0.3em] text-champagne font-semibold flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                Transmisión en Vivo (Firestore)
+              </p>
+              <h4 class="font-serif-title text-3xl md:text-4xl text-carbon font-light">Muro de Fotos de la Boda</h4>
             </div>
 
-            <!-- Pestañas de filtrado -->
+            <!-- Filtros por pestañas -->
             <div class="flex flex-wrap gap-2 justify-center" id="filterTabs">
-              <button class="filter-pill active" data-category="all">Todas (<span id="count-all">0</span>)</button>
-              <button class="filter-pill" data-category="Ceremonia">Ceremonia</button>
-              <button class="filter-pill" data-category="Mesas">Mesas</button>
-              <button class="filter-pill" data-category="Fiesta">Fiesta</button>
-              <button class="filter-pill" data-category="Retos">Retos</button>
+              <button class="filter-pill active" data-category="all">Todas (<span id="photoCounter">0</span>)</button>
+              <button class="filter-pill" data-category="El primer baile">Primer Baile</button>
+              <button class="filter-pill" data-category="Selfie de toda tu mesa">Selfie Mesa</button>
+              <button class="filter-pill" data-category="Alguien llorando de emoción">Emoción</button>
+              <button class="filter-pill" data-category="El mejor paso de baile">Baile</button>
+              <button class="filter-pill" data-category="Brindis de los novios">Brindis</button>
+              <button class="filter-pill" data-category="El ramo volando">Ramo</button>
             </div>
           </div>
 
-          <!-- Grid dinámico de fotos tipo Polaroid -->
+          <!-- Grid dinámico de fotos en vivo -->
           <div id="photoWallGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pt-10">
-            <!-- Renderizado dinámico vía JavaScript -->
+            <!-- Cargando estado inicial -->
+            <div class="col-span-full py-16 text-center text-carbon/60">
+              <div class="w-10 h-10 border-2 border-champagne border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+              <p class="font-serif-title text-2xl">Conectando con el álbum en vivo...</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ============================================================
-         10. CONFIRMACIÓN DE ASISTENCIA (RSVP con enlace a WhatsApp)
+         9. CONFIRMACIÓN DE ASISTENCIA (RSVP)
     ============================================================ -->
     <section id="rsvp" class="py-24 px-6 bg-cremaDark">
       <div class="text-center reveal mb-14 max-w-xl mx-auto">
@@ -989,39 +908,38 @@
   </footer>
 
   <!-- ============================================================
-       MODAL DE SUBIDA DE FOTOS (CÁMARA DIRECTA & PREVIEW POLAROID)
+       MODAL DE SUBIDA DE FOTOS (CLOUDINARY + FIRESTORE)
   ============================================================ -->
   <div id="uploadModal" class="fixed inset-0 z-[115] bg-black/80 backdrop-blur-md hidden items-center justify-center p-4 overflow-y-auto">
     <div class="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl p-6 sm:p-8 my-8 border border-champagne/40">
-      <!-- Botón Cerrar -->
-      <button onclick="closeUploadModal()" class="absolute top-4 right-4 text-gray-400 hover:text-carbon text-2xl transition-colors">&times;</button>
+      <button onclick="window.closeUploadModal()" class="absolute top-4 right-4 text-gray-400 hover:text-carbon text-2xl transition-colors">&times;</button>
 
       <div class="text-center mb-6">
-        <span class="text-[0.68rem] uppercase tracking-[0.3em] text-champagne font-semibold">Álbum de Invitados</span>
-        <h4 class="font-serif-title text-3xl text-carbon font-light">Subir al Muro en Vivo</h4>
+        <span class="text-[0.68rem] uppercase tracking-[0.3em] text-champagne font-semibold">Álbum en la Nube</span>
+        <h4 class="font-serif-title text-3xl text-carbon font-light">Compartir Foto</h4>
       </div>
 
-      <form id="photoUploadForm" onsubmit="handlePhotoUpload(event)" class="space-y-5">
-        <!-- Input de Foto / Cámara Directa -->
+      <form id="photoUploadForm" class="space-y-5">
+        <!-- Input de archivo / Cámara -->
         <div>
           <label class="block text-[0.68rem] tracking-[0.2em] uppercase text-olivo font-semibold mb-2">
             1. Toma o selecciona tu foto
           </label>
           
-          <div id="dropArea" class="border-2 border-dashed border-champagne/60 rounded-xl p-5 text-center cursor-pointer hover:bg-champagneSoft/20 transition-colors">
-            <input type="file" id="photoFileInput" accept="image/*" capture="environment" class="hidden" onchange="previewSelectedPhoto(this)" />
+          <div id="dropArea" onclick="document.getElementById('photoFileInput').click()" class="border-2 border-dashed border-champagne/60 rounded-xl p-5 text-center cursor-pointer hover:bg-champagneSoft/20 transition-colors">
+            <input type="file" id="photoFileInput" accept="image/*" capture="environment" class="hidden" />
             
             <div id="uploadPrompt" class="space-y-2">
               <div class="w-12 h-12 mx-auto rounded-full bg-champagneSoft flex items-center justify-center text-champagneDark">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
               </div>
-              <p class="text-xs font-semibold text-carbon">Pulsa aquí para abrir la cámara o galería</p>
-              <p class="text-[0.68rem] text-gray-500">Admite fotos en formato JPG, PNG, WEBP</p>
+              <p class="text-xs font-semibold text-carbon">Pulsa aquí para abrir la cámara o carrete</p>
+              <p class="text-[0.68rem] text-gray-500">Se comprimirá automáticamente para subirse veloz</p>
             </div>
 
             <!-- Previsualización Polaroid dentro del modal -->
             <div id="previewContainer" class="hidden">
-              <div class="polaroid-card max-w-[240px] mx-auto text-left">
+              <div class="polaroid-card max-w-[240px] mx-auto text-left pointer-events-none">
                 <div class="polaroid-tape"></div>
                 <img id="previewImg" src="" alt="Vista previa" class="w-full h-48 object-cover rounded-sm" />
                 <div class="pt-2 text-center">
@@ -1029,9 +947,7 @@
                   <p id="previewGuestText" class="text-xs text-carbon truncate font-medium">De: Invitado</p>
                 </div>
               </div>
-              <button type="button" onclick="document.getElementById('photoFileInput').click()" class="mt-3 text-xs text-olivo underline">
-                Cambiar foto
-              </button>
+              <p class="mt-3 text-xs text-olivo underline cursor-pointer">Cambiar foto</p>
             </div>
           </div>
         </div>
@@ -1039,9 +955,9 @@
         <!-- Nombre del invitado -->
         <div>
           <label class="block text-[0.68rem] tracking-[0.2em] uppercase text-olivo font-semibold mb-1" for="modalGuestName">
-            2. Tu Nombre o Apodo
+            2. Tu Nombre o Familia
           </label>
-          <input id="modalGuestName" required class="custom-input" type="text" placeholder="Ej. Carlos M. / Tía Rosa / Los primos" oninput="updatePreviewText()" />
+          <input id="modalGuestName" required class="custom-input" type="text" placeholder="Ej. Carlos M. / Familia Pérez" />
         </div>
 
         <!-- Categoría / Reto -->
@@ -1049,16 +965,14 @@
           <label class="block text-[0.68rem] tracking-[0.2em] uppercase text-olivo font-semibold mb-1" for="modalCategory">
             3. Reto o Categoría
           </label>
-          <select id="modalCategory" class="custom-input cursor-pointer" onchange="updatePreviewText()">
-            <option value="Ceremonia">Ceremonia</option>
-            <option value="Mesas">Mesas</option>
-            <option value="Fiesta">Fiesta</option>
-            <option value="El Primer Baile">Reto: El Primer Baile</option>
-            <option value="Selfie de Mesa">Reto: Selfie de tu Mesa</option>
-            <option value="Lágrimas de Alegría">Reto: Alguien Llorando</option>
-            <option value="Mejor Paso de Baile">Reto: Mejor Paso de Baile</option>
-            <option value="Brindis de Novios">Reto: Brindis de los Novios</option>
-            <option value="El Ramo Volando">Reto: El Ramo Volando</option>
+          <select id="modalCategory" class="custom-input cursor-pointer">
+            <option value="El primer baile">1. El primer baile</option>
+            <option value="Selfie de toda tu mesa">2. Selfie de toda tu mesa</option>
+            <option value="Alguien llorando de emoción">3. Alguien llorando de emoción</option>
+            <option value="El mejor paso de baile">4. El mejor paso de baile</option>
+            <option value="Brindis de los novios">5. Brindis de los novios</option>
+            <option value="El ramo volando">6. El ramo volando</option>
+            <option value="Momento libre">Momento libre / Foto general</option>
           </select>
         </div>
 
@@ -1067,86 +981,478 @@
           <label class="block text-[0.68rem] tracking-[0.2em] uppercase text-olivo font-semibold mb-1" for="modalDedication">
             4. Dedicatoria corta (opcional)
           </label>
-          <input id="modalDedication" class="custom-input" type="text" placeholder="Ej. ¡Qué vivan los novios! Los queremos mucho." maxlength="100" />
+          <input id="modalDedication" class="custom-input" type="text" placeholder="Ej. ¡Felicidades amigos! Los queremos." maxlength="120" />
         </div>
 
-        <!-- Barra de progreso simulada -->
+        <!-- Barra de progreso real de subida -->
         <div id="uploadProgressBarContainer" class="hidden space-y-1">
           <div class="flex justify-between text-[0.65rem] text-olivo font-semibold">
-            <span>Subiendo al muro...</span>
+            <span id="uploadStatusText">Comprimiendo y subiendo a Cloudinary...</span>
             <span id="uploadPercent">0%</span>
           </div>
-          <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-            <div id="uploadProgressBar" class="bg-champagne h-full w-0 transition-all duration-200"></div>
+          <div class="w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
+            <div id="uploadProgressBar" class="bg-champagne h-full w-0 transition-all duration-150"></div>
           </div>
         </div>
 
         <button id="submitUploadBtn" type="submit" class="btn-luxury btn-gold w-full !py-3.5 shadow-lg">
-          Publicar en el Muro
+          Publicar en el Muro en Vivo
         </button>
       </form>
     </div>
   </div>
 
   <!-- ============================================================
-       LIGHTBOX UNIVERSAL
+       LIGHTBOX DE PANTALLA COMPLETA CON BOTÓN DE DESCARGA
   ============================================================ -->
   <div id="lightbox" class="fixed inset-0 z-[130] bg-black/95 hidden items-center justify-center p-4 opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true">
-    <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-4xl hover:text-champagne transition-colors">&times;</button>
-    <div class="max-w-4xl max-h-[85vh] text-center">
+    <button onclick="window.closeLightbox()" class="absolute top-6 right-6 text-white text-4xl hover:text-champagne transition-colors z-20">&times;</button>
+    
+    <div class="max-w-4xl max-h-[90vh] text-center flex flex-col items-center">
       <img id="lbImg" class="max-h-[75vh] max-w-full object-contain mx-auto shadow-2xl rounded-sm border border-white/10" alt="Foto ampliada" />
-      <p id="lbCaption" class="text-crema text-sm font-serif-title italic text-lg mt-3"></p>
+      
+      <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-4 w-full px-4">
+        <p id="lbCaption" class="text-crema text-sm font-serif-title italic text-xl"></p>
+        <a id="lbDownloadBtn" href="#" target="_blank" download class="btn-luxury !border-champagne !text-champagne hover:!bg-champagne hover:!text-white !py-2 !px-4 !text-xs shrink-0 flex items-center gap-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Descargar Foto Original
+        </a>
+      </div>
     </div>
   </div>
 
   <!-- ============================================================
-       SCRIPTS: GSAP, SCROLLTRIGGER, LENIS Y LÓGICA VIVA
+       SCRIPTS: ANIMACIONES GSAP & LENIS
   ============================================================ -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 
+  <!-- ============================================================
+       MÓDULO FIREBASE FIRESTORE & CLOUDINARY (ES MODULE)
+  ============================================================ -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+    import { 
+      getFirestore, 
+      collection, 
+      addDoc, 
+      onSnapshot, 
+      query, 
+      orderBy, 
+      serverTimestamp, 
+      doc, 
+      updateDoc, 
+      increment 
+    } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+    /* Configuración Cloudinary */
+    const CLOUDINARY_CLOUD_NAME = "iux59frd";
+    const CLOUDINARY_UPLOAD_PRESET = "boda_unsigned";
+    const CLOUDINARY_UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`;
+
+    /* Configuración Firebase */
+    const firebaseConfig = {
+      apiKey: "AIzaSyDGiSM-tc_swheretflHPR92IlnYIK-j44",
+      authDomain: "boda-invitacion-4d83d.firebaseapp.com",
+      projectId: "boda-invitacion-4d83d",
+      storageBucket: "boda-invitacion-4d83d.firebasestorage.app",
+      messagingSenderId: "310015047951",
+      appId: "1:310015047951:web:45585037904bfad458267a",
+      measurementId: "G-KRMV4DNKWH"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const momentsCollection = collection(db, "wedding_moments");
+
+    /* Variables de Estado */
+    let currentMoments = [];
+    let currentFilter = 'all';
+    let selectedFile = null;
+
+    /* Configurar Código QR Dinámico */
+    const currentBaseUrl = window.location.origin + window.location.pathname;
+    const qrTargetUrl = `${currentBaseUrl}?action=upload#momentos`;
+    const qrImage = document.getElementById('qrImage');
+    if (qrImage) {
+      qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(qrTargetUrl)}&color=2C2C2C&bgcolor=FFFFFF`;
+    }
+
+    /* Modal Controls */
+    window.openUploadModal = function() {
+      const modal = document.getElementById('uploadModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      if (window.lenis) window.lenis.stop();
+    };
+
+    window.openUploadModalWithTag = function(category) {
+      const select = document.getElementById('modalCategory');
+      if (select) select.value = category;
+      window.updateUploadPreview();
+      window.openUploadModal();
+    };
+
+    window.closeUploadModal = function() {
+      const modal = document.getElementById('uploadModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.getElementById('photoUploadForm').reset();
+      document.getElementById('previewContainer').classList.add('hidden');
+      document.getElementById('uploadPrompt').classList.remove('hidden');
+      document.getElementById('uploadProgressBarContainer').classList.add('hidden');
+      document.getElementById('uploadProgressBar').style.width = '0%';
+      document.getElementById('submitUploadBtn').disabled = false;
+      document.getElementById('submitUploadBtn').textContent = 'Publicar en el Muro en Vivo';
+      selectedFile = null;
+      if (window.lenis) window.lenis.start();
+    };
+
+    /* Preview Foto */
+    window.updateUploadPreview = function() {
+      const name = document.getElementById('modalGuestName').value.trim() || 'Invitado';
+      const category = document.getElementById('modalCategory').value;
+      document.getElementById('previewGuestText').textContent = 'De: ' + name;
+      document.getElementById('previewTagBadge').textContent = category;
+    };
+
+    document.getElementById('modalGuestName').addEventListener('input', window.updateUploadPreview);
+    document.getElementById('modalCategory').addEventListener('change', window.updateUploadPreview);
+
+    const fileInput = document.getElementById('photoFileInput');
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files[0]) {
+        selectedFile = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          document.getElementById('previewImg').src = ev.target.result;
+          document.getElementById('uploadPrompt').classList.add('hidden');
+          document.getElementById('previewContainer').classList.remove('hidden');
+          window.updateUploadPreview();
+        };
+        reader.readAsDataURL(selectedFile);
+      }
+    });
+
+    /* Compresión en navegador vía <canvas> (Max 1920px Full HD, JPEG 0.85) */
+    function compressImage(file, maxDimension = 1920, quality = 0.85) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = URL.createObjectURL(file);
+        img.onload = () => {
+          let width = img.width;
+          let height = img.height;
+
+          if (width > maxDimension || height > maxDimension) {
+            if (width > height) {
+              height = Math.round((height * maxDimension) / width);
+              width = maxDimension;
+            } else {
+              width = Math.round((width * maxDimension) / height);
+              height = maxDimension;
+            }
+          }
+
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+
+          canvas.toBlob((blob) => {
+            if (blob) {
+              resolve(blob);
+            } else {
+              reject(new Error('Error en compresión de imagen'));
+            }
+          }, 'image/jpeg', quality);
+        };
+        img.onerror = (err) => reject(err);
+      });
+    }
+
+    /* Subida a Cloudinary vía XMLHttpRequest con Barra de Progreso Real */
+    function uploadToCloudinary(blob) {
+      return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        const formData = new FormData();
+
+        // Nombre de archivo único con timestamp para evitar colisión si Unique filename está deshabilitado en Cloudinary
+        const uniqueFileName = `boda_${Date.now()}_${Math.random().toString(36).substring(2, 7)}.jpg`;
+        formData.append('file', blob, uniqueFileName);
+        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+
+        const progressBar = document.getElementById('uploadProgressBar');
+        const percentText = document.getElementById('uploadPercent');
+        const statusText = document.getElementById('uploadStatusText');
+
+        xhr.upload.onprogress = (e) => {
+          if (e.lengthComputable) {
+            const percent = Math.round((e.loaded / e.total) * 100);
+            progressBar.style.width = percent + '%';
+            percentText.textContent = percent + '%';
+            if (percent >= 100) {
+              statusText.textContent = 'Guardando en álbum en tiempo real...';
+            }
+          }
+        };
+
+        xhr.onload = () => {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            try {
+              const res = JSON.parse(xhr.responseText);
+              resolve(res);
+            } catch (err) {
+              reject(err);
+            }
+          } else {
+            reject(new Error(`Cloudinary Error: ${xhr.statusText} (${xhr.responseText})`));
+          }
+        };
+
+        xhr.onerror = () => reject(new Error('Error de conexión con Cloudinary'));
+        xhr.open('POST', CLOUDINARY_UPLOAD_URL, true);
+        xhr.send(formData);
+      });
+    }
+
+    /* Manejo del Envío del Formulario */
+    document.getElementById('photoUploadForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (!selectedFile) {
+        alert('Por favor selecciona o toma una foto antes de publicar.');
+        return;
+      }
+
+      const guestName = document.getElementById('modalGuestName').value.trim();
+      const category = document.getElementById('modalCategory').value;
+      const caption = document.getElementById('modalDedication').value.trim();
+
+      const progressContainer = document.getElementById('uploadProgressBarContainer');
+      const submitBtn = document.getElementById('submitUploadBtn');
+
+      try {
+        progressContainer.classList.remove('hidden');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Subiendo al muro...';
+
+        // 1. Comprimir en cliente
+        const compressedBlob = await compressImage(selectedFile, 1920, 0.85);
+
+        // 2. Subir a Cloudinary con progreso
+        const cloudRes = await uploadToCloudinary(compressedBlob);
+        const hdUrl = cloudRes.secure_url;
+        // Miniatura optimizada con transformación Cloudinary
+        const imageUrl = hdUrl.replace('/upload/', '/upload/f_auto,q_auto,w_800/');
+
+        // 3. Guardar documento en Firestore
+        await addDoc(momentsCollection, {
+          imageUrl,
+          hdUrl,
+          guestName,
+          category,
+          caption,
+          likes: 0,
+          createdAt: serverTimestamp()
+        });
+
+        // 4. Celebrar con Confeti y cerrar
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#D4AF37', '#6B705C', '#FAF8F5', '#E5D3B3']
+        });
+
+        window.closeUploadModal();
+        window.showToast('¡Tu foto ya está en el muro en vivo! 🎉');
+
+        // Scroll al muro
+        document.getElementById('muroLive').scrollIntoView({ behavior: 'smooth' });
+
+      } catch (error) {
+        console.error(error);
+        alert('Ocurrió un error al subir la foto: ' + error.message);
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Publicar en el Muro en Vivo';
+        progressContainer.classList.add('hidden');
+      }
+    });
+
+    /* Like / Heart con Firestore increment(1) y localStorage */
+    window.toggleFirestoreLike = async function(docId, btn) {
+      const storageKey = `liked_moment_${docId}`;
+      if (localStorage.getItem(storageKey)) {
+        window.showToast('¡Ya le diste me gusta a esta foto! ❤️');
+        return;
+      }
+
+      try {
+        const photoRef = doc(db, "wedding_moments", docId);
+        await updateDoc(photoRef, {
+          likes: increment(1)
+        });
+
+        localStorage.setItem(storageKey, 'true');
+        btn.classList.add('liked', 'text-rose-600', 'font-semibold');
+        const svg = btn.querySelector('svg');
+        if (svg) {
+          svg.setAttribute('fill', '#e11d48');
+          svg.setAttribute('stroke', '#e11d48');
+        }
+        window.showToast('¡Te gustó esta foto! ❤️');
+      } catch (err) {
+        console.error("Error al actualizar likes en Firestore:", err);
+      }
+    };
+
+    /* Renderizado del Muro con Polaroid */
+    function renderLivePhotoWall() {
+      const grid = document.getElementById('photoWallGrid');
+      grid.innerHTML = '';
+
+      const filtered = currentMoments.filter(item => {
+        if (currentFilter === 'all') return true;
+        return item.category === currentFilter;
+      });
+
+      document.getElementById('photoCounter').textContent = currentMoments.length;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-16 text-center text-carbon/60">
+            <p class="font-serif-title text-3xl">Aún no hay fotos en esta categoría</p>
+            <p class="text-xs mt-2">¡Sé el primero en cumplir este reto!</p>
+            <button onclick="window.openUploadModalWithTag('${currentFilter}')" class="btn-luxury btn-gold mt-6 !py-2.5 !px-5 text-xs">
+              Subir la primera foto
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach((photo, idx) => {
+        const rot = (idx % 3 === 0 ? -1.5 : idx % 3 === 1 ? 1.5 : 0);
+        const hasLiked = localStorage.getItem(`liked_moment_${photo.id}`) === 'true';
+
+        let dateStr = 'Reciente';
+        if (photo.createdAt && photo.createdAt.toDate) {
+          const d = photo.createdAt.toDate();
+          dateStr = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        const card = document.createElement('div');
+        card.className = 'polaroid-card group transition-all duration-300';
+        card.style.transform = `rotate(${rot}deg)`;
+        card.innerHTML = `
+          <div class="polaroid-tape"></div>
+          <div class="overflow-hidden bg-gray-100 aspect-[4/3] rounded-sm cursor-pointer" onclick="window.openLightbox('${photo.hdUrl || photo.imageUrl}', '${photo.caption || photo.guestName}', '${photo.hdUrl || photo.imageUrl}')">
+            <img src="${photo.imageUrl}" alt="${photo.category}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+          </div>
+          <div class="pt-3 pb-1">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="inline-block px-2 py-0.5 text-[0.62rem] uppercase tracking-wider font-semibold rounded bg-champagneSoft text-champagneDark truncate max-w-[170px]">
+                ${photo.category}
+              </span>
+              <span class="text-[0.65rem] text-carbon/50">${dateStr}</span>
+            </div>
+            <p class="text-xs font-semibold text-carbon">${photo.guestName}</p>
+            ${photo.caption ? `<p class="text-xs text-carbon/80 mt-1 italic font-light leading-relaxed">“${photo.caption}”</p>` : ''}
+            
+            <div class="mt-3 pt-2.5 border-t border-gray-100 flex items-center justify-between">
+              <span class="text-[0.68rem] text-olivo tracking-wide font-medium">Boda J&A</span>
+              <button onclick="window.toggleFirestoreLike('${photo.id}', this)" class="heart-btn flex items-center gap-1.5 text-xs text-carbon/70 hover:text-rose-600 transition-colors ${hasLiked ? 'liked text-rose-600 font-semibold' : ''}">
+                <svg class="w-4 h-4 ${hasLiked ? 'fill-rose-500 stroke-rose-500' : 'stroke-current fill-none'}" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                <span class="like-count">${photo.likes || 0}</span>
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    /* Pestañas de Filtrado */
+    document.querySelectorAll('.filter-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.category;
+        renderLivePhotoWall();
+      });
+    });
+
+    /* Suscripción en Tiempo Real con onSnapshot */
+    const q = query(momentsCollection, orderBy("createdAt", "desc"));
+    onSnapshot(q, (snapshot) => {
+      currentMoments = [];
+      snapshot.forEach((doc) => {
+        currentMoments.push({ id: doc.id, ...doc.data() });
+      });
+      renderLivePhotoWall();
+    }, (error) => {
+      console.error("Error en conexión en vivo con Firestore:", error);
+    });
+
+    /* Detección de Parámetro ?action=upload al escanear QR */
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('action') === 'upload') {
+        const splash = document.getElementById('splash');
+        if (splash) splash.remove();
+        document.body.classList.remove('locked');
+        if (window.lenis) window.lenis.start();
+
+        setTimeout(() => {
+          const momentosSection = document.getElementById('momentos');
+          if (momentosSection) momentosSection.scrollIntoView({ behavior: 'smooth' });
+          window.openUploadModal();
+        }, 500);
+      }
+    });
+  </script>
+
+  <!-- ============================================================
+       SCRIPTS GLOBALES DE UI Y NAVEGACIÓN
+  ============================================================ -->
   <script>
-    /* ============================================================
-       CONFIGURACIÓN GLOBAL
-    ============================================================ */
     const CONFIG = {
       weddingDate: new Date('2027-03-20T17:00:00'),
-      whatsapp: '5215512345678', // Reemplazar con el número oficial
+      whatsapp: '5215512345678',
       couple: 'Juan & Alejandra'
     };
 
     gsap.registerPlugin(ScrollTrigger);
 
-    /* Smooth Scrolling con Lenis */
-    const lenis = new Lenis({ duration: 1.2, smoothWheel: true });
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(t => lenis.raf(t * 1000));
+    /* Smooth Scrolling */
+    window.lenis = new Lenis({ duration: 1.2, smoothWheel: true });
+    window.lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(t => window.lenis.raf(t * 1000));
     gsap.ticker.lagSmoothing(0);
-    lenis.stop(); // Bloqueado hasta abrir el sobre
+    window.lenis.stop();
 
-    /* Separar letras del título en Hero */
+    /* Separar caracteres */
     document.querySelectorAll('[data-split]').forEach(el => {
       el.innerHTML = [...el.textContent].map(c => `<span class="inline-block opacity-0 hero-char">${c}</span>`).join('');
     });
 
-    /* ============================================================
-       APERTURA DE SOBRE / SPLASH SCREEN
-    ============================================================ */
+    /* Splash Screen Apertura */
     const bgm = document.getElementById('bgm');
     const musicBtn = document.getElementById('musicBtn');
     const eq = document.getElementById('eq');
     bgm.volume = 0.45;
 
     document.getElementById('openBtn').addEventListener('click', () => {
-      // Iniciar música si es posible
       bgm.play().then(() => eq.classList.remove('paused')).catch(() => {});
 
       const tl = gsap.timeline({
         onComplete: () => {
-          document.getElementById('splash').remove();
+          const splash = document.getElementById('splash');
+          if (splash) splash.remove();
           document.body.classList.remove('locked');
-          lenis.start();
+          window.lenis.start();
           ScrollTrigger.refresh();
         }
       });
@@ -1155,12 +1461,10 @@
         .to('#curtainL', { xPercent: -100, duration: 1.2, ease: 'power3.inOut' }, '-=0.2')
         .to('#curtainR', { xPercent: 100, duration: 1.2, ease: 'power3.inOut' }, '<')
         .to(musicBtn, { opacity: 1, pointerEvents: 'auto', duration: 0.5 }, '-=0.4')
-        // Animación de entrada Hero
         .fromTo('.hero-char', { y: 35, opacity: 0 }, { opacity: 1, y: 0, stagger: 0.05, duration: 0.8, ease: 'power3.out' }, '-=0.8')
         .from('.hero-fade', { opacity: 0, y: 20, stagger: 0.15, duration: 0.8, ease: 'power2.out' }, '-=0.5');
     });
 
-    /* Botón flotante de música */
     musicBtn.addEventListener('click', () => {
       if (bgm.paused) {
         bgm.play();
@@ -1173,14 +1477,13 @@
       }
     });
 
-    /* Parallax Hero */
+    /* Parallax & Scroll Reveal */
     gsap.to('#heroBg', {
       yPercent: 15,
       ease: 'none',
       scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
     });
 
-    /* Scroll Reveal global */
     gsap.utils.toArray('.reveal').forEach(el => {
       gsap.from(el, {
         opacity: 0,
@@ -1191,16 +1494,13 @@
       });
     });
 
-    /* Línea de tiempo animada */
     gsap.fromTo('#tlProgress', { scaleY: 0 }, {
       scaleY: 1,
       ease: 'none',
       scrollTrigger: { trigger: '#timeline', start: 'top 70%', end: 'bottom 70%', scrub: true }
     });
 
-    /* ============================================================
-       COUNTDOWN EN TIEMPO REAL
-    ============================================================ */
+    /* Countdown */
     const pad = n => String(n).padStart(2, '0');
     function updateCountdown() {
       const diff = Math.max(0, CONFIG.weddingDate - new Date());
@@ -1217,10 +1517,8 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    /* ============================================================
-       TOAST NOTIFICATION & COPIAR CLABE
-    ============================================================ */
-    function showToast(msg) {
+    /* Toast */
+    window.showToast = function(msg) {
       const toast = document.getElementById('toast');
       const toastMsg = document.getElementById('toastMsg');
       toastMsg.textContent = msg;
@@ -1229,8 +1527,9 @@
         { opacity: 0, y: 15, pointerEvents: 'none' }, 
         { opacity: 1, y: 0, pointerEvents: 'auto', duration: 0.35, yoyo: true, repeat: 1, repeatDelay: 1.8 }
       );
-    }
+    };
 
+    /* Copiar CLABE */
     document.getElementById('copyClabeBtn').addEventListener('click', async () => {
       const text = document.getElementById('clabeNum').textContent.replace(/\s/g, '');
       try {
@@ -1246,354 +1545,39 @@
       showToast('¡CLABE copiada al portapapeles!');
     });
 
-    /* ============================================================
-       LIGHTBOX PARA GALERÍA Y MURO
-    ============================================================ */
+    /* Lightbox */
     const lightbox = document.getElementById('lightbox');
     const lbImg = document.getElementById('lbImg');
     const lbCaption = document.getElementById('lbCaption');
+    const lbDownloadBtn = document.getElementById('lbDownloadBtn');
 
-    function openLightbox(src, caption = '') {
+    window.openLightbox = function(src, caption = '', downloadUrl = '') {
       lbImg.src = src;
       lbCaption.textContent = caption;
+      lbDownloadBtn.href = downloadUrl || src;
       lightbox.classList.remove('hidden');
       lightbox.classList.add('flex');
-      lenis.stop();
+      if (window.lenis) window.lenis.stop();
       gsap.to(lightbox, { opacity: 1, duration: 0.3 });
-    }
+    };
 
-    function closeLightbox() {
+    window.closeLightbox = function() {
       gsap.to(lightbox, {
         opacity: 0,
         duration: 0.25,
         onComplete: () => {
           lightbox.classList.add('hidden');
           lightbox.classList.remove('flex');
-          lenis.start();
+          if (window.lenis) window.lenis.start();
         }
       });
-    }
+    };
 
     lightbox.addEventListener('click', e => {
-      if (e.target === lightbox) closeLightbox();
+      if (e.target === lightbox) window.closeLightbox();
     });
 
-    /* ============================================================
-       ESTADO LOCAL & MURO EN VIVO ("CAPTURANDO MOMENTOS")
-    ============================================================ */
-    // Fotos iniciales de muestra con temática de boda y retos
-    const DEFAULT_PHOTOS = [
-      {
-        id: 1,
-        author: 'Familia Mendoza',
-        category: 'Ceremonia',
-        tag: 'Ceremonia',
-        caption: '¡Momento mágico en la bendición de los anillos!',
-        url: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80',
-        likes: 14,
-        liked: false,
-        time: 'Hace 1 hora'
-      },
-      {
-        id: 2,
-        author: 'Carlos & Mariana',
-        category: 'Retos',
-        tag: 'El Primer Baile',
-        caption: 'Su primer vals como esposos, ¡lloramos todos!',
-        url: 'fotos/escalera.jpg',
-        likes: 28,
-        liked: false,
-        time: 'Hace 45 min'
-      },
-      {
-        id: 3,
-        author: 'Mesa 4 - Los Primos',
-        category: 'Mesas',
-        tag: 'Selfie de Mesa',
-        caption: 'La mesa más fiestera lista para celebrar a Juan y Ale 🥂',
-        url: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80',
-        likes: 9,
-        liked: false,
-        time: 'Hace 30 min'
-      },
-      {
-        id: 4,
-        author: 'Andrea S.',
-        category: 'Retos',
-        tag: 'Brindis de Novios',
-        caption: 'Salud por una vida llena de complicidad y risas ✨',
-        url: 'fotos/corazon.jpg',
-        likes: 21,
-        liked: false,
-        time: 'Hace 15 min'
-      },
-      {
-        id: 5,
-        author: 'DJ & Amigos',
-        category: 'Fiesta',
-        tag: 'Fiesta',
-        caption: '¡Se prendió la pista! Nadie se sienta esta noche 🕺💃',
-        url: 'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=800&q=80',
-        likes: 17,
-        liked: false,
-        time: 'Hace 5 min'
-      }
-    ];
-
-    // Cargar fotos desde localStorage o usar las por defecto
-    function loadPhotos() {
-      const stored = localStorage.getItem('wedding_live_photos_juan_ale');
-      if (stored) {
-        try { return JSON.parse(stored); } catch (e) { return DEFAULT_PHOTOS; }
-      }
-      return DEFAULT_PHOTOS;
-    }
-
-    function savePhotos(photos) {
-      localStorage.setItem('wedding_live_photos_juan_ale', JSON.stringify(photos));
-    }
-
-    let livePhotos = loadPhotos();
-    let currentFilter = 'all';
-
-    // Renderizar muro con diseño tipo Polaroid
-    function renderPhotoWall() {
-      const grid = document.getElementById('photoWallGrid');
-      grid.innerHTML = '';
-
-      const filtered = livePhotos.filter(item => {
-        if (currentFilter === 'all') return true;
-        if (currentFilter === 'Retos') {
-          return item.category === 'Retos' || item.tag.includes('Reto') || ['El Primer Baile', 'Selfie de Mesa', 'Lágrimas de Alegría', 'Mejor Paso de Baile', 'Brindis de Novios', 'El Ramo Volando'].includes(item.tag);
-        }
-        return item.category === currentFilter;
-      });
-
-      // Actualizar contador
-      document.getElementById('count-all').textContent = livePhotos.length;
-
-      if (filtered.length === 0) {
-        grid.innerHTML = `
-          <div class="col-span-full py-12 text-center text-carbon/60">
-            <p class="font-serif-title text-2xl">Aún no hay fotos en esta categoría</p>
-            <p class="text-xs mt-1">¡Sé el primero en subir una foto usando el botón de arriba!</p>
-          </div>
-        `;
-        return;
-      }
-
-      filtered.forEach((photo, idx) => {
-        // Leve rotación aleatoria natural para dar aspecto Polaroid real
-        const rot = (idx % 3 === 0 ? -1.5 : idx % 3 === 1 ? 1.5 : 0);
-        
-        const card = document.createElement('div');
-        card.className = 'polaroid-card group transition-all duration-300';
-        card.style.transform = `rotate(${rot}deg)`;
-        card.innerHTML = `
-          <div class="polaroid-tape"></div>
-          <div class="overflow-hidden bg-gray-100 aspect-[4/3] rounded-sm cursor-pointer" onclick="openLightbox('${photo.url}', '${photo.caption || photo.author}')">
-            <img src="${photo.url}" alt="${photo.tag}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-          </div>
-          <div class="pt-3 pb-1">
-            <div class="flex items-center justify-between mb-1.5">
-              <span class="inline-block px-2 py-0.5 text-[0.62rem] uppercase tracking-wider font-semibold rounded bg-champagneSoft text-champagneDark">
-                ${photo.tag}
-              </span>
-              <span class="text-[0.65rem] text-carbon/50">${photo.time}</span>
-            </div>
-            <p class="text-xs font-semibold text-carbon">${photo.author}</p>
-            ${photo.caption ? `<p class="text-xs text-carbon/80 mt-1 italic font-light">“${photo.caption}”</p>` : ''}
-            
-            <div class="mt-3 pt-2.5 border-t border-gray-100 flex items-center justify-between">
-              <span class="text-[0.68rem] text-olivo tracking-wide font-medium">Boda J&A</span>
-              <button onclick="toggleLike(${photo.id}, this)" class="heart-btn flex items-center gap-1.5 text-xs text-carbon/70 hover:text-rose-600 transition-colors ${photo.liked ? 'liked text-rose-600 font-semibold' : ''}">
-                <svg class="w-4 h-4 ${photo.liked ? 'fill-rose-500 stroke-rose-500' : 'stroke-current fill-none'}" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-                <span class="like-count">${photo.likes}</span>
-              </button>
-            </div>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    // Cambiar filtro por pestañas
-    document.querySelectorAll('.filter-pill').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentFilter = btn.dataset.category;
-        renderPhotoWall();
-      });
-    });
-
-    // Dar Me Gusta / Like
-    function toggleLike(photoId, btn) {
-      const item = livePhotos.find(p => p.id === photoId);
-      if (!item) return;
-
-      item.liked = !item.liked;
-      item.likes += item.liked ? 1 : -1;
-      savePhotos(livePhotos);
-
-      const countSpan = btn.querySelector('.like-count');
-      const svg = btn.querySelector('svg');
-      countSpan.textContent = item.likes;
-
-      if (item.liked) {
-        btn.classList.add('liked', 'text-rose-600', 'font-semibold');
-        svg.setAttribute('fill', '#e11d48');
-        svg.setAttribute('stroke', '#e11d48');
-      } else {
-        btn.classList.remove('liked', 'text-rose-600', 'font-semibold');
-        svg.setAttribute('fill', 'none');
-        svg.setAttribute('stroke', 'currentColor');
-      }
-    }
-
-    /* ============================================================
-       MODAL DE SUBIDA DE FOTOS Y MANEJO DE CÁMARA
-    ============================================================ */
-    const uploadModal = document.getElementById('uploadModal');
-    let selectedImageBase64 = null;
-
-    function openUploadModal() {
-      uploadModal.classList.remove('hidden');
-      uploadModal.classList.add('flex');
-      lenis.stop();
-    }
-
-    function openUploadModalWithTag(tag) {
-      const select = document.getElementById('modalCategory');
-      select.value = tag;
-      updatePreviewText();
-      openUploadModal();
-    }
-
-    function closeUploadModal() {
-      uploadModal.classList.add('hidden');
-      uploadModal.classList.remove('flex');
-      resetUploadForm();
-      lenis.start();
-    }
-
-    function resetUploadForm() {
-      document.getElementById('photoUploadForm').reset();
-      document.getElementById('photoFileInput').value = '';
-      document.getElementById('previewContainer').classList.add('hidden');
-      document.getElementById('uploadPrompt').classList.remove('hidden');
-      document.getElementById('uploadProgressBarContainer').classList.add('hidden');
-      document.getElementById('uploadProgressBar').style.width = '0%';
-      document.getElementById('submitUploadBtn').disabled = false;
-      document.getElementById('submitUploadBtn').textContent = 'Publicar en el Muro';
-      selectedImageBase64 = null;
-    }
-
-    // Previsualizar imagen seleccionada
-    function previewSelectedPhoto(input) {
-      if (input.files && input.files[0]) {
-        const file = input.files[0];
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          selectedImageBase64 = e.target.result;
-          document.getElementById('previewImg').src = selectedImageBase64;
-          document.getElementById('uploadPrompt').classList.add('hidden');
-          document.getElementById('previewContainer').classList.remove('hidden');
-          updatePreviewText();
-        };
-        reader.readAsDataURL(file);
-      }
-    }
-
-    // Actualizar datos del Polaroid en vivo
-    function updatePreviewText() {
-      const guestName = document.getElementById('modalGuestName').value.trim() || 'Invitado';
-      const category = document.getElementById('modalCategory').value;
-      document.getElementById('previewGuestText').textContent = 'De: ' + guestName;
-      document.getElementById('previewTagBadge').textContent = category;
-    }
-
-    // Subida simulada con progreso y confeti de celebración
-    function handlePhotoUpload(e) {
-      e.preventDefault();
-
-      if (!selectedImageBase64) {
-        alert('Por favor selecciona o toma una foto antes de publicar.');
-        return;
-      }
-
-      const guestName = document.getElementById('modalGuestName').value.trim();
-      const categoryVal = document.getElementById('modalCategory').value;
-      const dedication = document.getElementById('modalDedication').value.trim();
-
-      // Clasificación de categoría
-      let mainCategory = 'Retos';
-      if (categoryVal === 'Ceremonia') mainCategory = 'Ceremonia';
-      else if (categoryVal === 'Mesas') mainCategory = 'Mesas';
-      else if (categoryVal === 'Fiesta') mainCategory = 'Fiesta';
-
-      // Mostrar barra de progreso
-      const progressContainer = document.getElementById('uploadProgressBarContainer');
-      const progressBar = document.getElementById('uploadProgressBar');
-      const percentText = document.getElementById('uploadPercent');
-      const submitBtn = document.getElementById('submitUploadBtn');
-
-      progressContainer.classList.remove('hidden');
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Subiendo al muro...';
-
-      let progress = 0;
-      const interval = setInterval(() => {
-        progress += 15;
-        if (progress > 100) progress = 100;
-        progressBar.style.width = progress + '%';
-        percentText.textContent = progress + '%';
-
-        if (progress === 100) {
-          clearInterval(interval);
-
-          setTimeout(() => {
-            // Guardar nueva foto al principio del muro
-            const newPhoto = {
-              id: Date.now(),
-              author: guestName,
-              category: mainCategory,
-              tag: categoryVal,
-              caption: dedication,
-              url: selectedImageBase64,
-              likes: 1,
-              liked: true,
-              time: 'Justo ahora'
-            };
-
-            livePhotos.unshift(newPhoto);
-            savePhotos(livePhotos);
-            renderPhotoWall();
-
-            // Disparar confeti de celebración de alta gama
-            confetti({
-              particleCount: 80,
-              spread: 60,
-              origin: { y: 0.6 },
-              colors: ['#D4AF37', '#6B705C', '#FAF8F5', '#E5D3B3']
-            });
-
-            closeUploadModal();
-            showToast('¡Tu foto se publicó en el muro! 🎉');
-
-            // Scroll suave hacia el muro
-            document.getElementById('muroLive').scrollIntoView({ behavior: 'smooth' });
-          }, 350);
-        }
-      }, 70);
-    }
-
-    // Inicializar render de fotos
-    renderPhotoWall();
-
-    /* ============================================================
-       FORMULARIO RSVP -> WHATSAPP CON MENSAJE PRELLENADO
-    ============================================================ */
+    /* Formulario RSVP -> WhatsApp */
     document.getElementById('rsvpForm').addEventListener('submit', e => {
       e.preventDefault();
       const name = document.getElementById('guestName').value.trim();
