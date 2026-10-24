@@ -6,7 +6,7 @@
   <title>Juan & Alejandra · Nuestra Boda · 20 de Marzo 2027</title>
   <meta name="description" content="Celebra con nosotros la boda de Juan & Alejandra. Álbum colaborativo en vivo, confirma tu asistencia y descubre todos los detalles." />
 
-  <!-- Google Fonts: Cormorant Garamond (Editorial) & Plus Jakarta Sans (UI & Textos) -->
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -43,239 +43,8 @@
   <!-- Canvas Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
-  <style>
-    html.lenis, html.lenis body { height: auto; }
-    .lenis.lenis-smooth { scroll-behavior: auto !important; }
-    body {
-      background-color: #FAF8F5;
-      color: #2C2C2C;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      overflow-x: hidden;
-    }
-    body.locked { overflow: hidden; }
-
-    .font-serif-title { font-family: 'Cormorant Garamond', serif; }
-
-    /* Glassmorphism de alta gama */
-    .glass-card {
-      background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(212, 175, 55, 0.32);
-      box-shadow: 0 16px 36px -12px rgba(44, 44, 44, 0.08);
-    }
-
-    /* Botón Luxury Interactivo */
-    .btn-luxury {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      padding: 0.85rem 1.8rem;
-      border: 1px solid #6B705C;
-      color: #6B705C;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      font-weight: 500;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      z-index: 0;
-      cursor: pointer;
-      background: transparent;
-    }
-    .btn-luxury::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: #6B705C;
-      transform: translateY(102%);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      z-index: -1;
-    }
-    .btn-luxury:hover {
-      color: #FAF8F5;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 24px -10px rgba(107, 112, 92, 0.5);
-    }
-    .btn-luxury:hover::before { transform: translateY(0); }
-    .btn-luxury:active { transform: translateY(0) scale(0.98); }
-
-    .btn-gold {
-      background: #D4AF37;
-      color: #FAF8F5;
-      border-color: #D4AF37;
-    }
-    .btn-gold::before { background: #6B705C; }
-    .btn-gold:hover {
-      color: #FAF8F5;
-      box-shadow: 0 12px 24px -10px rgba(212, 175, 55, 0.6);
-    }
-
-    /* Separador dorado clásico */
-    .ornament-divider {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin: 1.25rem auto;
-    }
-    .ornament-divider::before, .ornament-divider::after {
-      content: '';
-      width: 45px;
-      height: 1px;
-      background: #D4AF37;
-      opacity: 0.7;
-    }
-
-    /* Sello de cera interactivo */
-    .wax-seal {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 30%, #8a8f78, #6B705C 60%, #4a4d3f);
-      box-shadow: 0 14px 35px rgba(44, 44, 44, 0.35), inset 0 -6px 12px rgba(0, 0, 0, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #F8F3DC;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
-      border: 2px dashed rgba(248, 243, 220, 0.45);
-      cursor: pointer;
-      animation: sealPulse 2.8s infinite ease-in-out;
-      transition: transform 0.3s;
-    }
-    .wax-seal:hover { transform: scale(1.08); }
-    @keyframes sealPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.06); box-shadow: 0 18px 45px rgba(107, 112, 92, 0.45); }
-    }
-
-    /* Ecualizador de música flotante */
-    .eq-bars span {
-      display: inline-block;
-      width: 2.5px;
-      background: #D4AF37;
-      margin: 0 1.5px;
-      height: 12px;
-      border-radius: 2px;
-      animation: eqDance 1.1s infinite ease-in-out;
-    }
-    .eq-bars span:nth-child(2) { animation-delay: 0.2s; }
-    .eq-bars span:nth-child(3) { animation-delay: 0.4s; }
-    .eq-bars.paused span {
-      animation-play-state: paused;
-      height: 3px;
-    }
-    @keyframes eqDance {
-      0%, 100% { height: 4px; }
-      50% { height: 16px; }
-    }
-
-    /* Estilo Polaroid Fotográfico para Muro y Retos */
-    .polaroid-card {
-      background: #ffffff;
-      padding: 12px 12px 18px 12px;
-      box-shadow: 0 12px 30px -8px rgba(44, 44, 44, 0.12), 0 4px 8px -2px rgba(44, 44, 44, 0.05);
-      border: 1px solid rgba(229, 225, 218, 0.7);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-    }
-    .polaroid-card:hover {
-      transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 22px 42px -10px rgba(44, 44, 44, 0.18);
-    }
-    .polaroid-tape {
-      position: absolute;
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 18px;
-      background: rgba(246, 238, 205, 0.85);
-      border: 1px dashed rgba(212, 175, 55, 0.4);
-      z-index: 5;
-    }
-
-    /* Filtros por pastilla */
-    .filter-pill {
-      transition: all 0.3s ease;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.5rem 1.1rem;
-      border-radius: 9999px;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .filter-pill.active {
-      background-color: #6B705C;
-      color: #FAF8F5;
-      box-shadow: 0 4px 12px rgba(107, 112, 92, 0.3);
-    }
-    .filter-pill:not(.active) {
-      background-color: rgba(255, 255, 255, 0.8);
-      color: #6B705C;
-      border: 1px solid rgba(107, 112, 92, 0.25);
-    }
-    .filter-pill:not(.active):hover {
-      background-color: #ffffff;
-      border-color: #D4AF37;
-      color: #2C2C2C;
-    }
-
-    /* Corazón animado */
-    .heart-btn.liked svg {
-      fill: #e11d48;
-      stroke: #e11d48;
-      transform: scale(1.18);
-    }
-    .heart-btn svg {
-      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    /* Marco de lujo para las fotos */
-    .luxury-frame {
-      position: relative;
-      padding: 10px;
-      background: #ffffff;
-      border: 1px solid rgba(212, 175, 55, 0.45);
-      box-shadow: 0 15px 35px -10px rgba(44, 44, 44, 0.15);
-    }
-    .luxury-frame::after {
-      content: '';
-      position: absolute;
-      inset: 4px;
-      border: 1px solid rgba(212, 175, 55, 0.25);
-      pointer-events: none;
-    }
-
-    /* Input refinado */
-    .custom-input {
-      width: 100%;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid rgba(44, 44, 44, 0.25);
-      padding: 0.75rem 0.2rem;
-      font-size: 0.95rem;
-      outline: none;
-      transition: all 0.3s ease;
-      color: #2C2C2C;
-    }
-    .custom-input:focus {
-      border-bottom-color: #D4AF37;
-      box-shadow: 0 2px 0 0 #D4AF37;
-    }
-
-    /* Microanimación suave */
-    .float-slow { animation: floatAnim 4s ease-in-out infinite; }
-    @keyframes floatAnim {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-7px); }
-    }
-  </style>
+  <!-- Hoja de Estilos Modular Separada -->
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body class="locked antialiased select-none md:select-auto">
@@ -312,7 +81,7 @@
     </div>
   </div>
 
-  <!-- Reproductor de música ambiental flotante -->
+  <!-- Reproductor de música flotante -->
   <button id="musicBtn" aria-label="Reproducir o pausar música"
     class="fixed bottom-6 right-6 z-[85] w-12 h-12 rounded-full glass-card flex items-center justify-center opacity-0 pointer-events-none hover:scale-110 active:scale-95 transition-all duration-300">
     <span id="eq" class="eq-bars paused">
@@ -350,7 +119,7 @@
 
   <main>
     <!-- ============================================================
-         2. HERO SECTION CON PARALLAX Y FOTO DE LA PAREJA
+         2. HERO SECTION CON PARALLAX
     ============================================================ -->
     <section id="hero" class="relative min-h-screen flex items-center justify-center text-center text-white overflow-hidden pt-20">
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
@@ -360,7 +129,6 @@
       </div>
 
       <div class="relative z-10 max-w-6xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-16">
-        <!-- Retrato enmarcado para pantallas de escritorio -->
         <div class="hero-fade hidden md:block w-72 lg:w-80 shrink-0">
           <div class="luxury-frame bg-white shadow-2xl rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
             <img src="fotos/escalera.jpg" alt="Juan y Alejandra" class="w-full h-auto aspect-[3/4] object-cover" />
@@ -431,7 +199,7 @@
     </section>
 
     <!-- ============================================================
-         4. NUESTRA HISTORIA (Línea de tiempo vertical animada)
+         4. NUESTRA HISTORIA
     ============================================================ -->
     <section id="historia" class="py-24 px-6 bg-cremaDark">
       <div class="text-center reveal mb-16 max-w-2xl mx-auto">
@@ -444,7 +212,6 @@
         <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-champagne/25 -translate-x-1/2"></div>
         <div id="tlProgress" class="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-champagne -translate-x-1/2 origin-top"></div>
 
-        <!-- Momento 1 -->
         <article class="tl-item relative grid md:grid-cols-2 gap-8 md:gap-16 mb-20 pl-12 md:pl-0 items-center">
           <span class="absolute left-4 md:left-1/2 -translate-x-1/2 top-6 w-5 h-5 rounded-full bg-crema border-2 border-champagne shadow-md z-10"></span>
           <div class="luxury-frame md:order-1">
@@ -459,7 +226,6 @@
           </div>
         </article>
 
-        <!-- Momento 2 -->
         <article class="tl-item relative grid md:grid-cols-2 gap-8 md:gap-16 mb-20 pl-12 md:pl-0 items-center">
           <span class="absolute left-4 md:left-1/2 -translate-x-1/2 top-6 w-5 h-5 rounded-full bg-crema border-2 border-champagne shadow-md z-10"></span>
           <div class="md:order-2 luxury-frame">
@@ -474,7 +240,6 @@
           </div>
         </article>
 
-        <!-- Momento 3 -->
         <article class="tl-item relative grid md:grid-cols-2 gap-8 md:gap-16 pl-12 md:pl-0 items-center">
           <span class="absolute left-4 md:left-1/2 -translate-x-1/2 top-6 w-5 h-5 rounded-full bg-crema border-2 border-champagne shadow-md z-10"></span>
           <div class="luxury-frame md:order-1">
@@ -492,7 +257,7 @@
     </section>
 
     <!-- ============================================================
-         5. DETALLES DEL EVENTO (Ceremonia y Recepción)
+         5. DETALLES DEL EVENTO
     ============================================================ -->
     <section id="detalles" class="py-24 px-6 bg-crema">
       <div class="text-center reveal mb-16 max-w-2xl mx-auto">
@@ -502,7 +267,6 @@
       </div>
 
       <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 lg:gap-12">
-        <!-- Ceremonia -->
         <div class="glass-card reveal p-8 md:p-10 text-center rounded-xl hover:-translate-y-2 transition-all duration-500 border-champagne/40">
           <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-champagneSoft/60 flex items-center justify-center text-champagneDark">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
@@ -523,7 +287,6 @@
           </a>
         </div>
 
-        <!-- Recepción -->
         <div class="glass-card reveal p-8 md:p-10 text-center rounded-xl hover:-translate-y-2 transition-all duration-500 border-champagne/40">
           <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-champagneSoft/60 flex items-center justify-center text-champagneDark">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
@@ -727,7 +490,7 @@
           </div>
         </div>
 
-        <!-- 8.2 MISIONES FOTOGRÁFICAS (Retos con apertura automática) -->
+        <!-- 8.2 MISIONES FOTOGRÁFICAS (Retos) -->
         <div class="reveal mb-20">
           <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
             <div>
@@ -784,7 +547,7 @@
           </div>
         </div>
 
-        <!-- 8.3 MURO EN VIVO CON FIRESTORE ONSNAPSHOT -->
+        <!-- 8.3 MURO EN VIVO CON FIRESTORE -->
         <div id="muroLive" class="reveal">
           <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pb-6 border-b border-champagne/30">
             <div>
@@ -795,7 +558,6 @@
               <h4 class="font-serif-title text-3xl md:text-4xl text-carbon font-light">Muro de Fotos de la Boda</h4>
             </div>
 
-            <!-- Filtros por pestañas -->
             <div class="flex flex-wrap gap-2 justify-center" id="filterTabs">
               <button class="filter-pill active" data-category="all">Todas (<span id="photoCounter">0</span>)</button>
               <button class="filter-pill" data-category="El primer baile">Primer Baile</button>
@@ -807,9 +569,7 @@
             </div>
           </div>
 
-          <!-- Grid dinámico de fotos en vivo -->
           <div id="photoWallGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pt-10">
-            <!-- Cargando estado inicial -->
             <div class="col-span-full py-16 text-center text-carbon/60">
               <div class="w-10 h-10 border-2 border-champagne border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
               <p class="font-serif-title text-2xl">Conectando con el álbum en vivo...</p>
@@ -908,7 +668,7 @@
   </footer>
 
   <!-- ============================================================
-       MODAL DE SUBIDA DE FOTOS (CLOUDINARY + FIRESTORE)
+       MODAL DE SUBIDA DE FOTOS
   ============================================================ -->
   <div id="uploadModal" class="fixed inset-0 z-[115] bg-black/80 backdrop-blur-md hidden items-center justify-center p-4 overflow-y-auto">
     <div class="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl p-6 sm:p-8 my-8 border border-champagne/40">
@@ -920,7 +680,6 @@
       </div>
 
       <form id="photoUploadForm" class="space-y-5">
-        <!-- Input de archivo / Cámara -->
         <div>
           <label class="block text-[0.68rem] tracking-[0.2em] uppercase text-olivo font-semibold mb-2">
             1. Toma o selecciona tu foto
@@ -937,7 +696,6 @@
               <p class="text-[0.68rem] text-gray-500">Se comprimirá automáticamente para subirse veloz</p>
             </div>
 
-            <!-- Previsualización Polaroid dentro del modal -->
             <div id="previewContainer" class="hidden">
               <div class="polaroid-card max-w-[240px] mx-auto text-left pointer-events-none">
                 <div class="polaroid-tape"></div>
@@ -952,7 +710,6 @@
           </div>
         </div>
 
-        <!-- Nombre del invitado -->
         <div>
           <label class="block text-[0.68rem] tracking-[0.2em] uppercase text-olivo font-semibold mb-1" for="modalGuestName">
             2. Tu Nombre o Familia
@@ -960,7 +717,6 @@
           <input id="modalGuestName" required class="custom-input" type="text" placeholder="Ej. Carlos M. / Familia Pérez" />
         </div>
 
-        <!-- Categoría / Reto -->
         <div>
           <label class="block text-[0.68rem] tracking-[0.2em] uppercase text-olivo font-semibold mb-1" for="modalCategory">
             3. Reto o Categoría
@@ -976,7 +732,6 @@
           </select>
         </div>
 
-        <!-- Dedicatoria corta -->
         <div>
           <label class="block text-[0.68rem] tracking-[0.2em] uppercase text-olivo font-semibold mb-1" for="modalDedication">
             4. Dedicatoria corta (opcional)
@@ -984,7 +739,6 @@
           <input id="modalDedication" class="custom-input" type="text" placeholder="Ej. ¡Felicidades amigos! Los queremos." maxlength="120" />
         </div>
 
-        <!-- Barra de progreso real de subida -->
         <div id="uploadProgressBarContainer" class="hidden space-y-1">
           <div class="flex justify-between text-[0.65rem] text-olivo font-semibold">
             <span id="uploadStatusText">Comprimiendo y subiendo a Cloudinary...</span>
@@ -1003,7 +757,7 @@
   </div>
 
   <!-- ============================================================
-       LIGHTBOX DE PANTALLA COMPLETA CON BOTÓN DE DESCARGA
+       LIGHTBOX DE PANTALLA COMPLETA
   ============================================================ -->
   <div id="lightbox" class="fixed inset-0 z-[130] bg-black/95 hidden items-center justify-center p-4 opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true">
     <button onclick="window.closeLightbox()" class="absolute top-6 right-6 text-white text-4xl hover:text-champagne transition-colors z-20">&times;</button>
@@ -1021,584 +775,12 @@
     </div>
   </div>
 
-  <!-- ============================================================
-       SCRIPTS: ANIMACIONES GSAP & LENIS
-  ============================================================ -->
+  <!-- Librerías de Animación -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 
-  <!-- ============================================================
-       MÓDULO FIREBASE FIRESTORE & CLOUDINARY (ES MODULE)
-  ============================================================ -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-    import { 
-      getFirestore, 
-      collection, 
-      addDoc, 
-      onSnapshot, 
-      query, 
-      orderBy, 
-      serverTimestamp, 
-      doc, 
-      updateDoc, 
-      increment 
-    } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
-
-    /* Configuración Cloudinary */
-    const CLOUDINARY_CLOUD_NAME = "iux59frd";
-    const CLOUDINARY_UPLOAD_PRESET = "boda_unsigned";
-    const CLOUDINARY_UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`;
-
-    /* Configuración Firebase */
-    const firebaseConfig = {
-      apiKey: "AIzaSyDGiSM-tc_swheretflHPR92IlnYIK-j44",
-      authDomain: "boda-invitacion-4d83d.firebaseapp.com",
-      projectId: "boda-invitacion-4d83d",
-      storageBucket: "boda-invitacion-4d83d.firebasestorage.app",
-      messagingSenderId: "310015047951",
-      appId: "1:310015047951:web:45585037904bfad458267a",
-      measurementId: "G-KRMV4DNKWH"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    const momentsCollection = collection(db, "wedding_moments");
-
-    /* Variables de Estado */
-    let currentMoments = [];
-    let currentFilter = 'all';
-    let selectedFile = null;
-
-    /* Configurar Código QR Dinámico */
-    const currentBaseUrl = window.location.origin + window.location.pathname;
-    const qrTargetUrl = `${currentBaseUrl}?action=upload#momentos`;
-    const qrImage = document.getElementById('qrImage');
-    if (qrImage) {
-      qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(qrTargetUrl)}&color=2C2C2C&bgcolor=FFFFFF`;
-    }
-
-    /* Modal Controls */
-    window.openUploadModal = function() {
-      const modal = document.getElementById('uploadModal');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-      if (window.lenis) window.lenis.stop();
-    };
-
-    window.openUploadModalWithTag = function(category) {
-      const select = document.getElementById('modalCategory');
-      if (select) select.value = category;
-      window.updateUploadPreview();
-      window.openUploadModal();
-    };
-
-    window.closeUploadModal = function() {
-      const modal = document.getElementById('uploadModal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      document.getElementById('photoUploadForm').reset();
-      document.getElementById('previewContainer').classList.add('hidden');
-      document.getElementById('uploadPrompt').classList.remove('hidden');
-      document.getElementById('uploadProgressBarContainer').classList.add('hidden');
-      document.getElementById('uploadProgressBar').style.width = '0%';
-      document.getElementById('submitUploadBtn').disabled = false;
-      document.getElementById('submitUploadBtn').textContent = 'Publicar en el Muro en Vivo';
-      selectedFile = null;
-      if (window.lenis) window.lenis.start();
-    };
-
-    /* Preview Foto */
-    window.updateUploadPreview = function() {
-      const name = document.getElementById('modalGuestName').value.trim() || 'Invitado';
-      const category = document.getElementById('modalCategory').value;
-      document.getElementById('previewGuestText').textContent = 'De: ' + name;
-      document.getElementById('previewTagBadge').textContent = category;
-    };
-
-    document.getElementById('modalGuestName').addEventListener('input', window.updateUploadPreview);
-    document.getElementById('modalCategory').addEventListener('change', window.updateUploadPreview);
-
-    const fileInput = document.getElementById('photoFileInput');
-    fileInput.addEventListener('change', (e) => {
-      if (e.target.files && e.target.files[0]) {
-        selectedFile = e.target.files[0];
-        const reader = new FileReader();
-        reader.onload = (ev) => {
-          document.getElementById('previewImg').src = ev.target.result;
-          document.getElementById('uploadPrompt').classList.add('hidden');
-          document.getElementById('previewContainer').classList.remove('hidden');
-          window.updateUploadPreview();
-        };
-        reader.readAsDataURL(selectedFile);
-      }
-    });
-
-    /* Compresión en navegador vía <canvas> (Max 1920px Full HD, JPEG 0.85) */
-    function compressImage(file, maxDimension = 1920, quality = 0.85) {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.src = URL.createObjectURL(file);
-        img.onload = () => {
-          let width = img.width;
-          let height = img.height;
-
-          if (width > maxDimension || height > maxDimension) {
-            if (width > height) {
-              height = Math.round((height * maxDimension) / width);
-              width = maxDimension;
-            } else {
-              width = Math.round((width * maxDimension) / height);
-              height = maxDimension;
-            }
-          }
-
-          const canvas = document.createElement('canvas');
-          canvas.width = width;
-          canvas.height = height;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, width, height);
-
-          canvas.toBlob((blob) => {
-            if (blob) {
-              resolve(blob);
-            } else {
-              reject(new Error('Error en compresión de imagen'));
-            }
-          }, 'image/jpeg', quality);
-        };
-        img.onerror = (err) => reject(err);
-      });
-    }
-
-    /* Subida a Cloudinary vía XMLHttpRequest con Barra de Progreso Real */
-    function uploadToCloudinary(blob) {
-      return new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        const formData = new FormData();
-
-        // Nombre de archivo único con timestamp para evitar colisión si Unique filename está deshabilitado en Cloudinary
-        const uniqueFileName = `boda_${Date.now()}_${Math.random().toString(36).substring(2, 7)}.jpg`;
-        formData.append('file', blob, uniqueFileName);
-        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
-
-        const progressBar = document.getElementById('uploadProgressBar');
-        const percentText = document.getElementById('uploadPercent');
-        const statusText = document.getElementById('uploadStatusText');
-
-        xhr.upload.onprogress = (e) => {
-          if (e.lengthComputable) {
-            const percent = Math.round((e.loaded / e.total) * 100);
-            progressBar.style.width = percent + '%';
-            percentText.textContent = percent + '%';
-            if (percent >= 100) {
-              statusText.textContent = 'Guardando en álbum en tiempo real...';
-            }
-          }
-        };
-
-        xhr.onload = () => {
-          if (xhr.status >= 200 && xhr.status < 300) {
-            try {
-              const res = JSON.parse(xhr.responseText);
-              resolve(res);
-            } catch (err) {
-              reject(err);
-            }
-          } else {
-            reject(new Error(`Cloudinary Error: ${xhr.statusText} (${xhr.responseText})`));
-          }
-        };
-
-        xhr.onerror = () => reject(new Error('Error de conexión con Cloudinary'));
-        xhr.open('POST', CLOUDINARY_UPLOAD_URL, true);
-        xhr.send(formData);
-      });
-    }
-
-    /* Manejo del Envío del Formulario */
-    document.getElementById('photoUploadForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      if (!selectedFile) {
-        alert('Por favor selecciona o toma una foto antes de publicar.');
-        return;
-      }
-
-      const guestName = document.getElementById('modalGuestName').value.trim();
-      const category = document.getElementById('modalCategory').value;
-      const caption = document.getElementById('modalDedication').value.trim();
-
-      const progressContainer = document.getElementById('uploadProgressBarContainer');
-      const submitBtn = document.getElementById('submitUploadBtn');
-
-      try {
-        progressContainer.classList.remove('hidden');
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Subiendo al muro...';
-
-        // 1. Comprimir en cliente
-        const compressedBlob = await compressImage(selectedFile, 1920, 0.85);
-
-        // 2. Subir a Cloudinary con progreso
-        const cloudRes = await uploadToCloudinary(compressedBlob);
-        const hdUrl = cloudRes.secure_url;
-        // Miniatura optimizada con transformación Cloudinary
-        const imageUrl = hdUrl.replace('/upload/', '/upload/f_auto,q_auto,w_800/');
-
-        // 3. Guardar documento en Firestore
-        await addDoc(momentsCollection, {
-          imageUrl,
-          hdUrl,
-          guestName,
-          category,
-          caption,
-          likes: 0,
-          createdAt: serverTimestamp()
-        });
-
-        // 4. Celebrar con Confeti y cerrar
-        confetti({
-          particleCount: 100,
-          spread: 70,
-          origin: { y: 0.6 },
-          colors: ['#D4AF37', '#6B705C', '#FAF8F5', '#E5D3B3']
-        });
-
-        window.closeUploadModal();
-        window.showToast('¡Tu foto ya está en el muro en vivo! 🎉');
-
-        // Scroll al muro
-        document.getElementById('muroLive').scrollIntoView({ behavior: 'smooth' });
-
-      } catch (error) {
-        console.error(error);
-        alert('Ocurrió un error al subir la foto: ' + error.message);
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Publicar en el Muro en Vivo';
-        progressContainer.classList.add('hidden');
-      }
-    });
-
-    /* Like / Heart con Firestore increment(1) y localStorage */
-    window.toggleFirestoreLike = async function(docId, btn) {
-      const storageKey = `liked_moment_${docId}`;
-      if (localStorage.getItem(storageKey)) {
-        window.showToast('¡Ya le diste me gusta a esta foto! ❤️');
-        return;
-      }
-
-      try {
-        const photoRef = doc(db, "wedding_moments", docId);
-        await updateDoc(photoRef, {
-          likes: increment(1)
-        });
-
-        localStorage.setItem(storageKey, 'true');
-        btn.classList.add('liked', 'text-rose-600', 'font-semibold');
-        const svg = btn.querySelector('svg');
-        if (svg) {
-          svg.setAttribute('fill', '#e11d48');
-          svg.setAttribute('stroke', '#e11d48');
-        }
-        window.showToast('¡Te gustó esta foto! ❤️');
-      } catch (err) {
-        console.error("Error al actualizar likes en Firestore:", err);
-      }
-    };
-
-    /* Renderizado del Muro con Polaroid */
-    function renderLivePhotoWall() {
-      const grid = document.getElementById('photoWallGrid');
-      grid.innerHTML = '';
-
-      const filtered = currentMoments.filter(item => {
-        if (currentFilter === 'all') return true;
-        return item.category === currentFilter;
-      });
-
-      document.getElementById('photoCounter').textContent = currentMoments.length;
-
-      if (filtered.length === 0) {
-        grid.innerHTML = `
-          <div class="col-span-full py-16 text-center text-carbon/60">
-            <p class="font-serif-title text-3xl">Aún no hay fotos en esta categoría</p>
-            <p class="text-xs mt-2">¡Sé el primero en cumplir este reto!</p>
-            <button onclick="window.openUploadModalWithTag('${currentFilter}')" class="btn-luxury btn-gold mt-6 !py-2.5 !px-5 text-xs">
-              Subir la primera foto
-            </button>
-          </div>
-        `;
-        return;
-      }
-
-      filtered.forEach((photo, idx) => {
-        const rot = (idx % 3 === 0 ? -1.5 : idx % 3 === 1 ? 1.5 : 0);
-        const hasLiked = localStorage.getItem(`liked_moment_${photo.id}`) === 'true';
-
-        let dateStr = 'Reciente';
-        if (photo.createdAt && photo.createdAt.toDate) {
-          const d = photo.createdAt.toDate();
-          dateStr = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        }
-
-        const card = document.createElement('div');
-        card.className = 'polaroid-card group transition-all duration-300';
-        card.style.transform = `rotate(${rot}deg)`;
-        card.innerHTML = `
-          <div class="polaroid-tape"></div>
-          <div class="overflow-hidden bg-gray-100 aspect-[4/3] rounded-sm cursor-pointer" onclick="window.openLightbox('${photo.hdUrl || photo.imageUrl}', '${photo.caption || photo.guestName}', '${photo.hdUrl || photo.imageUrl}')">
-            <img src="${photo.imageUrl}" alt="${photo.category}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-          </div>
-          <div class="pt-3 pb-1">
-            <div class="flex items-center justify-between mb-1.5">
-              <span class="inline-block px-2 py-0.5 text-[0.62rem] uppercase tracking-wider font-semibold rounded bg-champagneSoft text-champagneDark truncate max-w-[170px]">
-                ${photo.category}
-              </span>
-              <span class="text-[0.65rem] text-carbon/50">${dateStr}</span>
-            </div>
-            <p class="text-xs font-semibold text-carbon">${photo.guestName}</p>
-            ${photo.caption ? `<p class="text-xs text-carbon/80 mt-1 italic font-light leading-relaxed">“${photo.caption}”</p>` : ''}
-            
-            <div class="mt-3 pt-2.5 border-t border-gray-100 flex items-center justify-between">
-              <span class="text-[0.68rem] text-olivo tracking-wide font-medium">Boda J&A</span>
-              <button onclick="window.toggleFirestoreLike('${photo.id}', this)" class="heart-btn flex items-center gap-1.5 text-xs text-carbon/70 hover:text-rose-600 transition-colors ${hasLiked ? 'liked text-rose-600 font-semibold' : ''}">
-                <svg class="w-4 h-4 ${hasLiked ? 'fill-rose-500 stroke-rose-500' : 'stroke-current fill-none'}" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-                <span class="like-count">${photo.likes || 0}</span>
-              </button>
-            </div>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    /* Pestañas de Filtrado */
-    document.querySelectorAll('.filter-pill').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentFilter = btn.dataset.category;
-        renderLivePhotoWall();
-      });
-    });
-
-    /* Suscripción en Tiempo Real con onSnapshot */
-    const q = query(momentsCollection, orderBy("createdAt", "desc"));
-    onSnapshot(q, (snapshot) => {
-      currentMoments = [];
-      snapshot.forEach((doc) => {
-        currentMoments.push({ id: doc.id, ...doc.data() });
-      });
-      renderLivePhotoWall();
-    }, (error) => {
-      console.error("Error en conexión en vivo con Firestore:", error);
-    });
-
-    /* Detección de Parámetro ?action=upload al escanear QR */
-    window.addEventListener('DOMContentLoaded', () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('action') === 'upload') {
-        const splash = document.getElementById('splash');
-        if (splash) splash.remove();
-        document.body.classList.remove('locked');
-        if (window.lenis) window.lenis.start();
-
-        setTimeout(() => {
-          const momentosSection = document.getElementById('momentos');
-          if (momentosSection) momentosSection.scrollIntoView({ behavior: 'smooth' });
-          window.openUploadModal();
-        }, 500);
-      }
-    });
-  </script>
-
-  <!-- ============================================================
-       SCRIPTS GLOBALES DE UI Y NAVEGACIÓN
-  ============================================================ -->
-  <script>
-    const CONFIG = {
-      weddingDate: new Date('2027-03-20T17:00:00'),
-      whatsapp: '5215512345678',
-      couple: 'Juan & Alejandra'
-    };
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    /* Smooth Scrolling */
-    window.lenis = new Lenis({ duration: 1.2, smoothWheel: true });
-    window.lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(t => window.lenis.raf(t * 1000));
-    gsap.ticker.lagSmoothing(0);
-    window.lenis.stop();
-
-    /* Separar caracteres */
-    document.querySelectorAll('[data-split]').forEach(el => {
-      el.innerHTML = [...el.textContent].map(c => `<span class="inline-block opacity-0 hero-char">${c}</span>`).join('');
-    });
-
-    /* Splash Screen Apertura */
-    const bgm = document.getElementById('bgm');
-    const musicBtn = document.getElementById('musicBtn');
-    const eq = document.getElementById('eq');
-    bgm.volume = 0.45;
-
-    document.getElementById('openBtn').addEventListener('click', () => {
-      bgm.play().then(() => eq.classList.remove('paused')).catch(() => {});
-
-      const tl = gsap.timeline({
-        onComplete: () => {
-          const splash = document.getElementById('splash');
-          if (splash) splash.remove();
-          document.body.classList.remove('locked');
-          window.lenis.start();
-          ScrollTrigger.refresh();
-        }
-      });
-
-      tl.to('#splashContent', { opacity: 0, scale: 1.1, duration: 0.7, ease: 'power2.in' })
-        .to('#curtainL', { xPercent: -100, duration: 1.2, ease: 'power3.inOut' }, '-=0.2')
-        .to('#curtainR', { xPercent: 100, duration: 1.2, ease: 'power3.inOut' }, '<')
-        .to(musicBtn, { opacity: 1, pointerEvents: 'auto', duration: 0.5 }, '-=0.4')
-        .fromTo('.hero-char', { y: 35, opacity: 0 }, { opacity: 1, y: 0, stagger: 0.05, duration: 0.8, ease: 'power3.out' }, '-=0.8')
-        .from('.hero-fade', { opacity: 0, y: 20, stagger: 0.15, duration: 0.8, ease: 'power2.out' }, '-=0.5');
-    });
-
-    musicBtn.addEventListener('click', () => {
-      if (bgm.paused) {
-        bgm.play();
-        eq.classList.remove('paused');
-        showToast('Música activada 🎵');
-      } else {
-        bgm.pause();
-        eq.classList.add('paused');
-        showToast('Música pausada 🔇');
-      }
-    });
-
-    /* Parallax & Scroll Reveal */
-    gsap.to('#heroBg', {
-      yPercent: 15,
-      ease: 'none',
-      scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
-    });
-
-    gsap.utils.toArray('.reveal').forEach(el => {
-      gsap.from(el, {
-        opacity: 0,
-        y: 45,
-        duration: 0.9,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
-      });
-    });
-
-    gsap.fromTo('#tlProgress', { scaleY: 0 }, {
-      scaleY: 1,
-      ease: 'none',
-      scrollTrigger: { trigger: '#timeline', start: 'top 70%', end: 'bottom 70%', scrub: true }
-    });
-
-    /* Countdown */
-    const pad = n => String(n).padStart(2, '0');
-    function updateCountdown() {
-      const diff = Math.max(0, CONFIG.weddingDate - new Date());
-      const d = Math.floor(diff / 864e5);
-      const h = Math.floor((diff % 864e5) / 36e5);
-      const m = Math.floor((diff % 36e5) / 6e4);
-      const s = Math.floor((diff % 6e4) / 1e3);
-
-      document.getElementById('cd-d').textContent = pad(d);
-      document.getElementById('cd-h').textContent = pad(h);
-      document.getElementById('cd-m').textContent = pad(m);
-      document.getElementById('cd-s').textContent = pad(s);
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-
-    /* Toast */
-    window.showToast = function(msg) {
-      const toast = document.getElementById('toast');
-      const toastMsg = document.getElementById('toastMsg');
-      toastMsg.textContent = msg;
-      gsap.killTweensOf(toast);
-      gsap.fromTo(toast, 
-        { opacity: 0, y: 15, pointerEvents: 'none' }, 
-        { opacity: 1, y: 0, pointerEvents: 'auto', duration: 0.35, yoyo: true, repeat: 1, repeatDelay: 1.8 }
-      );
-    };
-
-    /* Copiar CLABE */
-    document.getElementById('copyClabeBtn').addEventListener('click', async () => {
-      const text = document.getElementById('clabeNum').textContent.replace(/\s/g, '');
-      try {
-        await navigator.clipboard.writeText(text);
-      } catch (err) {
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        ta.remove();
-      }
-      showToast('¡CLABE copiada al portapapeles!');
-    });
-
-    /* Lightbox */
-    const lightbox = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lbImg');
-    const lbCaption = document.getElementById('lbCaption');
-    const lbDownloadBtn = document.getElementById('lbDownloadBtn');
-
-    window.openLightbox = function(src, caption = '', downloadUrl = '') {
-      lbImg.src = src;
-      lbCaption.textContent = caption;
-      lbDownloadBtn.href = downloadUrl || src;
-      lightbox.classList.remove('hidden');
-      lightbox.classList.add('flex');
-      if (window.lenis) window.lenis.stop();
-      gsap.to(lightbox, { opacity: 1, duration: 0.3 });
-    };
-
-    window.closeLightbox = function() {
-      gsap.to(lightbox, {
-        opacity: 0,
-        duration: 0.25,
-        onComplete: () => {
-          lightbox.classList.add('hidden');
-          lightbox.classList.remove('flex');
-          if (window.lenis) window.lenis.start();
-        }
-      });
-    };
-
-    lightbox.addEventListener('click', e => {
-      if (e.target === lightbox) window.closeLightbox();
-    });
-
-    /* Formulario RSVP -> WhatsApp */
-    document.getElementById('rsvpForm').addEventListener('submit', e => {
-      e.preventDefault();
-      const name = document.getElementById('guestName').value.trim();
-      const passes = document.getElementById('guestPasses').value;
-      const attending = document.querySelector('input[name="attending"]:checked').value;
-      const diet = document.getElementById('guestDiet').value.trim() || 'Ninguna';
-      const song = document.getElementById('guestSong').value.trim() || 'A elección del DJ';
-
-      const message = 
-        `💍 *CONFIRMACIÓN DE ASISTENCIA BODA ${CONFIG.couple.toUpperCase()}*\n\n` +
-        `👤 *Nombre:* ${name}\n` +
-        `🎟️ *Pases:* ${passes}\n` +
-        `✨ *Estado:* ${attending}\n` +
-        `🥗 *Restricciones/Alergias:* ${diet}\n` +
-        `🎵 *Canción sugerida:* ${song}\n\n` +
-        `¡Muchas gracias por hacernos parte de su historia!`;
-
-      const whatsappUrl = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, '_blank');
-      showToast('Abriendo WhatsApp...');
-    });
-  </script>
+  <!-- Script Modular Principal -->
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

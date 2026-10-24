@@ -1,0 +1,299 @@
+/* ============================================================
+   ESTILOS GENERALES Y CONFIGURACIÓN DE TIPOGRAFÍAS
+============================================================ */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  background-color: #FAF8F5;
+  color: #2C2C2C;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+body.locked {
+  overflow: hidden;
+}
+
+.font-serif-title {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* ============================================================
+   GLASSMORPHISM REFINADO
+============================================================ */
+.glass-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.32);
+  box-shadow: 0 16px 36px -12px rgba(44, 44, 44, 0.08);
+}
+
+/* ============================================================
+   BOTONES LUXURY
+============================================================ */
+.btn-luxury {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.8rem;
+  border: 1px solid #6B705C;
+  color: #6B705C;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0;
+  cursor: pointer;
+  background: transparent;
+}
+
+.btn-luxury::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #6B705C;
+  transform: translateY(102%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.btn-luxury:hover {
+  color: #FAF8F5;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -10px rgba(107, 112, 92, 0.5);
+}
+
+.btn-luxury:hover::before {
+  transform: translateY(0);
+}
+
+.btn-luxury:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-gold {
+  background: #D4AF37;
+  color: #FAF8F5;
+  border-color: #D4AF37;
+}
+
+.btn-gold::before {
+  background: #6B705C;
+}
+
+.btn-gold:hover {
+  color: #FAF8F5;
+  box-shadow: 0 12px 24px -10px rgba(212, 175, 55, 0.6);
+}
+
+/* ============================================================
+   DIVISOR ORNAMENTAL
+============================================================ */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.25rem auto;
+}
+
+.ornament-divider::before,
+.ornament-divider::after {
+  content: '';
+  width: 45px;
+  height: 1px;
+  background: #D4AF37;
+  opacity: 0.7;
+}
+
+/* ============================================================
+   SELLO DE CERA INTERACTIVO
+============================================================ */
+.wax-seal {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #8a8f78, #6B705C 60%, #4a4d3f);
+  box-shadow: 0 14px 35px rgba(44, 44, 44, 0.35), inset 0 -6px 12px rgba(0, 0, 0, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F8F3DC;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  border: 2px dashed rgba(248, 243, 220, 0.45);
+  cursor: pointer;
+  animation: sealPulse 2.8s infinite ease-in-out;
+  transition: transform 0.3s;
+}
+
+.wax-seal:hover {
+  transform: scale(1.08);
+}
+
+@keyframes sealPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); box-shadow: 0 18px 45px rgba(107, 112, 92, 0.45); }
+}
+
+/* ============================================================
+   ECUALIZADOR DE MÚSICA FLOTANTE
+============================================================ */
+.eq-bars span {
+  display: inline-block;
+  width: 2.5px;
+  background: #D4AF37;
+  margin: 0 1.5px;
+  height: 12px;
+  border-radius: 2px;
+  animation: eqDance 1.1s infinite ease-in-out;
+}
+
+.eq-bars span:nth-child(2) { animation-delay: 0.2s; }
+.eq-bars span:nth-child(3) { animation-delay: 0.4s; }
+
+.eq-bars.paused span {
+  animation-play-state: paused;
+  height: 3px;
+}
+
+@keyframes eqDance {
+  0%, 100% { height: 4px; }
+  50% { height: 16px; }
+}
+
+/* ============================================================
+   ESTILO POLAROID PARA EL MURO Y RETOS
+============================================================ */
+.polaroid-card {
+  background: #ffffff;
+  padding: 12px 12px 18px 12px;
+  box-shadow: 0 12px 30px -8px rgba(44, 44, 44, 0.12), 0 4px 8px -2px rgba(44, 44, 44, 0.05);
+  border: 1px solid rgba(229, 225, 218, 0.7);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.polaroid-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 22px 42px -10px rgba(44, 44, 44, 0.18);
+}
+
+.polaroid-tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 18px;
+  background: rgba(246, 238, 205, 0.85);
+  border: 1px dashed rgba(212, 175, 55, 0.4);
+  z-index: 5;
+}
+
+/* ============================================================
+   PESTAÑAS DE FILTRO (PILLS)
+============================================================ */
+.filter-pill {
+  transition: all 0.3s ease;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filter-pill.active {
+  background-color: #6B705C;
+  color: #FAF8F5;
+  box-shadow: 0 4px 12px rgba(107, 112, 92, 0.3);
+}
+
+.filter-pill:not(.active) {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #6B705C;
+  border: 1px solid rgba(107, 112, 92, 0.25);
+}
+
+.filter-pill:not(.active):hover {
+  background-color: #ffffff;
+  border-color: #D4AF37;
+  color: #2C2C2C;
+}
+
+/* ============================================================
+   CORAZÓN INTERACTIVO / LIKES
+============================================================ */
+.heart-btn.liked svg {
+  fill: #e11d48;
+  stroke: #e11d48;
+  transform: scale(1.18);
+}
+
+.heart-btn svg {
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* ============================================================
+   MARCO FOTOGRÁFICO DE LUJO
+============================================================ */
+.luxury-frame {
+  position: relative;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  box-shadow: 0 15px 35px -10px rgba(44, 44, 44, 0.15);
+}
+
+.luxury-frame::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  pointer-events: none;
+}
+
+/* ============================================================
+   INPUTS PERSONALIZADOS
+============================================================ */
+.custom-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(44, 44, 44, 0.25);
+  padding: 0.75rem 0.2rem;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+  color: #2C2C2C;
+}
+
+.custom-input:focus {
+  border-bottom-color: #D4AF37;
+  box-shadow: 0 2px 0 0 #D4AF37;
+}
+
+/* ============================================================
+   MICROANIMACIÓN FLOTANTE
+============================================================ */
+.float-slow {
+  animation: floatAnim 4s ease-in-out infinite;
+}
+
+@keyframes floatAnim {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
