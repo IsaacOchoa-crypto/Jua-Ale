@@ -6,6 +6,8 @@ import {
   initSplashAndMusic, 
   initCountdown, 
   initCopyClabe, 
+  initCalendarIntegration,
+  initAmbientPetals,
   initLightbox, 
   initRsvpForm 
 } from './ui.js';
@@ -13,24 +15,28 @@ import {
 import { 
   initQrCode, 
   initUploadModal, 
-  initLiveWall 
+  initLiveWall,
+  initSlideshowControls
 } from './photo-wall.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Inicializar animaciones de scroll (GSAP / Lenis)
+  // 1. Inicializar animaciones de scroll (GSAP / Lenis) y atmósfera de pétalos
   initScrollAndAnimations();
+  initAmbientPetals();
 
   // 2. Control de Splash Screen y Música
   initSplashAndMusic();
 
-  // 3. Cuenta regresiva y utilidades
+  // 3. Cuenta regresiva, calendario, CLABE y utilidades
   initCountdown();
+  initCalendarIntegration();
   initCopyClabe();
   initLightbox();
   initRsvpForm();
 
-  // 4. Módulo estrella "Capturando Momentos" (QR, Modal de Cámara y Muro en Vivo)
+  // 4. Módulo estrella "Capturando Momentos" (QR, Modal de Cámara, Muro en Vivo y Modo Proyector)
   initQrCode();
   initUploadModal();
   initLiveWall();
+  initSlideshowControls();
 });

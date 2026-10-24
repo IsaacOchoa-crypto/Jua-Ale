@@ -47,7 +47,10 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
-<body class="locked antialiased select-none md:select-auto">
+<body class="locked antialiased select-none md:select-auto relative">
+
+  <!-- Canvas de Pétalos Flotantes Sutiles -->
+  <canvas id="ambientPetalsCanvas"></canvas>
 
   <!-- ============================================================
        1. SPLASH SCREEN (Sobre Interactivo / Wax Seal)
@@ -97,11 +100,11 @@
   </div>
 
   <!-- Barra de navegación fija -->
-  <header class="fixed top-0 left-0 right-0 z-50 py-4 px-6 md:px-12 flex justify-between items-center bg-white/75 backdrop-blur-md border-b border-champagne/20">
+  <header class="fixed top-0 left-0 right-0 z-50 py-4 px-6 md:px-12 flex justify-between items-center bg-white/80 backdrop-blur-md border-b border-champagne/20">
     <a href="#hero" class="font-serif-title text-2xl md:text-3xl font-normal text-carbon tracking-wider">
       Juan <span class="text-champagne italic">&</span> Alejandra
     </a>
-    <nav class="hidden lg:flex items-center gap-8 text-[0.72rem] tracking-[0.2em] uppercase text-carbon/80 font-medium">
+    <nav class="hidden lg:flex items-center gap-7 text-[0.72rem] tracking-[0.2em] uppercase text-carbon/80 font-medium">
       <a href="#historia" class="hover:text-champagne transition-colors">Historia</a>
       <a href="#detalles" class="hover:text-champagne transition-colors">Detalles</a>
       <a href="#itinerario" class="hover:text-champagne transition-colors">Itinerario</a>
@@ -119,7 +122,7 @@
 
   <main>
     <!-- ============================================================
-         2. HERO SECTION CON PARALLAX
+         2. HERO SECTION CON PARALLAX Y ARCO CATEDRAL
     ============================================================ -->
     <section id="hero" class="relative min-h-screen flex items-center justify-center text-center text-white overflow-hidden pt-20">
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
@@ -129,10 +132,11 @@
       </div>
 
       <div class="relative z-10 max-w-6xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-16">
+        <!-- Retrato enmarcado con Arco Catedral Editorial -->
         <div class="hero-fade hidden md:block w-72 lg:w-80 shrink-0">
-          <div class="luxury-frame bg-white shadow-2xl rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
-            <img src="fotos/escalera.jpg" alt="Juan y Alejandra" class="w-full h-auto aspect-[3/4] object-cover" />
-            <div class="pt-3 text-center">
+          <div class="cathedral-arch bg-white/95 p-2 shadow-2xl">
+            <img src="fotos/escalera.jpg" alt="Juan y Alejandra" class="w-full h-auto aspect-[3/4] object-cover rounded-t-[136px] editorial-photo-filter" />
+            <div class="pt-3 pb-1 text-center bg-white">
               <span class="font-serif-title italic text-carbon text-lg">Juntos para siempre</span>
             </div>
           </div>
@@ -167,7 +171,7 @@
     </section>
 
     <!-- ============================================================
-         3. CUENTA REGRESIVA
+         3. CUENTA REGRESIVA & BOTÓN AGREGAR A CALENDARIO
     ============================================================ -->
     <section id="countdown-sec" class="py-20 px-6 bg-crema text-center">
       <div class="max-w-4xl mx-auto">
@@ -195,11 +199,27 @@
             <div class="text-[0.68rem] tracking-[0.3em] uppercase text-olivo mt-2 font-medium">Segundos</div>
           </div>
         </div>
+
+        <!-- Botones Agregar al Calendario -->
+        <div class="reveal mt-10 flex flex-wrap gap-3 justify-center">
+          <button id="addToGcalBtn" class="btn-luxury !py-2.5 !px-5 !text-[0.68rem] flex items-center gap-2 bg-white/80 hover:bg-white shadow-sm">
+            <svg class="w-4 h-4 text-champagne" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
+            </svg>
+            <span>Google Calendar</span>
+          </button>
+          <button id="addToIcalBtn" class="btn-luxury !py-2.5 !px-5 !text-[0.68rem] flex items-center gap-2 bg-white/80 hover:bg-white shadow-sm">
+            <svg class="w-4 h-4 text-olivo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>Apple Calendar / Outlook (.ics)</span>
+          </button>
+        </div>
       </div>
     </section>
 
     <!-- ============================================================
-         4. NUESTRA HISTORIA
+         4. NUESTRA HISTORIA (Con Arcos Clásicos)
     ============================================================ -->
     <section id="historia" class="py-24 px-6 bg-cremaDark">
       <div class="text-center reveal mb-16 max-w-2xl mx-auto">
@@ -214,8 +234,8 @@
 
         <article class="tl-item relative grid md:grid-cols-2 gap-8 md:gap-16 mb-20 pl-12 md:pl-0 items-center">
           <span class="absolute left-4 md:left-1/2 -translate-x-1/2 top-6 w-5 h-5 rounded-full bg-crema border-2 border-champagne shadow-md z-10"></span>
-          <div class="luxury-frame md:order-1">
-            <img src="fotos/escalera.jpg" alt="Cómo nos conocimos" class="w-full h-72 md:h-80 object-cover" style="object-position: center 30%;" />
+          <div class="cathedral-arch md:order-1 bg-white p-2">
+            <img src="fotos/escalera.jpg" alt="Cómo nos conocimos" class="w-full h-72 md:h-80 object-cover rounded-t-[136px] editorial-photo-filter" style="object-position: center 30%;" />
           </div>
           <div class="md:text-left md:order-2">
             <span class="text-[0.7rem] uppercase tracking-[0.3em] text-champagne font-semibold">Capítulo I · 2019</span>
@@ -228,8 +248,8 @@
 
         <article class="tl-item relative grid md:grid-cols-2 gap-8 md:gap-16 mb-20 pl-12 md:pl-0 items-center">
           <span class="absolute left-4 md:left-1/2 -translate-x-1/2 top-6 w-5 h-5 rounded-full bg-crema border-2 border-champagne shadow-md z-10"></span>
-          <div class="md:order-2 luxury-frame">
-            <img src="fotos/corazon.jpg" alt="La propuesta de matrimonio" class="w-full h-72 md:h-80 object-cover" style="object-position: center 55%;" />
+          <div class="md:order-2 cathedral-arch bg-white p-2">
+            <img src="fotos/corazon.jpg" alt="La propuesta de matrimonio" class="w-full h-72 md:h-80 object-cover rounded-t-[136px] editorial-photo-filter" style="object-position: center 55%;" />
           </div>
           <div class="md:order-1 md:text-right">
             <span class="text-[0.7rem] uppercase tracking-[0.3em] text-champagne font-semibold">Capítulo II · 2025</span>
@@ -242,8 +262,8 @@
 
         <article class="tl-item relative grid md:grid-cols-2 gap-8 md:gap-16 pl-12 md:pl-0 items-center">
           <span class="absolute left-4 md:left-1/2 -translate-x-1/2 top-6 w-5 h-5 rounded-full bg-crema border-2 border-champagne shadow-md z-10"></span>
-          <div class="luxury-frame md:order-1">
-            <img src="fotos/escalera.jpg" alt="Hacia el altar" class="w-full h-72 md:h-80 object-cover" style="object-position: center 65%;" />
+          <div class="cathedral-arch md:order-1 bg-white p-2">
+            <img src="fotos/escalera.jpg" alt="Hacia el altar" class="w-full h-72 md:h-80 object-cover rounded-t-[136px] editorial-photo-filter" style="object-position: center 65%;" />
           </div>
           <div class="md:text-left md:order-2">
             <span class="text-[0.7rem] uppercase tracking-[0.3em] text-champagne font-semibold">Capítulo III · 2027</span>
@@ -482,9 +502,10 @@
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                   <span>Subir Foto Ahora</span>
                 </button>
-                <a href="#muroLive" class="btn-luxury !py-3.5 !px-5">
-                  Ver Muro en Vivo
-                </a>
+                <button id="openSlideshowBtn" class="btn-luxury !py-3.5 !px-5 flex items-center gap-2 bg-white/70 hover:bg-white">
+                  <span>📽️</span>
+                  <span>Modo Proyector</span>
+                </button>
               </div>
             </div>
           </div>
@@ -757,6 +778,49 @@
   </div>
 
   <!-- ============================================================
+       MODAL DE MODO PROYECTOR / PANTALLA COMPLETA (SLIDESHOW)
+  ============================================================ -->
+  <div id="slideshowModal" class="fixed inset-0 z-[125] bg-carbon/95 hidden flex-col justify-between p-6 sm:p-10 text-white">
+    <!-- Barra superior de controles del proyector -->
+    <div class="flex items-center justify-between border-b border-white/10 pb-4">
+      <div class="flex items-center gap-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+        <span class="font-serif-title text-xl md:text-2xl tracking-wider text-crema">Modo Proyector · Boda J&A</span>
+        <span id="slideshowIndexIndicator" class="text-xs text-champagne bg-black/40 px-2.5 py-1 rounded-full"></span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button id="slideDownloadCurrentBtn" class="text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg bg-champagne/20 hover:bg-champagne/30 text-champagne transition-colors flex items-center gap-1.5" title="Guardar foto actual en tu galería">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          <span class="hidden sm:inline">Guardar</span>
+        </button>
+        <button id="slidePlayPauseBtn" class="text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 transition-colors">
+          ⏸️ Pausar
+        </button>
+        <button id="slideFullscreenBtn" class="text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 transition-colors hidden sm:block">
+          ⛶ Pantalla Completa
+        </button>
+        <button id="closeSlideshowBtn" class="text-white hover:text-champagne text-3xl transition-colors">&times;</button>
+      </div>
+    </div>
+
+    <!-- Contenedor central de la foto actual -->
+    <div id="slideshowCardContainer" class="my-auto py-4">
+      <!-- Se inyecta dinámicamente -->
+    </div>
+
+    <!-- Barra inferior de navegación manual -->
+    <div class="flex items-center justify-center gap-6 pt-4 border-t border-white/10">
+      <button id="slidePrevBtn" class="btn-luxury !border-white/30 !text-white hover:!border-champagne !py-2 !px-5 text-xs">
+        ← Anterior
+      </button>
+      <button id="slideNextBtn" class="btn-luxury btn-gold !py-2 !px-5 text-xs">
+        Siguiente →
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================================
        LIGHTBOX DE PANTALLA COMPLETA
   ============================================================ -->
   <div id="lightbox" class="fixed inset-0 z-[130] bg-black/95 hidden items-center justify-center p-4 opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true">
@@ -767,10 +831,10 @@
       
       <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-4 w-full px-4">
         <p id="lbCaption" class="text-crema text-sm font-serif-title italic text-xl"></p>
-        <a id="lbDownloadBtn" href="#" target="_blank" download class="btn-luxury !border-champagne !text-champagne hover:!bg-champagne hover:!text-white !py-2 !px-4 !text-xs shrink-0 flex items-center gap-1.5">
+        <button id="lbDownloadBtn" type="button" class="btn-luxury btn-gold !py-2.5 !px-5 !text-xs shrink-0 flex items-center gap-2 shadow-lg cursor-pointer">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-          Descargar Foto Original
-        </a>
+          <span>Guardar en Galería / Descargar</span>
+        </button>
       </div>
     </div>
   </div>

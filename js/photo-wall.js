@@ -1,5 +1,5 @@
 /* ============================================================
-   MÓDULO DE ÁLBUM COLABORATIVO & RETOS FOTOGRÁFICOS
+   MÓDULO DE ÁLBUM COLABORATIVO, RETOS & MODO PROYECTOR
 ============================================================ */
 import { compressImage, uploadToCloudinary } from './cloudinary.js';
 import { addWeddingMoment, subscribeToMoments, toggleLikeFirestore } from './firebase.js';
@@ -8,6 +8,11 @@ import { showToast, lenis } from './ui.js';
 let currentMoments = [];
 let currentFilter = 'all';
 let selectedFile = null;
+
+// Variables para el Modo Proyector / Slideshow
+let slideshowInterval = null;
+let currentSlideshowIndex = 0;
+let isSlideshowPlaying = true;
 
 /**
  * Configura el Código QR dinámico apuntando a ?action=upload#momentos
@@ -116,11 +121,9 @@ export function initUploadModal() {
         submitBtn.textContent = 'Subiendo al muro...';
       }
 
-      // 1. Compresión en cliente (<canvas> Max 1920px Full HD, JPEG 0.85)
       if (statusText) statusText.textContent = 'Optimizando foto para móvil...';
       const compressedBlob = await compressImage(selectedFile, 1920, 0.85);
 
-      // 2. Subida a Cloudinary con progreso
       if (statusText) statusText.textContent = 'Subiendo a Cloudinary...';
       const cloudRes = await uploadToCloudinary(compressedBlob, (percent) => {
         if (progressBar) progressBar.style.width = percent + '%';
@@ -133,7 +136,6 @@ export function initUploadModal() {
       const hdUrl = cloudRes.secure_url;
       const imageUrl = hdUrl.replace('/upload/', '/upload/f_auto,q_auto,w_800/');
 
-      // 3. Inserción en Firebase Firestore
       await addWeddingMoment({
         imageUrl,
         hdUrl,
@@ -142,7 +144,6 @@ export function initUploadModal() {
         caption
       });
 
-      // 4. Confeti de celebración
       confetti({
         particleCount: 100,
         spread: 70,
@@ -152,8 +153,6 @@ export function initUploadModal() {
 
       window.closeUploadModal();
       showToast('¡Tu foto ya está en el muro en vivo! 🎉');
-
-      // Scroll fluido al muro
       document.getElementById('muroLive')?.scrollIntoView({ behavior: 'smooth' });
 
     } catch (error) {
@@ -213,7 +212,7 @@ function renderLivePhotoWall() {
     card.innerHTML = `
       <div class="polaroid-tape"></div>
       <div class="overflow-hidden bg-gray-100 aspect-[4/3] rounded-sm cursor-pointer" onclick="window.openLightbox('${photo.hdUrl || photo.imageUrl}', '${photo.caption || photo.guestName}', '${photo.hdUrl || photo.imageUrl}')">
-        <img src="${photo.imageUrl}" alt="${photo.category}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+        <img src="${photo.imageUrl}" alt="${photo.category}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 editorial-photo-filter" loading="lazy" />
       </div>
       <div class="pt-3 pb-1">
         <div class="flex items-center justify-between mb-1.5">
@@ -226,7 +225,10 @@ function renderLivePhotoWall() {
         ${photo.caption ? `<p class="text-xs text-carbon/80 mt-1 italic font-light leading-relaxed">“${photo.caption}”</p>` : ''}
         
         <div class="mt-3 pt-2.5 border-t border-gray-100 flex items-center justify-between">
-          <span class="text-[0.68rem] text-olivo tracking-wide font-medium">Boda J&A</span>
+          <button onclick="event.stopPropagation(); window.savePhotoToGallery('${photo.hdUrl || photo.imageUrl}', '${(photo.caption || photo.guestName || '').replace(/['"\\]/g, '')}')" class="flex items-center gap-1.5 text-xs text-carbon/70 hover:text-champagne transition-colors py-0.5 px-2 rounded hover:bg-champagne/10 cursor-pointer" title="Guardar foto en tu Galería">
+            <svg class="w-3.5 h-3.5 text-champagne" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            <span class="text-[0.65rem] uppercase tracking-wider font-semibold text-olivo">Guardar</span>
+          </button>
           <button onclick="window.handleLikeClick('${photo.id}', this)" class="heart-btn flex items-center gap-1.5 text-xs text-carbon/70 hover:text-rose-600 transition-colors ${hasLiked ? 'liked text-rose-600 font-semibold' : ''}">
             <svg class="w-4 h-4 ${hasLiked ? 'fill-rose-500 stroke-rose-500' : 'stroke-current fill-none'}" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
             <span class="like-count">${photo.likes || 0}</span>
@@ -258,10 +260,142 @@ window.handleLikeClick = async function(docId, btn) {
 };
 
 /**
+ * ============================================================
+ * MODO PROYECTOR EN VIVO (SLIDESHOW PARA LA FIESTA)
+ * ============================================================
+ */
+export function initSlideshowControls() {
+  const modal = document.getElementById('slideshowModal');
+  const btnOpen = document.getElementById('openSlideshowBtn');
+  const btnClose = document.getElementById('closeSlideshowBtn');
+  const btnPrev = document.getElementById('slidePrevBtn');
+  const btnNext = document.getElementById('slideNextBtn');
+  const btnPlayPause = document.getElementById('slidePlayPauseBtn');
+  const btnFs = document.getElementById('slideFullscreenBtn');
+
+  function updateSlideshowCard() {
+    if (!currentMoments.length) return;
+    const photo = currentMoments[currentSlideshowIndex];
+    const container = document.getElementById('slideshowCardContainer');
+    if (!container) return;
+
+    container.innerHTML = `
+      <div class="slideshow-active-card bg-white p-5 md:p-8 rounded-2xl shadow-2xl max-w-2xl mx-auto border border-champagne/40">
+        <div class="relative overflow-hidden aspect-[4/3] rounded-lg bg-black/5 mb-4">
+          <img src="${photo.hdUrl || photo.imageUrl}" alt="${photo.category}" class="w-full h-full object-contain mx-auto" />
+        </div>
+        <div class="flex items-center justify-between border-b border-gray-100 pb-3 mb-3">
+          <span class="px-3 py-1 rounded-full text-xs font-semibold bg-champagneSoft text-champagneDark uppercase tracking-wider">
+            ${photo.category}
+          </span>
+          <span class="text-xs text-olivo flex items-center gap-1 font-semibold">
+            ❤️ ${photo.likes || 0} Me gusta
+          </span>
+        </div>
+        <h4 class="font-serif-title text-2xl md:text-3xl text-carbon">${photo.guestName}</h4>
+        ${photo.caption ? `<p class="text-sm md:text-base text-carbon/80 italic mt-1 font-light">“${photo.caption}”</p>` : ''}
+      </div>
+    `;
+
+    const indexIndicator = document.getElementById('slideshowIndexIndicator');
+    if (indexIndicator) {
+      indexIndicator.textContent = `${currentSlideshowIndex + 1} de ${currentMoments.length}`;
+    }
+  }
+
+  function startSlideshowTimer() {
+    clearInterval(slideshowInterval);
+    if (!isSlideshowPlaying) return;
+    slideshowInterval = setInterval(() => {
+      if (currentMoments.length > 0) {
+        currentSlideshowIndex = (currentSlideshowIndex + 1) % currentMoments.length;
+        updateSlideshowCard();
+      }
+    }, 5500);
+  }
+
+  window.openSlideshow = function() {
+    if (!currentMoments.length) {
+      showToast('Aún no hay fotos en el muro para proyectar.');
+      return;
+    }
+    if (modal) {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+    currentSlideshowIndex = 0;
+    isSlideshowPlaying = true;
+    updateSlideshowCard();
+    startSlideshowTimer();
+    if (lenis) lenis.stop();
+  };
+
+  window.closeSlideshow = function() {
+    if (modal) {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+    clearInterval(slideshowInterval);
+    if (document.fullscreenElement) {
+      document.exitFullscreen().catch(() => {});
+    }
+    if (lenis) lenis.start();
+  };
+
+  if (btnOpen) btnOpen.addEventListener('click', window.openSlideshow);
+  if (btnClose) btnClose.addEventListener('click', window.closeSlideshow);
+
+  if (btnNext) {
+    btnNext.addEventListener('click', () => {
+      currentSlideshowIndex = (currentSlideshowIndex + 1) % currentMoments.length;
+      updateSlideshowCard();
+      startSlideshowTimer();
+    });
+  }
+
+  if (btnPrev) {
+    btnPrev.addEventListener('click', () => {
+      currentSlideshowIndex = (currentSlideshowIndex - 1 + currentMoments.length) % currentMoments.length;
+      updateSlideshowCard();
+      startSlideshowTimer();
+    });
+  }
+
+  if (btnPlayPause) {
+    btnPlayPause.addEventListener('click', () => {
+      isSlideshowPlaying = !isSlideshowPlaying;
+      btnPlayPause.textContent = isSlideshowPlaying ? '⏸️ Pausar' : '▶️ Reanudar';
+      if (isSlideshowPlaying) startSlideshowTimer();
+      else clearInterval(slideshowInterval);
+    });
+  }
+
+  if (btnFs) {
+    btnFs.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        modal?.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    });
+  }
+
+  const btnDownloadCurrent = document.getElementById('slideDownloadCurrentBtn');
+  if (btnDownloadCurrent) {
+    btnDownloadCurrent.addEventListener('click', () => {
+      if (!currentMoments.length) return;
+      const current = currentMoments[currentSlideshowIndex];
+      if (current) {
+        window.savePhotoToGallery(current.hdUrl || current.imageUrl, current.caption || current.guestName);
+      }
+    });
+  }
+}
+
+/**
  * Inicialización de Filtros y Suscripción en Tiempo Real
  */
 export function initLiveWall() {
-  // Filtros
   document.querySelectorAll('.filter-pill').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
