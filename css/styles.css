@@ -125,33 +125,55 @@ body.locked {
 }
 
 /* ============================================================
-   SELLO DE CERA INTERACTIVO (AZUL NOCHE & RELIEVE BLANCO)
+   SOBRE REALISTA 3D Y ANIMACIÓN DE APERTURA
 ============================================================ */
+#envelopeWrapper {
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+#envelopeFlapTop {
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: visible;
+}
+
+#invitationCard {
+  will-change: transform, opacity;
+  box-shadow: 0 20px 40px -10px rgba(15, 30, 54, 0.22);
+}
+
+/* ============================================================
+   SELLO DE CERA REALISTA (LACRE ARTESANAL COMO EN CARTAS REALES)
+============================================================ */
+.wax-seal-wrapper {
+  animation: sealFloat 3.2s infinite ease-in-out;
+  cursor: pointer;
+}
+
+@keyframes sealFloat {
+  0%, 100% { transform: translate(-50%, 0) scale(1); }
+  50% { transform: translate(-50%, -3px) scale(1.025); }
+}
+
 .wax-seal {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #2A4D7E, #1B365D 60%, #0F203C);
-  box-shadow: 0 14px 35px rgba(15, 30, 54, 0.4), inset 0 -6px 12px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.5);
+  width: 105px;
+  height: 105px;
+  border-radius: 48% 52% 49% 51% / 52% 48% 53% 47%;
+  background: radial-gradient(circle at 35% 30%, #355F94, #1B365D 60%, #0A1930);
+  box-shadow: 
+    0 14px 30px rgba(10, 25, 48, 0.45),
+    inset 0 3px 6px rgba(255, 255, 255, 0.4),
+    inset 0 -6px 12px rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #FFFFFF;
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.8rem;
-  border: 2px dashed rgba(255, 255, 255, 0.65);
   cursor: pointer;
-  animation: sealPulse 2.8s infinite ease-in-out;
-  transition: transform 0.3s;
-}
-
-.wax-seal:hover {
-  transform: scale(1.08);
-}
-
-@keyframes sealPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.06); box-shadow: 0 18px 45px rgba(27, 54, 93, 0.5); }
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* ============================================================

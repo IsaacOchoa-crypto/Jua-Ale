@@ -49,40 +49,107 @@ export function initScrollAndAnimations() {
 }
 
 /**
- * Control del Splash Screen (Sobre interactivo) y música ambiental
+ * Control del Splash Screen: Sobre realista 3D con apertura y tarjeta deslizante
  */
 export function initSplashAndMusic() {
   const bgm = document.getElementById('bgm');
   const musicBtn = document.getElementById('musicBtn');
   const eq = document.getElementById('eq');
   const openBtn = document.getElementById('openBtn');
+  const envelopeWrapper = document.getElementById('envelopeWrapper');
+  const envelopeActionPrompt = document.getElementById('envelopeActionPrompt');
 
   if (bgm) bgm.volume = 0.45;
 
-  if (openBtn) {
-    openBtn.addEventListener('click', () => {
-      if (bgm) {
-        bgm.play().then(() => eq.classList.remove('paused')).catch(() => {});
+  let isOpening = false;
+
+  const handleOpenEnvelope = () => {
+    if (isOpening) return;
+    isOpening = true;
+
+    // Iniciar música en la primera interacción del usuario
+    if (bgm) {
+      bgm.play().then(() => eq && eq.classList.remove('paused')).catch(() => {});
+    }
+
+    const isMobile = window.innerWidth < 640;
+    const cardSlideY = isMobile ? -165 : -230;
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        const splash = document.getElementById('splash');
+        if (splash) splash.remove();
+        document.body.classList.remove('locked');
+        if (lenis) lenis.start();
+        ScrollTrigger.refresh();
       }
-
-      const tl = gsap.timeline({
-        onComplete: () => {
-          const splash = document.getElementById('splash');
-          if (splash) splash.remove();
-          document.body.classList.remove('locked');
-          if (lenis) lenis.start();
-          ScrollTrigger.refresh();
-        }
-      });
-
-      tl.to('#splashContent', { opacity: 0, scale: 1.1, duration: 0.7, ease: 'power2.in' })
-        .to('#curtainL', { xPercent: -100, duration: 1.2, ease: 'power3.inOut' }, '-=0.2')
-        .to('#curtainR', { xPercent: 100, duration: 1.2, ease: 'power3.inOut' }, '<')
-        .to(musicBtn, { opacity: 1, pointerEvents: 'auto', duration: 0.5 }, '-=0.4')
-        .fromTo('.hero-char', { y: 35, opacity: 0 }, { opacity: 1, y: 0, stagger: 0.05, duration: 0.8, ease: 'power3.out' }, '-=0.8')
-        .from('.hero-fade', { opacity: 0, y: 20, stagger: 0.15, duration: 0.8, ease: 'power2.out' }, '-=0.5');
     });
-  }
+
+    // Paso 1: El sello de cera y textos auxiliares se desvanecen
+    tl.to('#openBtn', { scale: 0.7, opacity: 0, duration: 0.35, ease: 'power2.in' })
+      .to('#envelopeActionPrompt', { opacity: 0, y: 10, duration: 0.3 }, '<')
+      .to('#envelopeHeader', { opacity: 0, y: -10, duration: 0.3 }, '<')
+
+      // Paso 2: La solapa superior triangular se abre hacia arriba en 3D
+      .to('#envelopeFlapTop', { 
+        rotateX: 180, 
+        duration: 0.75, 
+        ease: 'power2.inOut',
+        onUpdate: function() {
+          const flap = document.getElementById('envelopeFlapTop');
+          if (flap && this.progress() > 0.5) {
+            flap.style.zIndex = 5; // Pasa detrás de la tarjeta cuando pasa los 90°
+          }
+        }
+      }, '-=0.1')
+
+      // Paso 3: La tarjeta de invitación emerge y se desliza hacia arriba saliendo del sobre
+      .to('#invitationCard', { 
+        y: cardSlideY, 
+        duration: 0.95, 
+        ease: 'power3.out' 
+      }, '-=0.15')
+
+      // Efecto de celebración con confeti en blanco y azul
+      .call(() => {
+        if (typeof confetti === 'function') {
+          confetti({
+            particleCount: 75,
+            spread: 60,
+            origin: { y: 0.48 },
+            colors: ['#1B365D', '#2563EB', '#93C5FD', '#FFFFFF', '#CBD5E1']
+          });
+        }
+      })
+
+      // Paso 4: La tarjeta se agranda suavemente sumergiendo al usuario en el contenido de la boda
+      .to('#invitationCard', { 
+        scale: isMobile ? 1.4 : 1.6, 
+        y: isMobile ? -60 : -80,
+        opacity: 0, 
+        duration: 0.8, 
+        ease: 'power2.inOut' 
+      }, '+=0.4')
+      .to('#envelopeWrapper', { 
+        scale: 0.85, 
+        opacity: 0, 
+        duration: 0.65, 
+        ease: 'power2.in' 
+      }, '<')
+      .to('#splash', { 
+        opacity: 0, 
+        duration: 0.5 
+      }, '-=0.25')
+
+      // Paso 5: Mostrar reproductor y animar elementos del Hero
+      .to(musicBtn, { opacity: 1, pointerEvents: 'auto', duration: 0.5 }, '-=0.2')
+      .fromTo('.hero-char', { y: 35, opacity: 0 }, { opacity: 1, y: 0, stagger: 0.05, duration: 0.8, ease: 'power3.out' }, '-=0.3')
+      .from('.hero-fade', { opacity: 0, y: 20, stagger: 0.15, duration: 0.8, ease: 'power2.out' }, '-=0.5');
+  };
+
+  if (openBtn) openBtn.addEventListener('click', handleOpenEnvelope);
+  if (envelopeWrapper) envelopeWrapper.addEventListener('click', handleOpenEnvelope);
+  if (envelopeActionPrompt) envelopeActionPrompt.addEventListener('click', handleOpenEnvelope);
 
   if (musicBtn) {
     musicBtn.addEventListener('click', () => {

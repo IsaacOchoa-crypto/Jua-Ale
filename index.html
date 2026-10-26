@@ -59,33 +59,135 @@
   <canvas id="ambientPetalsCanvas"></canvas>
 
   <!-- ============================================================
-       1. SPLASH SCREEN (Sobre Interactivo / Wax Seal)
+       1. SPLASH SCREEN: SOBRE REALISTA 3D CON TARJETA INTERACTIVA
   ============================================================ -->
-  <div id="splash" class="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden">
-    <div id="curtainL" class="absolute left-0 top-0 h-full w-1/2 bg-gradient-to-r from-[#D3E5F5] to-[#E6F1FA] shadow-2xl border-r border-[#B9D5EE]"></div>
-    <div id="curtainR" class="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-[#D3E5F5] to-[#E6F1FA] shadow-2xl border-l border-[#B9D5EE]"></div>
+  <div id="splash" class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-[#E3EEF8] p-4 select-none">
+    <!-- Aura de luz ambiente zafiro detrás del sobre -->
+    <div class="absolute w-[350px] sm:w-[550px] h-[350px] sm:h-[550px] rounded-full bg-blue-300/30 blur-3xl pointer-events-none"></div>
 
-    <div id="splashContent" class="relative z-10 text-center px-6 max-w-lg">
-      <p class="text-[0.7rem] uppercase tracking-[0.45em] text-champagne mb-4">Nuestra Boda</p>
-      <h1 class="font-serif-title text-7xl md:text-9xl text-carbon tracking-wide font-light">
-        J <span class="text-champagne italic font-normal">&</span> A
+    <!-- Indicador superior -->
+    <div id="envelopeHeader" class="text-center mb-6 z-10 transition-transform duration-500">
+      <span class="inline-block px-4 py-1 rounded-full bg-white/80 text-olivo text-[0.65rem] uppercase tracking-[0.35em] font-bold border border-olivo/20 shadow-sm">
+        Invitación de Boda
+      </span>
+      <h1 class="font-serif-title text-4xl sm:text-5xl text-carbon font-light mt-2 tracking-wide">
+        Juan <span class="text-champagne italic">&</span> Alejandra
       </h1>
+      <p class="text-[0.68rem] tracking-[0.3em] uppercase text-olivo/80 mt-1 font-medium">20 · Marzo · 2027</p>
+    </div>
+
+    <!-- Contenedor 3D del Sobre Físico -->
+    <div id="envelopeWrapper" class="relative w-[315px] sm:w-[460px] md:w-[500px] h-[215px] sm:h-[295px] md:h-[315px] cursor-pointer group">
       
-      <div class="ornament-divider">
-        <svg class="w-4 h-4 text-champagne" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/>
+      <!-- 1. Capa Trasera / Interior del Sobre (Forro Azul Marino Profundo) -->
+      <div class="envelope-back absolute inset-0 rounded-xl bg-gradient-to-br from-[#0B1E36] via-[#142B4E] to-[#1B365D] shadow-2xl overflow-hidden border border-[#A8C5E2]">
+        <div class="absolute inset-3 border border-white/15 rounded-lg flex items-center justify-center">
+          <span class="font-serif-title text-6xl sm:text-7xl text-white/15 italic select-none">J & A</span>
+        </div>
+      </div>
+
+      <!-- 2. La Tarjeta de la Invitación (completamente dentro del sobre hasta que se abra) -->
+      <div id="invitationCard" class="absolute left-3 right-3 sm:left-5 sm:right-5 top-12 sm:top-14 bottom-2 bg-white rounded-lg shadow-xl p-3 sm:p-5 flex flex-col items-center justify-between text-center border border-[#1B365D]/30 z-10 overflow-hidden">
+        <div class="w-full h-full border border-[#1B365D]/20 rounded p-3 sm:p-4 flex flex-col items-center justify-between bg-[#FDFEFE]">
+          <span class="text-[0.62rem] uppercase tracking-[0.35em] text-[#2563EB] font-bold">Nuestra Boda</span>
+          <div>
+            <h2 class="font-serif-title text-2xl sm:text-4xl text-[#0F1E36] font-normal leading-tight">Juan & Alejandra</h2>
+            <div class="w-10 sm:w-16 h-px bg-[#2563EB]/40 mx-auto my-1.5 sm:my-2"></div>
+            <p class="text-[0.65rem] sm:text-xs tracking-[0.25em] uppercase text-[#1B365D] font-medium">Sábado · 20 de Marzo · 2027</p>
+          </div>
+          <p class="font-serif-title italic text-xs sm:text-sm text-[#0F1E36]/80">“Juntos para siempre”</p>
+        </div>
+      </div>
+
+      <!-- 3. Bolsillo Frontal del Sobre (Cubre la mitad inferior de la tarjeta) -->
+      <svg class="absolute inset-0 w-full h-full z-[20] pointer-events-none drop-shadow-md rounded-b-xl" viewBox="0 0 500 320" preserveAspectRatio="none">
+        <!-- Solapa izquierda -->
+        <path d="M0,0 L250,170 L0,320 Z" fill="#D3E5F5" stroke="#ADC9E4" stroke-width="1.5" />
+        <!-- Solapa derecha -->
+        <path d="M500,0 L250,170 L500,320 Z" fill="#DBECF9" stroke="#ADC9E4" stroke-width="1.5" />
+        <!-- Solapa inferior -->
+        <path d="M0,320 L250,148 L500,320 Z" fill="#E8F2FA" stroke="#ADC9E4" stroke-width="1.5" />
+      </svg>
+
+      <!-- 4. Solapa Triangular Superior (Cubre la mitad superior del sobre, 100% CERRADO y SELLADO) -->
+      <div id="envelopeFlapTop" class="absolute top-0 left-0 w-full h-[60%] z-[30] origin-top" style="transform-style: preserve-3d;">
+        <svg class="w-full h-full drop-shadow-md" viewBox="0 0 500 192" preserveAspectRatio="none">
+          <path d="M0,0 L250,192 L500,0 Z" fill="#E2EFF9" stroke="#ADC9E4" stroke-width="1.5" />
+          <path d="M20,6 L250,178 L480,6" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" />
         </svg>
       </div>
 
-      <p class="text-[0.75rem] tracking-[0.35em] uppercase text-olivo mb-10 font-medium">20 · Marzo · 2027</p>
+      <!-- 5. Sello de Cera Realista (Lacre derretido artesanal como en cartas reales) -->
+      <div id="openBtn" class="wax-seal-wrapper absolute left-1/2 -translate-x-1/2 z-[40] flex flex-col items-center cursor-pointer transition-transform duration-300" style="top: calc(58% - 38px);">
+        <div class="relative w-20 h-20 sm:w-24 sm:h-24 filter drop-shadow-[0_12px_18px_rgba(10,25,48,0.48)] hover:scale-105 active:scale-95 transition-transform duration-300">
+          <svg viewBox="0 0 120 120" class="w-full h-full">
+            <defs>
+              <!-- Iluminación radial auténtica de cera derretida azul marino -->
+              <radialGradient id="waxBaseGrad" cx="34%" cy="28%" r="68%">
+                <stop offset="0%" stop-color="#3D6FA8" />
+                <stop offset="30%" stop-color="#1B365D" />
+                <stop offset="75%" stop-color="#0E213D" />
+                <stop offset="100%" stop-color="#071324" />
+              </radialGradient>
 
-      <button id="openBtn" aria-label="Abrir invitación" class="mx-auto flex flex-col items-center gap-4 group cursor-pointer focus:outline-none">
-        <div class="wax-seal">
-          <span>J&A</span>
+              <!-- Relieve y brillo del aro del sello -->
+              <linearGradient id="waxBevelGrad" x1="20%" y1="0%" x2="80%" y2="100%">
+                <stop offset="0%" stop-color="rgba(255,255,255,0.55)" />
+                <stop offset="45%" stop-color="rgba(255,255,255,0.08)" />
+                <stop offset="100%" stop-color="rgba(0,0,0,0.5)" />
+              </linearGradient>
+
+              <!-- Sombra de hendidura para el grabado -->
+              <filter id="sealDeboss" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" result="blur" />
+                <feOffset dx="1" dy="1.5" result="offset" />
+                <feComponentTransfer in="offset" result="shadow">
+                  <feFuncA type="linear" slope="0.65" />
+                </feComponentTransfer>
+                <feMerge>
+                  <feMergeNode in="shadow" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            <!-- Borde irregular orgánico de cera derretida (Wax Pool) -->
+            <path d="M60,5 C74,4 85,9 95,19 C106,29 113,42 114,56 C115,70 109,84 99,95 C88,106 74,113 59,114 C44,115 31,109 20,99 C9,88 4,75 5,60 C6,45 13,32 23,21 C33,11 46,6 60,5 Z" 
+                  fill="url(#waxBaseGrad)" />
+
+            <!-- Ondulaciones secundarias de cera caliente desbordada -->
+            <path d="M30,12 C42,6 58,5 72,8 C86,11 98,20 106,32 C114,44 114,60 110,74 C105,88 95,99 82,106 C69,112 53,112 39,107 C25,102 14,92 8,79 C2,66 4,49 10,36 C16,23 25,14 30,12 Z" 
+                  fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2.2" />
+
+            <!-- Depresión circular hundida por la presión del cuño de latón -->
+            <circle cx="60" cy="60" r="41" fill="#142B4E" stroke="url(#waxBevelGrad)" stroke-width="2.5" />
+            <circle cx="60" cy="60" r="38" fill="none" stroke="rgba(0,0,0,0.45)" stroke-width="1.5" />
+            <circle cx="60" cy="60" r="36.5" fill="url(#waxBaseGrad)" />
+
+            <!-- Perlas decorativas finas grabadas en el perímetro del cuño -->
+            <circle cx="60" cy="60" r="32.5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" stroke-dasharray="2 3" />
+
+            <!-- Monograma grabado en 3D con relieve auténtico -->
+            <text x="60" y="66" 
+                  font-family="'Cormorant Garamond', Georgia, serif" 
+                  font-size="24" 
+                  font-weight="600" 
+                  font-style="italic" 
+                  letter-spacing="0.5" 
+                  fill="#FFFFFF" 
+                  text-anchor="middle" 
+                  filter="url(#sealDeboss)">
+              J<tspan font-size="17" font-style="normal" fill="#93C5FD">&amp;</tspan>A
+            </text>
+          </svg>
         </div>
-        <span class="text-[0.72rem] tracking-[0.35em] uppercase text-olivo group-hover:text-champagne transition-colors font-medium">
-          Abrir Invitación
-        </span>
+      </div>
+    </div>
+
+    <!-- Botón / Instrucción inferior -->
+    <div id="envelopeActionPrompt" class="mt-8 text-center z-10 cursor-pointer" onclick="document.getElementById('openBtn').click()">
+      <button class="btn-luxury btn-gold !py-2.5 !px-6 !text-xs shadow-lg flex items-center gap-2">
+        <span>✉️ Toca el sobre para abrir</span>
       </button>
     </div>
   </div>
