@@ -1,5 +1,6 @@
 /* ============================================================
    ESTILOS GENERALES Y CONFIGURACIÓN DE TIPOGRAFÍAS
+   Tema: Blanco & Azul (Italian Navy & Crisp White Luxury)
 ============================================================ */
 html.lenis, html.lenis body {
   height: auto;
@@ -9,14 +10,14 @@ html.lenis, html.lenis body {
   scroll-behavior: auto !important;
 }
 
-/* Fondo con textura sutil de papel artesanal / algodón */
+/* Fondo con presencia visible de Azul Hielo / Azul Serenidad y micro-trama zafiro */
 body {
-  background-color: #FAF8F5;
-  background-image: radial-gradient(rgba(107, 112, 92, 0.05) 1px, transparent 0),
-                    radial-gradient(rgba(212, 175, 55, 0.04) 1px, transparent 0);
-  background-size: 32px 32px;
-  background-position: 0 0, 16px 16px;
-  color: #2C2C2C;
+  background-color: #EBF3FB;
+  background-image: radial-gradient(rgba(27, 54, 93, 0.08) 1.2px, transparent 0),
+                    radial-gradient(rgba(37, 99, 235, 0.06) 1.2px, transparent 0);
+  background-size: 28px 28px;
+  background-position: 0 0, 14px 14px;
+  color: #0F1E36;
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow-x: hidden;
 }
@@ -30,18 +31,18 @@ body.locked {
 }
 
 /* ============================================================
-   GLASSMORPHISM REFINADO
+   GLASSMORPHISM REFINADO (TARJETAS BLANCAS PURAS SOBRE FONDO AZUL)
 ============================================================ */
 .glass-card {
-  background: rgba(255, 255, 255, 0.76);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 175, 55, 0.32);
-  box-shadow: 0 16px 36px -12px rgba(44, 44, 44, 0.08);
+  border: 1px solid rgba(27, 54, 93, 0.22);
+  box-shadow: 0 16px 36px -12px rgba(15, 30, 54, 0.12);
 }
 
 /* ============================================================
-   BOTONES LUXURY
+   BOTONES LUXURY (AZUL MARINO ITALIANO & AZUL REAL)
 ============================================================ */
 .btn-luxury {
   display: inline-flex;
@@ -49,12 +50,12 @@ body.locked {
   justify-content: center;
   gap: 0.6rem;
   padding: 0.85rem 1.8rem;
-  border: 1px solid #6B705C;
-  color: #6B705C;
+  border: 1px solid #1B365D;
+  color: #1B365D;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   position: relative;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -67,16 +68,16 @@ body.locked {
   content: '';
   position: absolute;
   inset: 0;
-  background: #6B705C;
+  background: #1B365D;
   transform: translateY(102%);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: -1;
 }
 
 .btn-luxury:hover {
-  color: #FAF8F5;
+  color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px -10px rgba(107, 112, 92, 0.5);
+  box-shadow: 0 12px 24px -10px rgba(27, 54, 93, 0.4);
 }
 
 .btn-luxury:hover::before {
@@ -87,19 +88,20 @@ body.locked {
   transform: translateY(0) scale(0.98);
 }
 
+/* Botón principal de Gala (Azul Marino del Terno con hover Azul Real) */
 .btn-gold {
-  background: #D4AF37;
-  color: #FAF8F5;
-  border-color: #D4AF37;
+  background: #1B365D;
+  color: #FFFFFF;
+  border-color: #1B365D;
 }
 
 .btn-gold::before {
-  background: #6B705C;
+  background: #2563EB;
 }
 
 .btn-gold:hover {
-  color: #FAF8F5;
-  box-shadow: 0 12px 24px -10px rgba(212, 175, 55, 0.6);
+  color: #FFFFFF;
+  box-shadow: 0 12px 24px -10px rgba(37, 99, 235, 0.5);
 }
 
 /* ============================================================
@@ -118,26 +120,26 @@ body.locked {
   content: '';
   width: 45px;
   height: 1px;
-  background: #D4AF37;
-  opacity: 0.7;
+  background: #2563EB;
+  opacity: 0.5;
 }
 
 /* ============================================================
-   SELLO DE CERA INTERACTIVO
+   SELLO DE CERA INTERACTIVO (AZUL NOCHE & RELIEVE BLANCO)
 ============================================================ */
 .wax-seal {
   width: 110px;
   height: 110px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #8a8f78, #6B705C 60%, #4a4d3f);
-  box-shadow: 0 14px 35px rgba(44, 44, 44, 0.35), inset 0 -6px 12px rgba(0, 0, 0, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+  background: radial-gradient(circle at 35% 30%, #2A4D7E, #1B365D 60%, #0F203C);
+  box-shadow: 0 14px 35px rgba(15, 30, 54, 0.4), inset 0 -6px 12px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #F8F3DC;
+  color: #FFFFFF;
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.8rem;
-  border: 2px dashed rgba(248, 243, 220, 0.45);
+  border: 2px dashed rgba(255, 255, 255, 0.65);
   cursor: pointer;
   animation: sealPulse 2.8s infinite ease-in-out;
   transition: transform 0.3s;
@@ -149,7 +151,7 @@ body.locked {
 
 @keyframes sealPulse {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.06); box-shadow: 0 18px 45px rgba(107, 112, 92, 0.45); }
+  50% { transform: scale(1.06); box-shadow: 0 18px 45px rgba(27, 54, 93, 0.5); }
 }
 
 /* ============================================================
@@ -158,7 +160,7 @@ body.locked {
 .eq-bars span {
   display: inline-block;
   width: 2.5px;
-  background: #D4AF37;
+  background: #1B365D;
   margin: 0 1.5px;
   height: 12px;
   border-radius: 2px;
@@ -182,17 +184,17 @@ body.locked {
    ESTILO POLAROID PARA EL MURO Y RETOS
 ============================================================ */
 .polaroid-card {
-  background: #ffffff;
+  background: #FFFFFF;
   padding: 12px 12px 18px 12px;
-  box-shadow: 0 12px 30px -8px rgba(44, 44, 44, 0.12), 0 4px 8px -2px rgba(44, 44, 44, 0.05);
-  border: 1px solid rgba(229, 225, 218, 0.7);
+  box-shadow: 0 12px 30px -8px rgba(15, 30, 54, 0.12), 0 4px 8px -2px rgba(15, 30, 54, 0.05);
+  border: 1px solid rgba(219, 234, 254, 0.7);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }
 
 .polaroid-card:hover {
   transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 22px 42px -10px rgba(44, 44, 44, 0.18);
+  box-shadow: 0 22px 42px -10px rgba(15, 30, 54, 0.18);
 }
 
 .polaroid-tape {
@@ -202,8 +204,8 @@ body.locked {
   transform: translateX(-50%);
   width: 60px;
   height: 18px;
-  background: rgba(246, 238, 205, 0.85);
-  border: 1px dashed rgba(212, 175, 55, 0.4);
+  background: rgba(219, 234, 254, 0.9);
+  border: 1px dashed rgba(27, 54, 93, 0.35);
   z-index: 5;
 }
 
@@ -219,24 +221,25 @@ body.locked {
   border-radius: 9999px;
   cursor: pointer;
   white-space: nowrap;
+  font-weight: 600;
 }
 
 .filter-pill.active {
-  background-color: #6B705C;
-  color: #FAF8F5;
-  box-shadow: 0 4px 12px rgba(107, 112, 92, 0.3);
+  background-color: #1B365D;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(27, 54, 93, 0.35);
 }
 
 .filter-pill:not(.active) {
-  background-color: rgba(255, 255, 255, 0.8);
-  color: #6B705C;
-  border: 1px solid rgba(107, 112, 92, 0.25);
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #1B365D;
+  border: 1px solid rgba(27, 54, 93, 0.2);
 }
 
 .filter-pill:not(.active):hover {
-  background-color: #ffffff;
-  border-color: #D4AF37;
-  color: #2C2C2C;
+  background-color: #FFFFFF;
+  border-color: #2563EB;
+  color: #0F1E36;
 }
 
 /* ============================================================
@@ -258,16 +261,16 @@ body.locked {
 .luxury-frame {
   position: relative;
   padding: 10px;
-  background: #ffffff;
-  border: 1px solid rgba(212, 175, 55, 0.45);
-  box-shadow: 0 15px 35px -10px rgba(44, 44, 44, 0.15);
+  background: #FFFFFF;
+  border: 1px solid rgba(27, 54, 93, 0.35);
+  box-shadow: 0 15px 35px -10px rgba(15, 30, 54, 0.15);
 }
 
 .luxury-frame::after {
   content: '';
   position: absolute;
   inset: 4px;
-  border: 1px solid rgba(212, 175, 55, 0.25);
+  border: 1px solid rgba(37, 99, 235, 0.2);
   pointer-events: none;
 }
 
@@ -277,8 +280,8 @@ body.locked {
   border-top-right-radius: 140px;
   overflow: hidden;
   position: relative;
-  border: 1px solid rgba(212, 175, 55, 0.55);
-  box-shadow: 0 20px 45px -15px rgba(44, 44, 44, 0.2);
+  border: 1px solid rgba(27, 54, 93, 0.35);
+  box-shadow: 0 20px 45px -15px rgba(15, 30, 54, 0.18);
 }
 
 .cathedral-arch::after {
@@ -287,18 +290,18 @@ body.locked {
   inset: 6px;
   border-top-left-radius: 134px;
   border-top-right-radius: 134px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.65);
   pointer-events: none;
 }
 
-/* Tratamiento de color editorial cálido para las fotos */
+/* Tratamiento de color editorial nítido para las fotos */
 .editorial-photo-filter {
-  filter: sepia(0.06) contrast(1.04) brightness(1.02);
+  filter: contrast(1.05) brightness(1.02);
   transition: filter 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .editorial-photo-filter:hover {
-  filter: sepia(0) contrast(1.06) brightness(1.04);
+  filter: contrast(1.08) brightness(1.04);
 }
 
 /* ============================================================
@@ -337,17 +340,17 @@ body.locked {
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(44, 44, 44, 0.25);
+  border-bottom: 1px solid rgba(15, 30, 54, 0.2);
   padding: 0.75rem 0.2rem;
   font-size: 0.95rem;
   outline: none;
   transition: all 0.3s ease;
-  color: #2C2C2C;
+  color: #0F1E36;
 }
 
 .custom-input:focus {
-  border-bottom-color: #D4AF37;
-  box-shadow: 0 2px 0 0 #D4AF37;
+  border-bottom-color: #2563EB;
+  box-shadow: 0 2px 0 0 #2563EB;
 }
 
 /* ============================================================

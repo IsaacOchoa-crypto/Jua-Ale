@@ -248,8 +248,13 @@ export function initAmbientPetals() {
       angle: Math.random() * 360,
       spinSpeed: Math.random() * 1.5 - 0.75,
       opacity: Math.random() * 0.4 + 0.25,
-      // Color dorado champagne suave o pétalo marfil
-      color: Math.random() > 0.4 ? 'rgba(212, 175, 55,' : 'rgba(243, 239, 232,'
+      // Pétalos de flores en blanco puro, azul serenidad y azul zafiro (como los centros de mesa)
+      color: (() => {
+        const rand = Math.random();
+        if (rand < 0.45) return 'rgba(255, 255, 255,'; // Blanco hortensia
+        if (rand < 0.75) return 'rgba(123, 164, 208,'; // Celeste serenidad / azul cielo suave
+        return 'rgba(27, 54, 93,';                      // Azul marino italiano
+      })()
     });
   }
 

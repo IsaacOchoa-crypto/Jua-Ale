@@ -148,7 +148,7 @@ export function initUploadModal() {
         particleCount: 100,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ['#D4AF37', '#6B705C', '#FAF8F5', '#E5D3B3']
+        colors: ['#1B365D', '#2563EB', '#93C5FD', '#FFFFFF', '#CBD5E1']
       });
 
       window.closeUploadModal();

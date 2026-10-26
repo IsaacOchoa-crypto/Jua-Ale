@@ -18,14 +18,20 @@
       theme: {
         extend: {
           colors: {
-            crema: '#FAF8F5',
-            cremaDark: '#F3EFE8',
-            carbon: '#2C2C2C',
-            olivo: '#6B705C',
-            olivoLight: '#8F9480',
-            champagne: '#D4AF37',
-            champagneDark: '#B89726',
-            champagneSoft: '#F6EECD'
+            crema: '#EBF3FB',          // Azul Hielo / Celeste Glacial Elegante (Fondo visiblemente azul)
+            cremaDark: '#DCEAF7',      // Azul Serenidad Suave (Contrastes visibles entre secciones)
+            carbon: '#0F1E36',         // Azul Medianoche Profundo (Lectura Editorial)
+            olivo: '#1B365D',          // Azul Marino Italiano (Terno novio)
+            olivoLight: '#2563EB',     // Azul Zafiro Brillante
+            champagne: '#2563EB',      // Azul Real / Royal Blue
+            champagneDark: '#1D4ED8',  // Azul Marino Intenso
+            champagneSoft: '#DBEAFE',  // Celeste Hortensia Suave (Centros de mesa)
+            azulMarino: '#1B365D',
+            azulNoche: '#0F1E36',
+            azulReal: '#2563EB',
+            azulCielo: '#7BA4D0',
+            azulHielo: '#EFF6FF',
+            blancoPuro: '#FFFFFF'
           },
           fontFamily: {
             serif: ['"Cormorant Garamond"', 'serif'],
@@ -56,8 +62,8 @@
        1. SPLASH SCREEN (Sobre Interactivo / Wax Seal)
   ============================================================ -->
   <div id="splash" class="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden">
-    <div id="curtainL" class="absolute left-0 top-0 h-full w-1/2 bg-[#EFE9DF] shadow-2xl border-r border-[#DED7CA]"></div>
-    <div id="curtainR" class="absolute right-0 top-0 h-full w-1/2 bg-[#EFE9DF] shadow-2xl border-l border-[#DED7CA]"></div>
+    <div id="curtainL" class="absolute left-0 top-0 h-full w-1/2 bg-gradient-to-r from-[#D3E5F5] to-[#E6F1FA] shadow-2xl border-r border-[#B9D5EE]"></div>
+    <div id="curtainR" class="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-[#D3E5F5] to-[#E6F1FA] shadow-2xl border-l border-[#B9D5EE]"></div>
 
     <div id="splashContent" class="relative z-10 text-center px-6 max-w-lg">
       <p class="text-[0.7rem] uppercase tracking-[0.45em] text-champagne mb-4">Nuestra Boda</p>
@@ -128,7 +134,7 @@
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <img id="heroBg" src="fotos/escalera.jpg" alt="Fondo Juan y Alejandra"
              class="absolute inset-0 w-full h-[125%] object-cover -top-[10%] filter brightness-75 md:blur-md scale-105" />
-        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-carbon"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#061224]/85 via-[#0B1E3D]/70 to-[#10274E]"></div>
       </div>
 
       <div class="relative z-10 max-w-6xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-16">
@@ -394,10 +400,10 @@
             <div>
               <p class="text-[0.68rem] uppercase tracking-[0.25em] text-olivo font-semibold mb-3">Colores Sugeridos</p>
               <div class="flex gap-3 justify-center">
-                <span title="Verde Olivo" class="w-10 h-10 rounded-full bg-olivo shadow-md border-2 border-white hover:scale-110 transition-transform"></span>
-                <span title="Azul Marino" class="w-10 h-10 rounded-full bg-[#1F2A44] shadow-md border-2 border-white hover:scale-110 transition-transform"></span>
-                <span title="Vino Elegante" class="w-10 h-10 rounded-full bg-[#6D1F2F] shadow-md border-2 border-white hover:scale-110 transition-transform"></span>
-                <span title="Champagne Dorado" class="w-10 h-10 rounded-full bg-champagne shadow-md border-2 border-white hover:scale-110 transition-transform"></span>
+                <span title="Azul Marino Italiano" class="w-10 h-10 rounded-full bg-[#1B365D] shadow-md border-2 border-white hover:scale-110 transition-transform"></span>
+                <span title="Azul Noche Profundo" class="w-10 h-10 rounded-full bg-[#0F1E36] shadow-md border-2 border-white hover:scale-110 transition-transform"></span>
+                <span title="Azul Serenidad Hortensia" class="w-10 h-10 rounded-full bg-[#7BA4D0] shadow-md border-2 border-white hover:scale-110 transition-transform"></span>
+                <span title="Plata Platino" class="w-10 h-10 rounded-full bg-[#CBD5E1] shadow-md border-2 border-white hover:scale-110 transition-transform"></span>
               </div>
             </div>
             <div>
