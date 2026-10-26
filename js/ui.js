@@ -236,24 +236,25 @@ export function initAmbientPetals() {
   });
 
   const petals = [];
-  const TOTAL_PETALS = 22; // Cantidad sutil para no sobrecargar el diseño
+  const TOTAL_PETALS = 28; // Pétalos claramente visibles pero elegantes
 
   for (let i = 0; i < TOTAL_PETALS; i++) {
     petals.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      size: Math.random() * 5 + 3,
+      size: Math.random() * 5 + 4, // Tamaño más definido para que se noten claramente
       speedX: Math.random() * 0.8 - 0.4,
-      speedY: Math.random() * 0.7 + 0.3,
+      speedY: Math.random() * 0.7 + 0.35,
       angle: Math.random() * 360,
-      spinSpeed: Math.random() * 1.5 - 0.75,
-      opacity: Math.random() * 0.4 + 0.25,
-      // Pétalos de flores en blanco puro, azul serenidad y azul zafiro (como los centros de mesa)
+      spinSpeed: Math.random() * 1.4 - 0.7,
+      opacity: Math.random() * 0.35 + 0.55, // Opacidad sólida (0.55 a 0.90) para que resalten
+      // Pétalos de flores en Azul Real, Azul Zafiro, Azul Hortensia y Blanco Novia
       color: (() => {
         const rand = Math.random();
-        if (rand < 0.45) return 'rgba(255, 255, 255,'; // Blanco hortensia
-        if (rand < 0.75) return 'rgba(123, 164, 208,'; // Celeste serenidad / azul cielo suave
-        return 'rgba(27, 54, 93,';                      // Azul marino italiano
+        if (rand < 0.40) return 'rgba(37, 99, 235,';  // Azul Zafiro / Real vivo
+        if (rand < 0.70) return 'rgba(29, 78, 216,';  // Azul Cobalto / Real intenso
+        if (rand < 0.85) return 'rgba(74, 138, 219,'; // Azul Hortensia floral
+        return 'rgba(255, 255, 255,';                 // Blanco Novia
       })()
     });
   }

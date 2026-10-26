@@ -79,9 +79,14 @@
 
       <p class="text-[0.75rem] tracking-[0.35em] uppercase text-olivo mb-10 font-medium">20 · Marzo · 2027</p>
 
-      <button id="openBtn" aria-label="Abrir invitación" class="mx-auto flex flex-col items-center gap-4 group cursor-pointer focus:outline-none">
-        <div class="wax-seal">
-          <span>J&A</span>
+      <button id="openBtn" aria-label="Abrir invitación" class="mx-auto flex flex-col items-center gap-4 group cursor-pointer focus:outline-none relative">
+        <div class="relative flex items-center justify-center">
+          <!-- Detalle floral artesanal que asoma detrás del sello de lacre -->
+          <img src="fotos/flores_boda.png" alt="Flores del sello" 
+               class="absolute -top-8 -right-8 w-24 h-24 object-contain pointer-events-none rotate-[28deg] opacity-85 drop-shadow-md group-hover:scale-110 group-hover:rotate-[34deg] transition-transform duration-500 select-none" />
+          <div class="wax-seal relative z-10">
+            <span>J&A</span>
+          </div>
         </div>
         <span class="text-[0.72rem] tracking-[0.35em] uppercase text-olivo group-hover:text-champagne transition-colors font-medium">
           Abrir Invitación
@@ -97,7 +102,7 @@
       <span></span><span></span><span></span>
     </span>
   </button>
-  <audio id="bgm" loop preload="auto" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"></audio>
+  <audio id="bgm" loop preload="auto" src="Vals%20Matrimonio%20de%20Amor.mp3"></audio>
 
   <!-- Notificación Toast universal -->
   <div id="toast" class="fixed left-1/2 bottom-20 -translate-x-1/2 z-[120] px-6 py-3 bg-carbon/95 text-crema text-xs tracking-widest uppercase rounded-full shadow-2xl opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2 border border-champagne/40">
@@ -179,47 +184,72 @@
     <!-- ============================================================
          3. CUENTA REGRESIVA & BOTÓN AGREGAR A CALENDARIO
     ============================================================ -->
-    <section id="countdown-sec" class="py-20 px-6 bg-crema text-center">
-      <div class="max-w-4xl mx-auto">
-        <div class="reveal">
-          <p class="text-[0.7rem] uppercase tracking-[0.4em] text-champagne font-semibold mb-2">Comienza la cuenta atrás</p>
-          <h3 class="font-serif-title text-4xl md:text-5xl font-light text-carbon">Para el Gran Día</h3>
-          <div class="ornament-divider"></div>
-        </div>
+    <section id="countdown-sec" class="py-20 sm:py-24 px-4 sm:px-6 bg-crema text-center relative overflow-hidden">
+      <!-- Tarjeta de Papelería de Lujo con Marco Fino y Flores en las 4 Esquinas (Opción A) -->
+      <div class="max-w-4xl mx-auto relative p-6 sm:p-12 md:p-16 bg-white/75 backdrop-blur-md rounded-3xl border border-[#1B365D]/15 shadow-[0_20px_50px_rgba(15,30,54,0.06)]">
+        
+        <!-- Filete / Marco perimetral fino interior de papelería nupcial -->
+        <div class="absolute inset-3 sm:inset-5 border border-[#1B365D]/20 rounded-2xl pointer-events-none"></div>
 
-        <div id="countdown" class="reveal mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6 max-w-2xl mx-auto">
-          <div class="glass-card p-6 rounded-lg border-champagne/40">
-            <div id="cd-d" class="font-serif-title text-5xl md:text-6xl text-carbon font-light">00</div>
-            <div class="text-[0.68rem] tracking-[0.3em] uppercase text-olivo mt-2 font-medium">Días</div>
-          </div>
-          <div class="glass-card p-6 rounded-lg border-champagne/40">
-            <div id="cd-h" class="font-serif-title text-5xl md:text-6xl text-carbon font-light">00</div>
-            <div class="text-[0.68rem] tracking-[0.3em] uppercase text-olivo mt-2 font-medium">Horas</div>
-          </div>
-          <div class="glass-card p-6 rounded-lg border-champagne/40">
-            <div id="cd-m" class="font-serif-title text-5xl md:text-6xl text-carbon font-light">00</div>
-            <div class="text-[0.68rem] tracking-[0.3em] uppercase text-olivo mt-2 font-medium">Minutos</div>
-          </div>
-          <div class="glass-card p-6 rounded-lg border-champagne/40">
-            <div id="cd-s" class="font-serif-title text-5xl md:text-6xl text-champagne font-light">00</div>
-            <div class="text-[0.68rem] tracking-[0.3em] uppercase text-olivo mt-2 font-medium">Segundos</div>
-          </div>
-        </div>
+        <!-- Ramilletes botánicos en las 4 esquinas del marco -->
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -top-10 -left-10 sm:-top-12 sm:-left-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 -rotate-12 filter drop-shadow-sm select-none" />
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -top-10 -right-10 sm:-top-12 sm:-right-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 rotate-[105deg] filter drop-shadow-sm select-none" />
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -bottom-10 -left-10 sm:-bottom-12 sm:-left-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 -rotate-[105deg] filter drop-shadow-sm select-none" />
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -bottom-10 -right-10 sm:-bottom-12 sm:-right-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 rotate-[168deg] filter drop-shadow-sm select-none" />
 
-        <!-- Botones Agregar al Calendario -->
-        <div class="reveal mt-10 flex flex-wrap gap-3 justify-center">
-          <button id="addToGcalBtn" class="btn-luxury !py-2.5 !px-5 !text-[0.68rem] flex items-center gap-2 bg-white/80 hover:bg-white shadow-sm">
-            <svg class="w-4 h-4 text-champagne" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
-            </svg>
-            <span>Google Calendar</span>
-          </button>
-          <button id="addToIcalBtn" class="btn-luxury !py-2.5 !px-5 !text-[0.68rem] flex items-center gap-2 bg-white/80 hover:bg-white shadow-sm">
-            <svg class="w-4 h-4 text-olivo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-            <span>Apple Calendar / Outlook (.ics)</span>
-          </button>
+        <div class="relative z-10">
+          <div class="reveal">
+            <p class="text-[0.68rem] uppercase tracking-[0.38em] text-[#1B365D]/75 font-semibold mb-2.5">Comienza la cuenta atrás</p>
+            <h3 class="font-serif-title text-4xl sm:text-5xl md:text-6xl font-light text-[#0E213D] tracking-tight">Para el Gran Día</h3>
+            <div class="ornament-divider"></div>
+          </div>
+
+          <div id="countdown" class="reveal mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-2xl mx-auto">
+            <div class="countdown-card">
+              <div id="cd-d" class="countdown-num">00</div>
+              <div class="countdown-divider"></div>
+              <span class="countdown-label">Días</span>
+            </div>
+            <div class="countdown-card">
+              <div id="cd-h" class="countdown-num">00</div>
+              <div class="countdown-divider"></div>
+              <span class="countdown-label">Horas</span>
+            </div>
+            <div class="countdown-card">
+              <div id="cd-m" class="countdown-num">00</div>
+              <div class="countdown-divider"></div>
+              <span class="countdown-label">Minutos</span>
+            </div>
+            <div class="countdown-card">
+              <div id="cd-s" class="countdown-num">00</div>
+              <div class="countdown-divider"></div>
+              <span class="countdown-label">Segundos</span>
+            </div>
+          </div>
+
+          <!-- Botones Agregar al Calendario -->
+          <div class="reveal mt-10 flex flex-wrap gap-4 justify-center items-center">
+            <button id="addToGcalBtn" class="group inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white hover:bg-white text-[#1B365D] border border-[#1B365D]/25 shadow-sm hover:shadow-md transition-all duration-300 text-[0.72rem] tracking-[0.16em] uppercase font-semibold hover:-translate-y-0.5">
+              <span class="w-7 h-7 rounded-full bg-[#1B365D]/8 flex items-center justify-center text-[#1B365D] group-hover:bg-[#1B365D] group-hover:text-white transition-all duration-300">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
+                </svg>
+              </span>
+              <span>Google Calendar</span>
+            </button>
+            <button id="addToIcalBtn" class="group inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white hover:bg-white text-[#1B365D] border border-[#1B365D]/25 shadow-sm hover:shadow-md transition-all duration-300 text-[0.72rem] tracking-[0.16em] uppercase font-semibold hover:-translate-y-0.5">
+              <span class="w-7 h-7 rounded-full bg-[#1B365D]/8 flex items-center justify-center text-[#1B365D] group-hover:bg-[#1B365D] group-hover:text-white transition-all duration-300">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+              </span>
+              <span>Apple Calendar / Outlook (.ics)</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -227,8 +257,8 @@
     <!-- ============================================================
          4. NUESTRA HISTORIA (Con Arcos Clásicos)
     ============================================================ -->
-    <section id="historia" class="py-24 px-6 bg-cremaDark">
-      <div class="text-center reveal mb-16 max-w-2xl mx-auto">
+    <section id="historia" class="py-24 px-6 bg-cremaDark relative overflow-hidden">
+      <div class="text-center reveal mb-16 max-w-2xl mx-auto relative z-10">
         <p class="text-[0.7rem] uppercase tracking-[0.4em] text-champagne font-semibold mb-2">Nuestra Historia</p>
         <h3 class="font-serif-title text-4xl md:text-5xl font-light text-carbon">Cómo llegamos hasta aquí</h3>
         <div class="ornament-divider"></div>
@@ -240,8 +270,9 @@
 
         <article class="tl-item relative grid md:grid-cols-2 gap-8 md:gap-16 mb-20 pl-12 md:pl-0 items-center">
           <span class="absolute left-4 md:left-1/2 -translate-x-1/2 top-6 w-5 h-5 rounded-full bg-crema border-2 border-champagne shadow-md z-10"></span>
-          <div class="cathedral-arch md:order-1 bg-white p-2">
+          <div class="cathedral-arch md:order-1 bg-white p-2 relative">
             <img src="fotos/escalera.jpg" alt="Cómo nos conocimos" class="w-full h-72 md:h-80 object-cover rounded-t-[136px] editorial-photo-filter" style="object-position: center 30%;" />
+            <img src="fotos/flores_boda.png" alt="Flores arco" class="absolute -bottom-6 -right-6 w-28 sm:w-36 h-auto object-contain pointer-events-none drop-shadow-md select-none opacity-90 z-20" />
           </div>
           <div class="md:text-left md:order-2">
             <span class="text-[0.7rem] uppercase tracking-[0.3em] text-champagne font-semibold">Capítulo I · 2019</span>
@@ -254,8 +285,9 @@
 
         <article class="tl-item relative grid md:grid-cols-2 gap-8 md:gap-16 mb-20 pl-12 md:pl-0 items-center">
           <span class="absolute left-4 md:left-1/2 -translate-x-1/2 top-6 w-5 h-5 rounded-full bg-crema border-2 border-champagne shadow-md z-10"></span>
-          <div class="md:order-2 cathedral-arch bg-white p-2">
+          <div class="md:order-2 cathedral-arch bg-white p-2 relative">
             <img src="fotos/corazon.jpg" alt="La propuesta de matrimonio" class="w-full h-72 md:h-80 object-cover rounded-t-[136px] editorial-photo-filter" style="object-position: center 55%;" />
+            <img src="fotos/flores_boda.png" alt="Flores arco" class="absolute -bottom-6 -left-6 w-28 sm:w-36 h-auto object-contain pointer-events-none drop-shadow-md select-none opacity-90 -rotate-45 z-20" />
           </div>
           <div class="md:order-1 md:text-right">
             <span class="text-[0.7rem] uppercase tracking-[0.3em] text-champagne font-semibold">Capítulo II · 2025</span>
@@ -268,8 +300,9 @@
 
         <article class="tl-item relative grid md:grid-cols-2 gap-8 md:gap-16 pl-12 md:pl-0 items-center">
           <span class="absolute left-4 md:left-1/2 -translate-x-1/2 top-6 w-5 h-5 rounded-full bg-crema border-2 border-champagne shadow-md z-10"></span>
-          <div class="cathedral-arch md:order-1 bg-white p-2">
+          <div class="cathedral-arch md:order-1 bg-white p-2 relative">
             <img src="fotos/escalera.jpg" alt="Hacia el altar" class="w-full h-72 md:h-80 object-cover rounded-t-[136px] editorial-photo-filter" style="object-position: center 65%;" />
+            <img src="fotos/flores_boda.png" alt="Flores arco" class="absolute -bottom-6 -right-6 w-28 sm:w-36 h-auto object-contain pointer-events-none drop-shadow-md select-none opacity-90 z-20" />
           </div>
           <div class="md:text-left md:order-2">
             <span class="text-[0.7rem] uppercase tracking-[0.3em] text-champagne font-semibold">Capítulo III · 2027</span>
@@ -282,55 +315,71 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         5. DETALLES DEL EVENTO
-    ============================================================ -->
-    <section id="detalles" class="py-24 px-6 bg-crema">
-      <div class="text-center reveal mb-16 max-w-2xl mx-auto">
-        <p class="text-[0.7rem] uppercase tracking-[0.4em] text-champagne font-semibold mb-2">Cuándo & Dónde</p>
-        <h3 class="font-serif-title text-4xl md:text-5xl font-light text-carbon">Detalles de la Celebración</h3>
-        <div class="ornament-divider"></div>
-      </div>
+    <section id="detalles" class="py-20 sm:py-24 px-4 sm:px-6 bg-crema text-center relative overflow-hidden">
+      <!-- Tarjeta de Papelería de Lujo con Marco Fino y Flores en las 4 Esquinas -->
+      <div class="max-w-5xl mx-auto relative p-6 sm:p-12 md:p-14 bg-white/75 backdrop-blur-md rounded-3xl border border-[#1B365D]/15 shadow-[0_20px_50px_rgba(15,30,54,0.06)]">
+        
+        <!-- Filete fino interior -->
+        <div class="absolute inset-3 sm:inset-5 border border-[#1B365D]/20 rounded-2xl pointer-events-none"></div>
 
-      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 lg:gap-12">
-        <div class="glass-card reveal p-8 md:p-10 text-center rounded-xl hover:-translate-y-2 transition-all duration-500 border-champagne/40">
-          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-champagneSoft/60 flex items-center justify-center text-champagneDark">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v4m0 0a4 4 0 014 4v10a2 2 0 01-2 2H10a2 2 0 01-2-2V10a4 4 0 014-4zm-4 4h8M4 22h16"/>
-            </svg>
-          </div>
-          <p class="text-[0.7rem] uppercase tracking-[0.3em] text-champagne font-semibold">Ceremonia Religiosa</p>
-          <h4 class="font-serif-title text-3xl text-carbon mt-2 font-normal">Parroquia San Miguel Arcángel</h4>
-          <div class="ornament-divider"></div>
-          <p class="text-base font-semibold text-carbon">5:00 PM</p>
-          <p class="text-sm text-carbon/75 mt-2 leading-relaxed">
-            Av. Reforma 123, Centro Histórico<br />Ciudad de México
-          </p>
-          <a class="btn-luxury mt-8 w-full sm:w-auto" target="_blank" rel="noopener"
-             href="https://www.google.com/maps/search/?api=1&query=Parroquia+San+Miguel+Arc%C3%A1ngel+Ciudad+de+M%C3%A9xico">
-            <svg class="w-4 h-4 mr-1 text-champagne" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            Ver en Google Maps
-          </a>
-        </div>
+        <!-- Ramilletes botánicos en las 4 esquinas del marco -->
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -top-10 -left-10 sm:-top-12 sm:-left-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 -rotate-12 filter drop-shadow-sm select-none" />
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -top-10 -right-10 sm:-top-12 sm:-right-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 rotate-[105deg] filter drop-shadow-sm select-none" />
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -bottom-10 -left-10 sm:-bottom-12 sm:-left-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 -rotate-[105deg] filter drop-shadow-sm select-none" />
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -bottom-10 -right-10 sm:-bottom-12 sm:-right-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 rotate-[168deg] filter drop-shadow-sm select-none" />
 
-        <div class="glass-card reveal p-8 md:p-10 text-center rounded-xl hover:-translate-y-2 transition-all duration-500 border-champagne/40">
-          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-champagneSoft/60 flex items-center justify-center text-champagneDark">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8 3h8l-1 7a3 3 0 01-6 0L8 3zM12 13v8M8 21h8M4 8h2M18 8h2"/>
-            </svg>
+        <div class="relative z-10">
+          <div class="text-center reveal mb-12 max-w-2xl mx-auto">
+            <p class="text-[0.68rem] uppercase tracking-[0.38em] text-[#1B365D]/75 font-semibold mb-2">Cuándo & Dónde</p>
+            <h3 class="font-serif-title text-4xl sm:text-5xl md:text-6xl font-light text-[#0E213D] tracking-tight">Detalles de la Celebración</h3>
+            <div class="ornament-divider"></div>
           </div>
-          <p class="text-[0.7rem] uppercase tracking-[0.3em] text-champagne font-semibold">Banquete & Fiesta</p>
-          <h4 class="font-serif-title text-3xl text-carbon mt-2 font-normal">Hacienda Los Olivos</h4>
-          <div class="ornament-divider"></div>
-          <p class="text-base font-semibold text-carbon">7:00 PM</p>
-          <p class="text-sm text-carbon/75 mt-2 leading-relaxed">
-            Camino a la Hacienda km 4<br />Tepotzotlán, Estado de México
-          </p>
-          <a class="btn-luxury mt-8 w-full sm:w-auto" target="_blank" rel="noopener"
-             href="https://www.google.com/maps/search/?api=1&query=Hacienda+Tepotzotl%C3%A1n+Estado+de+M%C3%A9xico">
-            <svg class="w-4 h-4 mr-1 text-champagne" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            Ver en Google Maps
-          </a>
+
+          <div class="grid md:grid-cols-2 gap-6 lg:gap-10 text-center">
+            <div class="glass-card reveal p-8 md:p-10 text-center rounded-2xl hover:-translate-y-1.5 transition-all duration-300 border-[#1B365D]/15 shadow-sm">
+              <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-[#1B365D]/8 flex items-center justify-center text-[#1B365D]">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v4m0 0a4 4 0 014 4v10a2 2 0 01-2 2H10a2 2 0 01-2-2V10a4 4 0 014-4zm-4 4h8M4 22h16"/>
+                </svg>
+              </div>
+              <p class="text-[0.7rem] uppercase tracking-[0.3em] text-[#1B365D] font-semibold">Ceremonia Religiosa</p>
+              <h4 class="font-serif-title text-3xl text-carbon mt-2 font-normal">Parroquia San Miguel Arcángel</h4>
+              <div class="ornament-divider"></div>
+              <p class="text-base font-semibold text-carbon">5:00 PM</p>
+              <p class="text-sm text-carbon/75 mt-2 leading-relaxed">
+                Av. Reforma 123, Centro Histórico<br />Ciudad de México
+              </p>
+              <a class="btn-luxury mt-8 w-full sm:w-auto" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps/search/?api=1&query=Parroquia+San+Miguel+Arc%C3%A1ngel+Ciudad+de+M%C3%A9xico">
+                <svg class="w-4 h-4 mr-1 text-[#1B365D]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                Ver en Google Maps
+              </a>
+            </div>
+
+            <div class="glass-card reveal p-8 md:p-10 text-center rounded-2xl hover:-translate-y-1.5 transition-all duration-300 border-[#1B365D]/15 shadow-sm">
+              <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-[#1B365D]/8 flex items-center justify-center text-[#1B365D]">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 3h8l-1 7a3 3 0 01-6 0L8 3zM12 13v8M8 21h8M4 8h2M18 8h2"/>
+                </svg>
+              </div>
+              <p class="text-[0.7rem] uppercase tracking-[0.3em] text-[#1B365D] font-semibold">Banquete & Fiesta</p>
+              <h4 class="font-serif-title text-3xl text-carbon mt-2 font-normal">Hacienda Los Olivos</h4>
+              <div class="ornament-divider"></div>
+              <p class="text-base font-semibold text-carbon">7:00 PM</p>
+              <p class="text-sm text-carbon/75 mt-2 leading-relaxed">
+                Camino a la Hacienda km 4<br />Tepotzotlán, Estado de México
+              </p>
+              <a class="btn-luxury mt-8 w-full sm:w-auto" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps/search/?api=1&query=Hacienda+Tepotzotl%C3%A1n+Estado+de+M%C3%A9xico">
+                <svg class="w-4 h-4 mr-1 text-[#1B365D]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                Ver en Google Maps
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -338,48 +387,66 @@
     <!-- ============================================================
          6. ITINERARIO DEL EVENTO
     ============================================================ -->
-    <section id="itinerario" class="py-20 px-6 bg-cremaDark">
-      <div class="text-center reveal mb-16 max-w-2xl mx-auto">
-        <p class="text-[0.7rem] uppercase tracking-[0.4em] text-champagne font-semibold mb-2">Paso a Paso</p>
-        <h3 class="font-serif-title text-4xl md:text-5xl font-light text-carbon">Itinerario de Nuestro Día</h3>
-        <div class="ornament-divider"></div>
-      </div>
+    <section id="itinerario" class="py-20 sm:py-24 px-4 sm:px-6 bg-cremaDark text-center relative overflow-hidden">
+      <!-- Tarjeta de Papelería de Lujo con Marco Fino y Flores en las 4 Esquinas -->
+      <div class="max-w-5xl mx-auto relative p-6 sm:p-12 md:p-14 bg-white/75 backdrop-blur-md rounded-3xl border border-[#1B365D]/15 shadow-[0_20px_50px_rgba(15,30,54,0.06)]">
+        
+        <!-- Filete fino interior -->
+        <div class="absolute inset-3 sm:inset-5 border border-[#1B365D]/20 rounded-2xl pointer-events-none"></div>
 
-      <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-        <div class="reveal p-6 glass-card rounded-lg">
-          <div class="w-12 h-12 mx-auto mb-4 text-olivo flex items-center justify-center">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg>
-          </div>
-          <p class="font-serif-title text-2xl text-carbon font-normal">5:00 PM</p>
-          <p class="text-[0.7rem] tracking-[0.25em] uppercase text-olivo font-semibold mt-1">Ceremonia</p>
-          <p class="text-xs text-carbon/60 mt-2">Puntualidad en la Parroquia</p>
-        </div>
+        <!-- Ramilletes botánicos en las 4 esquinas del marco -->
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -top-10 -left-10 sm:-top-12 sm:-left-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 -rotate-12 filter drop-shadow-sm select-none" />
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -top-10 -right-10 sm:-top-12 sm:-right-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 rotate-[105deg] filter drop-shadow-sm select-none" />
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -bottom-10 -left-10 sm:-bottom-12 sm:-left-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 -rotate-[105deg] filter drop-shadow-sm select-none" />
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -bottom-10 -right-10 sm:-bottom-12 sm:-right-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 rotate-[168deg] filter drop-shadow-sm select-none" />
 
-        <div class="reveal p-6 glass-card rounded-lg">
-          <div class="w-12 h-12 mx-auto mb-4 text-olivo flex items-center justify-center">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 4h14l-7 8zM12 12v8M8 20h8"/></svg>
+        <div class="relative z-10">
+          <div class="text-center reveal mb-12 max-w-2xl mx-auto">
+            <p class="text-[0.68rem] uppercase tracking-[0.38em] text-[#1B365D]/75 font-semibold mb-2">Paso a Paso</p>
+            <h3 class="font-serif-title text-4xl sm:text-5xl md:text-6xl font-light text-[#0E213D] tracking-tight">Itinerario de Nuestro Día</h3>
+            <div class="ornament-divider"></div>
           </div>
-          <p class="font-serif-title text-2xl text-carbon font-normal">6:30 PM</p>
-          <p class="text-[0.7rem] tracking-[0.25em] uppercase text-olivo font-semibold mt-1">Cóctel</p>
-          <p class="text-xs text-carbon/60 mt-2">Bebidas de bienvenida</p>
-        </div>
 
-        <div class="reveal p-6 glass-card rounded-lg">
-          <div class="w-12 h-12 mx-auto mb-4 text-olivo flex items-center justify-center">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M3 4v7M5 4v7M4 11v9M20 4c-2 2-2 6 0 8v8"/></svg>
-          </div>
-          <p class="font-serif-title text-2xl text-carbon font-normal">8:00 PM</p>
-          <p class="text-[0.7rem] tracking-[0.25em] uppercase text-olivo font-semibold mt-1">Banquete</p>
-          <p class="text-xs text-carbon/60 mt-2">Cena en 3 tiempos</p>
-        </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+            <div class="reveal p-6 glass-card rounded-2xl hover:-translate-y-1.5 transition-all duration-300 border-[#1B365D]/15 shadow-sm">
+              <div class="w-12 h-12 mx-auto mb-4 text-[#1B365D] flex items-center justify-center">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg>
+              </div>
+              <p class="font-serif-title text-2xl text-carbon font-normal">5:00 PM</p>
+              <p class="text-[0.7rem] tracking-[0.25em] uppercase text-[#1B365D] font-semibold mt-1">Ceremonia</p>
+              <p class="text-xs text-carbon/60 mt-2">Puntualidad en la Parroquia</p>
+            </div>
 
-        <div class="reveal p-6 glass-card rounded-lg">
-          <div class="w-12 h-12 mx-auto mb-4 text-olivo flex items-center justify-center">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
+            <div class="reveal p-6 glass-card rounded-2xl hover:-translate-y-1.5 transition-all duration-300 border-[#1B365D]/15 shadow-sm">
+              <div class="w-12 h-12 mx-auto mb-4 text-[#1B365D] flex items-center justify-center">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 4h14l-7 8zM12 12v8M8 20h8"/></svg>
+              </div>
+              <p class="font-serif-title text-2xl text-carbon font-normal">6:30 PM</p>
+              <p class="text-[0.7rem] tracking-[0.25em] uppercase text-[#1B365D] font-semibold mt-1">Cóctel</p>
+              <p class="text-xs text-carbon/60 mt-2">Bebidas de bienvenida</p>
+            </div>
+
+            <div class="reveal p-6 glass-card rounded-2xl hover:-translate-y-1.5 transition-all duration-300 border-[#1B365D]/15 shadow-sm">
+              <div class="w-12 h-12 mx-auto mb-4 text-[#1B365D] flex items-center justify-center">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M3 4v7M5 4v7M4 11v9M20 4c-2 2-2 6 0 8v8"/></svg>
+              </div>
+              <p class="font-serif-title text-2xl text-carbon font-normal">8:00 PM</p>
+              <p class="text-[0.7rem] tracking-[0.25em] uppercase text-[#1B365D] font-semibold mt-1">Banquete</p>
+              <p class="text-xs text-carbon/60 mt-2">Cena en 3 tiempos</p>
+            </div>
+
+            <div class="reveal p-6 glass-card rounded-2xl hover:-translate-y-1.5 transition-all duration-300 border-[#1B365D]/15 shadow-sm">
+              <div class="w-12 h-12 mx-auto mb-4 text-[#1B365D] flex items-center justify-center">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
+              </div>
+              <p class="font-serif-title text-2xl text-carbon font-normal">10:00 PM</p>
+              <p class="text-[0.7rem] tracking-[0.25em] uppercase text-[#1B365D] font-semibold mt-1">Fiesta</p>
+            </div>
           </div>
-          <p class="font-serif-title text-2xl text-carbon font-normal">10:00 PM</p>
-          <p class="text-[0.7rem] tracking-[0.25em] uppercase text-olivo font-semibold mt-1">Fiesta</p>
-          <p class="text-xs text-carbon/60 mt-2">Música & Barra Libre</p>
         </div>
       </div>
     </section>
@@ -387,72 +454,91 @@
     <!-- ============================================================
          7. DRESS CODE & MESA DE REGALOS
     ============================================================ -->
-    <section class="py-24 px-6 bg-crema">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center reveal mb-16">
-          <p class="text-[0.7rem] uppercase tracking-[0.4em] text-champagne font-semibold mb-2">Código de Vestimenta</p>
-          <h3 class="font-serif-title text-4xl md:text-5xl font-light text-carbon">Riguroso Formal</h3>
-          <p class="text-sm text-carbon/75 mt-3 max-w-md mx-auto leading-relaxed">
-            Ellos: Traje oscuro o smoking formal.<br />Ellas: Vestido largo de noche. (El color blanco y marfil está reservado para la novia).
-          </p>
+    <section id="dresscode" class="py-20 sm:py-24 px-4 sm:px-6 bg-crema relative overflow-hidden">
+      <!-- Tarjeta de Papelería de Lujo con Marco Fino y Flores en las 4 Esquinas -->
+      <div class="max-w-5xl mx-auto relative p-6 sm:p-12 md:p-14 bg-white/75 backdrop-blur-md rounded-3xl border border-[#1B365D]/15 shadow-[0_20px_50px_rgba(15,30,54,0.06)]">
+        
+        <!-- Filete fino interior -->
+        <div class="absolute inset-3 sm:inset-5 border border-[#1B365D]/20 rounded-2xl pointer-events-none"></div>
 
-          <div class="mt-8 flex flex-wrap justify-center gap-6 sm:gap-10">
-            <div>
-              <p class="text-[0.68rem] uppercase tracking-[0.25em] text-olivo font-semibold mb-3">Colores Sugeridos</p>
-              <div class="flex gap-3 justify-center">
-                <span title="Azul Marino Italiano" class="w-10 h-10 rounded-full bg-[#1B365D] shadow-md border-2 border-white hover:scale-110 transition-transform"></span>
-                <span title="Azul Noche Profundo" class="w-10 h-10 rounded-full bg-[#0F1E36] shadow-md border-2 border-white hover:scale-110 transition-transform"></span>
-                <span title="Azul Serenidad Hortensia" class="w-10 h-10 rounded-full bg-[#7BA4D0] shadow-md border-2 border-white hover:scale-110 transition-transform"></span>
-                <span title="Plata Platino" class="w-10 h-10 rounded-full bg-[#CBD5E1] shadow-md border-2 border-white hover:scale-110 transition-transform"></span>
+        <!-- Ramilletes botánicos en las 4 esquinas del marco -->
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -top-10 -left-10 sm:-top-12 sm:-left-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 -rotate-12 filter drop-shadow-sm select-none" />
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -top-10 -right-10 sm:-top-12 sm:-right-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 rotate-[105deg] filter drop-shadow-sm select-none" />
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -bottom-10 -left-10 sm:-bottom-12 sm:-left-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 -rotate-[105deg] filter drop-shadow-sm select-none" />
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -bottom-10 -right-10 sm:-bottom-12 sm:-right-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 rotate-[168deg] filter drop-shadow-sm select-none" />
+
+        <div class="relative z-10">
+          <!-- Código de Vestimenta -->
+          <div class="text-center reveal mb-16">
+            <p class="text-[0.68rem] uppercase tracking-[0.38em] text-[#1B365D]/75 font-semibold mb-2">Código de Vestimenta</p>
+            <h3 class="font-serif-title text-4xl md:text-5xl font-light text-[#0E213D] tracking-tight">Riguroso Formal</h3>
+            <p class="text-sm text-carbon/75 mt-3 max-w-md mx-auto leading-relaxed">
+              Ellos: Traje oscuro o smoking formal.<br />Ellas: Vestido largo de noche. (El color blanco y marfil está reservado para la novia).
+            </p>
+
+            <div class="mt-8 flex flex-wrap justify-center gap-6 sm:gap-10">
+              <div>
+                <p class="text-[0.68rem] uppercase tracking-[0.25em] text-[#1B365D] font-semibold mb-3">Colores Sugeridos</p>
+                <div class="flex gap-3 justify-center">
+                  <span title="Azul Marino Italiano" class="w-10 h-10 rounded-full bg-[#1B365D] shadow-md border-2 border-white hover:scale-110 transition-transform"></span>
+                  <span title="Azul Noche Profundo" class="w-10 h-10 rounded-full bg-[#0F1E36] shadow-md border-2 border-white hover:scale-110 transition-transform"></span>
+                  <span title="Azul Serenidad Hortensia" class="w-10 h-10 rounded-full bg-[#7BA4D0] shadow-md border-2 border-white hover:scale-110 transition-transform"></span>
+                  <span title="Plata Platino" class="w-10 h-10 rounded-full bg-[#CBD5E1] shadow-md border-2 border-white hover:scale-110 transition-transform"></span>
+                </div>
               </div>
-            </div>
-            <div>
-              <p class="text-[0.68rem] uppercase tracking-[0.25em] text-olivo font-semibold mb-3">Reservado</p>
-              <div class="flex gap-3 justify-center">
-                <span title="Blanco reservado" class="relative w-10 h-10 rounded-full bg-white border border-carbon/25 shadow-md flex items-center justify-center">
-                  <span class="w-full h-[1px] bg-red-500 rotate-45 absolute"></span>
-                </span>
-                <span title="Marfil reservado" class="relative w-10 h-10 rounded-full bg-[#F6F0E0] border border-carbon/25 shadow-md flex items-center justify-center">
-                  <span class="w-full h-[1px] bg-red-500 rotate-45 absolute"></span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="reveal mt-16 text-center">
-          <p class="text-[0.7rem] uppercase tracking-[0.4em] text-champagne font-semibold mb-2">Mesa de Regalos</p>
-          <h3 class="font-serif-title text-4xl text-carbon font-light mb-4">Tu presencia es nuestro mejor obsequio</h3>
-          <p class="text-sm text-carbon/75 max-w-lg mx-auto mb-8">
-            Si deseas hacernos un obsequio para comenzar nuestro hogar juntos, aquí tienes nuestras opciones:
-          </p>
-
-          <div class="grid md:grid-cols-2 gap-6 text-left max-w-3xl mx-auto">
-            <div class="glass-card p-6 rounded-xl border-champagne/40">
-              <h5 class="font-serif-title text-2xl text-carbon mb-3">Transferencia Bancaria</h5>
-              <div class="space-y-2 text-xs text-carbon/80">
-                <p><strong class="uppercase tracking-wider text-olivo">Banco:</strong> BBVA México</p>
-                <p><strong class="uppercase tracking-wider text-olivo">Beneficiarios:</strong> Juan & Alejandra</p>
-                <div class="pt-2 border-t border-champagne/30 flex items-center justify-between gap-2">
-                  <div>
-                    <span class="block text-[0.65rem] uppercase tracking-wider text-olivo">Cuenta CLABE:</span>
-                    <span id="clabeNum" class="font-mono text-sm text-carbon font-medium">012 180 0154879632 18</span>
-                  </div>
-                  <button id="copyClabeBtn" class="btn-luxury !py-2 !px-3 !text-[0.65rem]">Copiar</button>
+              <div>
+                <p class="text-[0.68rem] uppercase tracking-[0.25em] text-[#1B365D] font-semibold mb-3">Reservado</p>
+                <div class="flex gap-3 justify-center">
+                  <span title="Blanco reservado" class="relative w-10 h-10 rounded-full bg-white border border-carbon/25 shadow-md flex items-center justify-center">
+                    <span class="w-full h-[1px] bg-red-500 rotate-45 absolute"></span>
+                  </span>
+                  <span title="Marfil reservado" class="relative w-10 h-10 rounded-full bg-[#F6F0E0] border border-carbon/25 shadow-md flex items-center justify-center">
+                    <span class="w-full h-[1px] bg-red-500 rotate-45 absolute"></span>
+                  </span>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div class="glass-card p-6 rounded-xl border-champagne/40 flex flex-col justify-between">
-              <div>
-                <h5 class="font-serif-title text-2xl text-carbon mb-3">Mesa en Tiendas</h5>
-                <p class="text-xs text-carbon/70 leading-relaxed">
-                  También contamos con mesa de regalos registrada en tiendas físicas y en línea:
-                </p>
+          <!-- Mesa de Regalos -->
+          <div class="reveal mt-16 text-center">
+            <p class="text-[0.68rem] uppercase tracking-[0.38em] text-[#1B365D]/75 font-semibold mb-2">Mesa de Regalos</p>
+            <h3 class="font-serif-title text-4xl text-[#0E213D] font-light mb-4 tracking-tight">Tu presencia es nuestro mejor obsequio</h3>
+            <p class="text-sm text-carbon/75 max-w-lg mx-auto mb-8">
+              Si deseas hacernos un obsequio para comenzar nuestro hogar juntos, aquí tienes nuestras opciones:
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6 text-left max-w-3xl mx-auto">
+              <div class="glass-card p-6 rounded-2xl border-[#1B365D]/15 shadow-sm">
+                <h5 class="font-serif-title text-2xl text-carbon mb-3">Transferencia Bancaria</h5>
+                <div class="space-y-2 text-xs text-carbon/80">
+                  <p><strong class="uppercase tracking-wider text-[#1B365D]">Banco:</strong> BBVA México</p>
+                  <p><strong class="uppercase tracking-wider text-[#1B365D]">Beneficiarios:</strong> Juan & Alejandra</p>
+                  <div class="pt-2 border-t border-[#1B365D]/15 flex items-center justify-between gap-2">
+                    <div>
+                      <span class="block text-[0.65rem] uppercase tracking-wider text-[#1B365D]">Cuenta CLABE:</span>
+                      <span id="clabeNum" class="font-mono text-sm text-carbon font-medium">012 180 0154879632 18</span>
+                    </div>
+                    <button id="copyClabeBtn" class="btn-luxury !py-2 !px-3 !text-[0.65rem]">Copiar</button>
+                  </div>
+                </div>
               </div>
-              <div class="flex flex-wrap gap-2 pt-4">
-                <a href="https://www.liverpool.com.mx/" target="_blank" rel="noopener" class="btn-luxury !py-2 !px-4 !text-[0.65rem]">Liverpool</a>
-                <a href="https://www.amazon.com.mx/" target="_blank" rel="noopener" class="btn-luxury !py-2 !px-4 !text-[0.65rem]">Amazon</a>
+
+              <div class="glass-card p-6 rounded-2xl border-[#1B365D]/15 shadow-sm flex flex-col justify-between">
+                <div>
+                  <h5 class="font-serif-title text-2xl text-carbon mb-3">Mesa en Tiendas</h5>
+                  <p class="text-xs text-carbon/70 leading-relaxed">
+                    También contamos con mesa de regalos registrada en tiendas físicas y en línea:
+                  </p>
+                </div>
+                <div class="flex flex-wrap gap-2 pt-4">
+                  <a href="https://www.liverpool.com.mx/" target="_blank" rel="noopener" class="btn-luxury !py-2 !px-4 !text-[0.65rem]">Liverpool</a>
+                  <a href="https://www.amazon.com.mx/" target="_blank" rel="noopener" class="btn-luxury !py-2 !px-4 !text-[0.65rem]">Amazon</a>
+                </div>
               </div>
             </div>
           </div>
@@ -609,75 +695,94 @@
     <!-- ============================================================
          9. CONFIRMACIÓN DE ASISTENCIA (RSVP)
     ============================================================ -->
-    <section id="rsvp" class="py-24 px-6 bg-cremaDark">
-      <div class="text-center reveal mb-14 max-w-xl mx-auto">
-        <p class="text-[0.7rem] uppercase tracking-[0.4em] text-champagne font-semibold mb-2">RSVP</p>
-        <h3 class="font-serif-title text-4xl md:text-5xl font-light text-carbon">¿Nos acompañas?</h3>
-        <p class="text-sm text-carbon/75 mt-3 leading-relaxed">
-          Tu presencia es fundamental en nuestro día. Por favor confirma tu asistencia antes del <strong>20 de Enero de 2027</strong>.
-        </p>
-        <div class="ornament-divider"></div>
-      </div>
+    <section id="rsvp" class="py-20 sm:py-24 px-4 sm:px-6 bg-cremaDark relative overflow-hidden">
+      <!-- Tarjeta de Papelería de Lujo con Marco Fino y Flores en las 4 Esquinas -->
+      <div class="max-w-3xl mx-auto relative p-6 sm:p-12 md:p-14 bg-white/80 backdrop-blur-md rounded-3xl border border-[#1B365D]/15 shadow-[0_20px_50px_rgba(15,30,54,0.06)]">
+        
+        <!-- Filete fino interior -->
+        <div class="absolute inset-3 sm:inset-5 border border-[#1B365D]/20 rounded-2xl pointer-events-none"></div>
 
-      <form id="rsvpForm" class="reveal glass-card max-w-xl mx-auto p-8 md:p-12 rounded-2xl shadow-glass space-y-6">
-        <div>
-          <label class="block text-[0.68rem] tracking-[0.25em] uppercase text-olivo font-semibold mb-1" for="guestName">
-            Nombre Completo
-          </label>
-          <input id="guestName" required class="custom-input" type="text" placeholder="Ej. Familia González / Tu Nombre" />
-        </div>
+        <!-- Ramilletes botánicos en las 4 esquinas del marco -->
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -top-10 -left-10 sm:-top-12 sm:-left-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 -rotate-12 filter drop-shadow-sm select-none" />
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -top-10 -right-10 sm:-top-12 sm:-right-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 rotate-[105deg] filter drop-shadow-sm select-none" />
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -bottom-10 -left-10 sm:-bottom-12 sm:-left-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 -rotate-[105deg] filter drop-shadow-sm select-none" />
+        <img src="fotos/flores_boda.png" alt="Flores decorativas" 
+             class="absolute -bottom-10 -right-10 sm:-bottom-12 sm:-right-12 w-36 sm:w-52 md:w-60 h-auto object-contain pointer-events-none opacity-85 rotate-[168deg] filter drop-shadow-sm select-none" />
 
-        <div>
-          <label class="block text-[0.68rem] tracking-[0.25em] uppercase text-olivo font-semibold mb-1" for="guestPasses">
-            Número de Pases a Confirmar
-          </label>
-          <select id="guestPasses" class="custom-input cursor-pointer">
-            <option value="1">1 Pase</option>
-            <option value="2" selected>2 Pases</option>
-            <option value="3">3 Pases</option>
-            <option value="4">4 Pases</option>
-          </select>
-        </div>
-
-        <div>
-          <span class="block text-[0.68rem] tracking-[0.25em] uppercase text-olivo font-semibold mb-3">
-            ¿Asistirás al Evento?
-          </span>
-          <div class="grid grid-cols-2 gap-4">
-            <label class="cursor-pointer">
-              <input type="radio" name="attending" value="¡Sí, con mucho gusto asistiré!" class="peer sr-only" checked />
-              <span class="block text-center py-3 px-4 border border-olivo/40 text-xs tracking-widest uppercase transition-all rounded-lg peer-checked:bg-olivo peer-checked:text-crema peer-checked:border-olivo font-medium hover:scale-[1.02]">
-                ¡Sí Asistiré!
-              </span>
-            </label>
-            <label class="cursor-pointer">
-              <input type="radio" name="attending" value="Lamentablemente no podré asistir" class="peer sr-only" />
-              <span class="block text-center py-3 px-4 border border-olivo/40 text-xs tracking-widest uppercase transition-all rounded-lg peer-checked:bg-carbon peer-checked:text-crema peer-checked:border-carbon font-medium hover:scale-[1.02]">
-                No Podré Asistir
-              </span>
-            </label>
+        <div class="relative z-10">
+          <div class="text-center reveal mb-10 max-w-xl mx-auto">
+            <p class="text-[0.68rem] uppercase tracking-[0.38em] text-[#1B365D]/75 font-semibold mb-2">RSVP</p>
+            <h3 class="font-serif-title text-4xl sm:text-5xl font-light text-[#0E213D] tracking-tight">¿Nos acompañas?</h3>
+            <p class="text-sm text-carbon/75 mt-3 leading-relaxed">
+              Tu presencia es fundamental en nuestro día. Por favor confirma tu asistencia antes del <strong>20 de Enero de 2027</strong>.
+            </p>
+            <div class="ornament-divider"></div>
           </div>
-        </div>
 
-        <div>
-          <label class="block text-[0.68rem] tracking-[0.25em] uppercase text-olivo font-semibold mb-1" for="guestDiet">
-            Restricciones Alimentarias / Alergias
-          </label>
-          <input id="guestDiet" class="custom-input" type="text" placeholder="Vegetariano, celíaco, mariscos, ninguna..." />
-        </div>
+          <form id="rsvpForm" class="reveal max-w-xl mx-auto space-y-6">
+            <div>
+              <label class="block text-[0.68rem] tracking-[0.25em] uppercase text-[#1B365D] font-semibold mb-1" for="guestName">
+                Nombre Completo
+              </label>
+              <input id="guestName" required class="custom-input" type="text" placeholder="Ej. Familia González / Tu Nombre" />
+            </div>
 
-        <div>
-          <label class="block text-[0.68rem] tracking-[0.25em] uppercase text-olivo font-semibold mb-1" for="guestSong">
-            Canción imperdible para la fiesta (DJ)
-          </label>
-          <input id="guestSong" class="custom-input" type="text" placeholder="Artista – Canción favorita" />
-        </div>
+            <div>
+              <label class="block text-[0.68rem] tracking-[0.25em] uppercase text-[#1B365D] font-semibold mb-1" for="guestPasses">
+                Número de Pases a Confirmar
+              </label>
+              <select id="guestPasses" class="custom-input cursor-pointer">
+                <option value="1">1 Pase</option>
+                <option value="2" selected>2 Pases</option>
+                <option value="3">3 Pases</option>
+                <option value="4">4 Pases</option>
+              </select>
+            </div>
 
-        <button type="submit" class="btn-luxury btn-gold w-full !py-4 shadow-xl">
-          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.303-.058.116-.087.188-.173.289l-.26.303c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
-          Enviar Confirmación por WhatsApp
-        </button>
-      </form>
+            <div>
+              <span class="block text-[0.68rem] tracking-[0.25em] uppercase text-[#1B365D] font-semibold mb-3">
+                ¿Asistirás al Evento?
+              </span>
+              <div class="grid grid-cols-2 gap-4">
+                <label class="cursor-pointer">
+                  <input type="radio" name="attending" value="¡Sí, con mucho gusto asistiré!" class="peer sr-only" checked />
+                  <span class="block text-center py-3 px-4 border border-[#1B365D]/40 text-xs tracking-widest uppercase transition-all rounded-lg peer-checked:bg-[#1B365D] peer-checked:text-crema peer-checked:border-[#1B365D] font-medium hover:scale-[1.02]">
+                    ¡Sí Asistiré!
+                  </span>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="attending" value="Lamentablemente no podré asistir" class="peer sr-only" />
+                  <span class="block text-center py-3 px-4 border border-[#1B365D]/40 text-xs tracking-widest uppercase transition-all rounded-lg peer-checked:bg-carbon peer-checked:text-crema peer-checked:border-carbon font-medium hover:scale-[1.02]">
+                    No Podré Asistir
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[0.68rem] tracking-[0.25em] uppercase text-[#1B365D] font-semibold mb-1" for="guestDiet">
+                Restricciones Alimentarias / Alergias
+              </label>
+              <input id="guestDiet" class="custom-input" type="text" placeholder="Vegetariano, celíaco, mariscos, ninguna..." />
+            </div>
+
+            <div>
+              <label class="block text-[0.68rem] tracking-[0.25em] uppercase text-[#1B365D] font-semibold mb-1" for="guestSong">
+                Canción imperdible para la fiesta (DJ)
+              </label>
+              <input id="guestSong" class="custom-input" type="text" placeholder="Artista – Canción favorita" />
+            </div>
+
+            <button type="submit" class="btn-luxury btn-gold w-full !py-4 shadow-xl">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.303-.058.116-.087.188-.173.289l-.26.303c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+              Enviar Confirmación por WhatsApp
+            </button>
+          </form>
+        </div>
+      </div>
     </section>
   </main>
 
